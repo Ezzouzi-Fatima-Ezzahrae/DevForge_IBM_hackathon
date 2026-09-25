@@ -1,0 +1,1 @@
+﻿// PASS / FAIL / BLOCKED badge
