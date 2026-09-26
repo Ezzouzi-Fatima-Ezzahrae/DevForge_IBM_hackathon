@@ -54,6 +54,9 @@ class TestingAgent:
         with open(fixture_path, encoding="utf-8") as fh:
             result: dict = json.load(fh)
 
+        # Stamp the canonical agent identifier from the contract.
+        result["agent"] = "tester_agent"
+
         # Refresh the timestamp to reflect actual execution time.
         result["timestamp"] = datetime.utcnow().isoformat() + "Z"
         result["duration_seconds"] = round(

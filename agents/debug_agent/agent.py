@@ -96,10 +96,9 @@ def _build_ownership_fix_data() -> dict:
     rerun = pass_result["data"]
 
     return {
-        "root_cause": "DELETE /tasks/{id} does not check task ownership",
+        "root_cause": "DELETE /tasks/{id} does not verify task ownership",
         "fix_applied": (
-            "Added ownership check: "
-            "if task.owner_id != current_user.id: raise 403"
+            "Added: if task.owner_id != current_user.id: raise HTTPException(403)"
         ),
         "fixed_file": "backend/routers/tasks.py",
         "rerun_result": {
