@@ -18,7 +18,7 @@ import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from orchestrator import agents_base
 from orchestrator.approval import request_approval_cli
@@ -127,6 +127,7 @@ def run_pipeline(
     project_id: str | None = None,
     auto_approve: bool = False,
     demo_mode: bool = True,
+    approval_fn: Callable[..., bool] | None = None,
 ) -> ProjectContext:
     """
     Run the full DevForge pipeline for *idea*.
@@ -137,10 +138,14 @@ def run_pipeline(
     project_id    : Optional fixed ID (generated if None).
     auto_approve  : Skip CLI prompts (for tests / CI).
     demo_mode     : If True stubs will FAIL first then PASS (shows the debug/fix loops).
+    approval_fn   : Replaces the terminal prompt (same signature as
+                    request_approval_cli). The API passes one built by
+                    orchestrator.approval_broker.make_approval_fn().
 
     Returns the final ProjectContext.
     """
     cfg = _load_config()
+    ask_human = approval_fn or request_approval_cli
     project_id = project_id or f"proj_{uuid.uuid4().hex[:8]}"
     logger = get_logger(cfg["log_file"])
 
@@ -197,7 +202,7 @@ def run_pipeline(
         recorder.retry("plan")
 
     # Architecture human approval
-    arch_approved = request_approval_cli(
+    arch_approved = ask_human(
         context,
         [plan_gate_result],
         prompt_text="Approve architecture and proceed to build?",
@@ -324,7 +329,7 @@ def run_pipeline(
     release_gate = evaluate_release_gate(context)
     gate_results.append(release_gate)
 
-    release_approved = request_approval_cli(
+    release_approved = ask_human(
         context,
         gate_results,
         prompt_text="All gates passed. Approve release?",
