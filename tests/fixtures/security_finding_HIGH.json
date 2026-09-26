@@ -1,1 +1,32 @@
-﻿{}
+{
+  "agent": "security_agent",
+  "milestone_id": "ms_001",
+  "status": "BLOCKED",
+  "summary": "Security gate BLOCKED. 1 HIGH finding(s) detected. First: [CWE-639] DELETE /tasks/{task_id} does not verify that the resource belongs to the current user before modifying or deleting it. (backend/routers/tasks.py:54)",
+  "payload": {
+    "verdict": "BLOCKED",
+    "findings": [
+      {
+        "id": "SEC-001",
+        "severity": "HIGH",
+        "category": "broken_access_control",
+        "description": "DELETE /tasks/{task_id} does not verify that the resource belongs to the current user before modifying or deleting it.",
+        "file": "backend/routers/tasks.py",
+        "line": 54,
+        "cwe": "CWE-639",
+        "status": "OPEN",
+        "evidence": "   52 | @router.delete('/{task_id}')\n   53 | async def delete_task(task_id: int, db: Session = Depends(get_db)):\n   54 |     task = db.query(Task).filter(Task.id == task_id).first()\n   55 |     if not task:\n   56 |         raise HTTPException(status_code=404)",
+        "recommendation": "Fetch the resource first. Compare resource.owner_id with current_user.id. Raise HTTPException(status_code=403) if they differ."
+      }
+    ],
+    "critical_count": 0,
+    "high_count": 1,
+    "medium_count": 0,
+    "low_count": 0,
+    "info_count": 0,
+    "total_open": 1,
+    "scan_path": "backend/"
+  },
+  "duration_seconds": 4.2,
+  "timestamp": "2025-07-15T10:45:00Z"
+}
