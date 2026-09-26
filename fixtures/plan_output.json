@@ -1,0 +1,185 @@
+{
+  "agent": "plan_agent",
+  "status": "PASS",
+  "summary": "Generated 6 user stories, a full-stack architecture, 9 API endpoints, and PostgreSQL architecture decisions for a task-management SaaS.",
+  "data": {
+    "requirements": [
+      {
+        "id": "REQ-001",
+        "type": "functional",
+        "user_story": "As a new user, I can register and log in with email and password so that my tasks are private to me.",
+        "acceptance_criteria": [
+          "POST /auth/register creates a user and returns a JWT.",
+          "POST /auth/login returns a JWT on valid credentials.",
+          "Requests without a valid JWT receive 401."
+        ],
+        "priority": "must_have"
+      },
+      {
+        "id": "REQ-002",
+        "type": "functional",
+        "user_story": "As a logged-in user, I can create a task with a title, description, and due date so that I can track my work.",
+        "acceptance_criteria": [
+          "POST /tasks creates a task and returns the new task object.",
+          "Title is required.",
+          "Due date is stored as ISO 8601 UTC."
+        ],
+        "priority": "must_have"
+      },
+      {
+        "id": "REQ-003",
+        "type": "functional",
+        "user_story": "As a logged-in user, I can view my tasks so that I have a full picture of my workload.",
+        "acceptance_criteria": [
+          "GET /tasks returns only tasks accessible to the authenticated user.",
+          "The response is a JSON array.",
+          "An empty list is returned when the user has no tasks."
+        ],
+        "priority": "must_have"
+      },
+      {
+        "id": "REQ-004",
+        "type": "functional",
+        "user_story": "As a logged-in user, I can update a task so that its information stays accurate.",
+        "acceptance_criteria": [
+          "PATCH /tasks/{id} updates only the fields provided.",
+          "Updating another user's task returns 403.",
+          "The updated task is returned."
+        ],
+        "priority": "must_have"
+      },
+      {
+        "id": "REQ-005",
+        "type": "functional",
+        "user_story": "As a logged-in user, I can delete a task I own so that unwanted work is removed.",
+        "acceptance_criteria": [
+          "DELETE /tasks/{id} removes the task and returns 204.",
+          "Deleting another user's task returns 403.",
+          "Deleting a non-existent task returns 404."
+        ],
+        "priority": "must_have"
+      },
+      {
+        "id": "REQ-006",
+        "type": "functional",
+        "user_story": "As a team member, I can share a task with another user so that we can collaborate.",
+        "acceptance_criteria": [
+          "POST /tasks/{id}/share accepts a target user email and grants read access.",
+          "The shared user can see the task.",
+          "Only the task owner can share the task."
+        ],
+        "priority": "must_have"
+      }
+    ],
+    "architecture": {
+      "stack": {
+        "frontend": "Next.js 14 with TypeScript and Tailwind CSS",
+        "backend": "FastAPI with Python 3.11 and SQLAlchemy 2.0",
+        "database": "PostgreSQL 15",
+        "language": "Python"
+      },
+      "apis": [
+        "POST /auth/register",
+        "POST /auth/login",
+        "POST /tasks",
+        "GET /tasks",
+        "GET /tasks/{id}",
+        "PATCH /tasks/{id}",
+        "DELETE /tasks/{id}",
+        "POST /tasks/{id}/share",
+        "GET /health"
+      ],
+      "adr": [
+        {
+          "id": "DEC-001",
+          "project_id": "proj_task_management",
+          "question": "Which database should we use?",
+          "alternatives": [
+            "PostgreSQL",
+            "MongoDB",
+            "SQLite"
+          ],
+          "decision": "PostgreSQL",
+          "reason": "Relational data with clear ownership foreign keys and ACID transaction requirements.",
+          "source": "plan_agent",
+          "timestamp": "2026-09-26T00:00:00Z"
+        },
+        {
+          "id": "DEC-002",
+          "project_id": "proj_task_management",
+          "question": "How should users be authenticated?",
+          "alternatives": [
+            "JWT",
+            "Session cookies + Redis",
+            "OAuth2 third-party provider"
+          ],
+          "decision": "JWT",
+          "reason": "Stateless authentication avoids a shared session store between frontend and backend services.",
+          "source": "plan_agent",
+          "timestamp": "2026-09-26T00:00:00Z"
+        },
+        {
+          "id": "DEC-003",
+          "project_id": "proj_task_management",
+          "question": "Which frontend framework should we use?",
+          "alternatives": [
+            "Next.js + TypeScript + Tailwind",
+            "React + Vite",
+            "Vue 3"
+          ],
+          "decision": "Next.js + TypeScript + Tailwind",
+          "reason": "File-based routing, TypeScript safety, and rapid UI iteration support the 48-hour build.",
+          "source": "plan_agent",
+          "timestamp": "2026-09-26T00:00:00Z"
+        }
+      ]
+    },
+    "decisions": [
+      {
+        "id": "DEC-001",
+        "project_id": "proj_task_management",
+        "question": "Which database should we use?",
+        "alternatives": [
+          "PostgreSQL",
+          "MongoDB",
+          "SQLite"
+        ],
+        "decision": "PostgreSQL",
+        "reason": "Relational data with clear ownership foreign keys and ACID transaction requirements.",
+        "source": "plan_agent",
+        "timestamp": "2026-09-26T00:00:00Z"
+      },
+      {
+        "id": "DEC-002",
+        "project_id": "proj_task_management",
+        "question": "How should users be authenticated?",
+        "alternatives": [
+          "JWT",
+          "Session cookies + Redis",
+          "OAuth2 third-party provider"
+        ],
+        "decision": "JWT",
+        "reason": "Stateless authentication avoids a shared session store between frontend and backend services.",
+        "source": "plan_agent",
+        "timestamp": "2026-09-26T00:00:00Z"
+      },
+      {
+        "id": "DEC-003",
+        "project_id": "proj_task_management",
+        "question": "Which frontend framework should we use?",
+        "alternatives": [
+          "Next.js + TypeScript + Tailwind",
+          "React + Vite",
+          "Vue 3"
+        ],
+        "decision": "Next.js + TypeScript + Tailwind",
+        "reason": "File-based routing, TypeScript safety, and rapid UI iteration support the 48-hour build."
+        ,
+        "source": "plan_agent",
+        "timestamp": "2026-09-26T00:00:00Z"
+      }
+    ]
+  },
+  "duration_seconds": 4.21,
+  "timestamp": "2026-09-26T00:00:00Z"
+}
