@@ -1,4 +1,4 @@
-# Bob session: Fati — Plan Agent (Plan mode)
+# Bob session: Fati ï¿½ Plan Agent (Plan mode)
 
 ## Demo idea
 
@@ -33,12 +33,12 @@ Bob generated:
 
 ## User stories
 
-1. REQ-001 — User registration and login
-2. REQ-002 — Create a task
-3. REQ-003 — View tasks
-4. REQ-004 — Update a task
-5. REQ-005 — Delete a task
-6. REQ-006 — Share a task with another user
+1. REQ-001 ï¿½ User registration and login
+2. REQ-002 ï¿½ Create a task
+3. REQ-003 ï¿½ View tasks
+4. REQ-004 ï¿½ Update a task
+5. REQ-005 ï¿½ Delete a task
+6. REQ-006 ï¿½ Share a task with another user
 
 Each user story contains acceptance criteria.
 
@@ -89,3 +89,19 @@ ADR-003: Next.js with TypeScript and Tailwind CSS for the frontend.
 ## Result
 
 The Bob Plan session produced a valid Plan Agent plan satisfying the required Plan Gate criteria.
+
+## Bob features used
+
+- Task 1 â€” Project exploration and codebase understanding.
+- Task 2 â€” Bob Plan mode for requirements, user stories, architecture, API endpoints, and ADRs.
+- Task 3 â€” Plan review and validation against the Plan Gate.
+- Task 4 â€” Agent integration using ProjectContext and AgentResult.
+- Task 5 â€” Testing and validation of the Plan Agent.
+
+## Screenshots
+
+- fati_task1.png â€” Project structure and Plan Agent context.
+- fati_task2.png â€” Plan generation in Bob Plan mode.
+- fati_task3.png â€” Review and validation of the generated plan.
+- fati_task4.png â€” Plan Agent integration with the project context and contracts.
+- fati_task5.png â€” Plan Agent testing and validation.
