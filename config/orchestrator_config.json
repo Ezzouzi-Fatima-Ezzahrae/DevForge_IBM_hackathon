@@ -1,0 +1,19 @@
+{
+  "gates": {
+    "tests": {
+      "pass_condition": "all_pass",
+      "comment": "PASS only when passed == total (100%)"
+    },
+    "security": {
+      "block_on_severities": ["critical", "high"],
+      "comment": "BLOCKED if any critical or high finding exists"
+    }
+  },
+  "retries": {
+    "test_max": 3,
+    "security_max": 3,
+    "comment": "After max retries, escalate to human (FAILED state)"
+  },
+  "state_file": "data/project_state.json",
+  "log_file": "logs/orchestrator.jsonl"
+}
