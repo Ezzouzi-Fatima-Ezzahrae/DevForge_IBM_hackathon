@@ -3,32 +3,14 @@
 **Branch:** `fati/agents`. **Folders:** `agents/plan_agent.py`, `agents/prompts/`, `fixtures/`, `DATA_SOURCES.md`.
 
 ## Status (reviewed)
-Merged into `main`. Done and good: the Bob Plan session, a saved plan (6 user stories with acceptance criteria, stack, 9 endpoints, 3 ADRs), the prompt, a Plan Gate test that passes, and a full Bob session summary. The saved plan follows the contracts and the decisions match the `Decision` format.
+Done and connected: `PlanAgent` extends `BaseAgent`, takes `project_id` and `idea` from the context, returns an ERROR when the fixture is missing or invalid, has gate tests (fewer than 5 stories, no ADR, project id), and `DATA_SOURCES.md` has 3 sources. The Leader registered it as the `plan` stage (with a fallback to the stub), and the full pipeline runs with it. Two small edits were made to your file: it now reports the real duration and the current time (the fixture said 4.21 seconds, which would have polluted the impact numbers), and it marks its output as a replay of the saved Bob session.
 
-## Problems to fix
+## What is left
 
-- The orchestrator does not use your agent yet: `agents_base.py` still registers the stub.
-- `agents/plan_agent.py` is a plain function (`run(input)`), not an agent class.
-- The decisions contain a fixed `project_id` (`proj_task_management`), so they will not match the id of the running project.
-- `DATA_SOURCES.md` is empty.
-- Two fixture files: `fixtures/plan_output.json` (real) and `tests/fixtures/plan_output.json` (empty).
-
-## Tasks (in order)
-
-1. **Make it an agent.** In `agents/plan_agent.py` add `class PlanAgent(BaseAgent)` with `run(self, context: ProjectContext) -> AgentResult`, which loads the saved plan and **sets `project_id` in every decision from `context.project_id`** and the idea from `context.idea`. Keep the function `run(input)` if your test uses it.
-2. **Never crash:** if the fixture is missing or invalid, return `AgentResult(status=ERROR)` with a clear summary.
-3. **Tell the Leader** when it is ready; the Leader registers it as the `plan` stage (or you may register it in your own code with `register_agent("plan", PlanAgent())`, keeping the stub as a fallback).
-4. **Sources:** add real sources to `DATA_SOURCES.md` for the claims in your plan (for example, why PostgreSQL for relational data, JWT for stateless auth). Only include sources you actually consulted.
-5. **Tests** in `tests/test_agents.py`: the valid plan passes the gate (you have this), a plan with fewer than 5 stories fails, a plan without an ADR fails, and the decisions carry the context's `project_id`.
-6. **One fixture:** keep `fixtures/plan_output.json` and delete or fill `tests/fixtures/plan_output.json`.
-7. **Second plan variant (optional):** if time allows, save a second, different idea so the demo can show that the agent is not hard-coded to one idea.
-8. **Demo:** prepare to explain the planning step in 30 seconds (Bob Plan mode, what came out, the ADRs).
-
-## Done when
-`python -m orchestrator.run --idea "task management SaaS" --auto-approve` shows your PlanAgent (not the stub) and the decisions appear in `memory/data/decisions.json` with the correct project id.
-
-## Talk to
-Leader (registration), Safa (decision storage).
+1. **Bob evidence:** add your screenshots to `bob_sessions/` and name the Bob features used in `fati_plan_agent_session.md`.
+2. **A second saved plan** for a different idea (optional but valuable): save it as `fixtures/plan_output_<name>.json` and let `PlanAgent` pick the fixture by keyword, so the demo does not look hard-coded. Right now every idea returns the task-management plan.
+3. **Research and requirements evidence:** in `DATA_SOURCES.md`, add the source for each technical claim you make in the demo (PostgreSQL, JWT, Next.js are done).
+4. **Help the team:** you have the most free time now. Ask Ali if he wants help with the dashboard, or Manar with test cases.
 
 ## Demo role
 Fati speaks about the planning step (about 30 seconds). Practice with the timer. See `docs/DEMO_PLAN.md`. Feature freeze is at hour 40; after that only fix bugs that break a rehearsal.

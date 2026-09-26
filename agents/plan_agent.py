@@ -1,4 +1,4 @@
-﻿"""
+"""
 DevForge - Plan Agent
 Research + Requirements + Architecture
 """
@@ -6,6 +6,7 @@ Research + Requirements + Architecture
 from __future__ import annotations
 
 import json
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -27,6 +28,7 @@ class PlanAgent(BaseAgent):
     def run(self, context: ProjectContext) -> AgentResult:
         """Run the Plan Agent for the current project."""
 
+        started = time.perf_counter()
         try:
             with FIXTURE_PATH.open("r", encoding="utf-8") as file:
                 data = json.load(file)
@@ -41,6 +43,12 @@ class PlanAgent(BaseAgent):
             # Keep ADR decisions consistent with the same project id.
             for decision in data["data"].get("architecture", {}).get("adr", []):
                 decision["project_id"] = context.project_id
+
+            # The plan comes from a saved Bob Plan session. Report the real time of this call and the
+            # current time, not the numbers stored in the fixture, so the metrics stay honest.
+            data["data"]["source"] = "saved Bob Plan session (replayed)"
+            data["duration_seconds"] = round(time.perf_counter() - started, 3)
+            data["timestamp"] = datetime.now(timezone.utc).isoformat()
 
             return AgentResult.model_validate(data)
 

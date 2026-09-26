@@ -70,3 +70,9 @@ def test_plan_decisions_use_context_project_id():
 
     for decision in result.data["decisions"]:
         assert decision["project_id"] == "my_project_123"
+
+def test_plan_agent_reports_real_timing_and_source():
+    result = run({"project_id": "proj_x", "idea": "any idea"})
+    assert result.duration_seconds < 1.0          # not the 4.21 s stored in the fixture
+    assert result.timestamp.startswith("20")       # current time, not the fixture's
+    assert "saved Bob Plan session" in result.data["source"]
