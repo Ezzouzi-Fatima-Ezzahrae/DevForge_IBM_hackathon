@@ -29,3 +29,6 @@ Merged into `main`. Done and good: the Bob Plan session, a saved plan (6 user st
 
 ## Talk to
 Leader (registration), Safa (decision storage).
+
+## Demo role
+Fati speaks about the planning step (about 30 seconds). Practice with the timer. See `docs/DEMO_PLAN.md`. Feature freeze is at hour 40; after that only fix bugs that break a rehearsal.

@@ -26,3 +26,6 @@ State and memory are in **files** (`data/project_state.json`, `memory/data/*.jso
 
 ## Talk to
 Leader (approval hook, state format), Safa (metrics and decisions functions), Manar and Haytam (result formats).
+
+## Demo role
+Ali drives the dashboard during the demo (start, pipeline, approval screen). Practice the click path until you can do it without looking. Also add a `package.json` with the start command and a short "how to run the dashboard" note in your PR. See `docs/DEMO_PLAN.md`. Feature freeze is at hour 40; after that only fix bugs that break a rehearsal.

@@ -22,3 +22,6 @@ Two runs in a row (with `python tests/restore_demo_bug.py` in between) both show
 
 ## Talk to
 Haytam (second bug, same file), Leader (orchestrator changes), Ali (test results on the dashboard).
+
+## Demo role
+Manar speaks about the tests and the debug fix (about 40 seconds): 17/20, root cause, patch, 20/20, retry badge. See `docs/DEMO_PLAN.md`. Feature freeze is at hour 40; after that only fix bugs that break a rehearsal.

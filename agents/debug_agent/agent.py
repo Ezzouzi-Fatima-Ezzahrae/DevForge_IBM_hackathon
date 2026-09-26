@@ -1,5 +1,6 @@
 """Debug Agent for the DevForge orchestrator."""
 
+import re
 import subprocess
 import sys
 import time
@@ -23,24 +24,26 @@ class DebugAgent:
         bug_file = project_root / "backend" / "demo_bug.py"
 
         try:
-            source = bug_file.read_text()
+            source = bug_file.read_text(encoding="utf-8")
 
-            old_block = """    current_user = get_current_user()
+            # Match the planted bug by its structure, not by the exact comment text,
+            # so it works with any encoding or line ending.
+            bug_pattern = re.compile(
+                r"^(?P<indent>[ \t]*)# BUG:[^\n]*\n(?=[ \t]*del tasks\[tasks\.index\(task\)\])",
+                re.MULTILINE,
+            )
 
-    # BUG: no ownership check — any user can delete any task
-    del tasks[tasks.index(task)]
-"""
+            def add_ownership_check(match: "re.Match[str]") -> str:
+                indent = match.group("indent")
+                return (
+                    f"{indent}if task.owner_id != current_user.id:\n"
+                    f'{indent}    raise HTTPException(status_code=403, detail="Not authorized")\n\n'
+                )
 
-            new_block = """    current_user = get_current_user()
+            source_fixed, replacements = bug_pattern.subn(add_ownership_check, source)
 
-    if task.owner_id != current_user.id:
-        raise HTTPException(status_code=403, detail="Not authorized")
-
-    del tasks[tasks.index(task)]
-"""
-
-            if old_block in source:
-                bug_file.write_text(source.replace(old_block, new_block))
+            if replacements:
+                bug_file.write_text(source_fixed, encoding="utf-8")
                 fix_applied = True
             elif "if task.owner_id != current_user.id:" in source:
                 fix_applied = False

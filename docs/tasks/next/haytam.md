@@ -31,3 +31,6 @@ The pipeline shows SECURITY blocked with your finding, then FIX, then SECURITY p
 
 ## Talk to
 Manar (second bug, exact line), Leader (registration).
+
+## Demo role
+Haytam speaks about the security step (about 35 seconds): the finding, why it blocks the release, the fix, the rescan. See `docs/DEMO_PLAN.md`. Feature freeze is at hour 40; after that only fix bugs that break a rehearsal.

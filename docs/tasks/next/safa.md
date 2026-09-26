@@ -22,3 +22,6 @@ The Impact summary is correct after a fresh run, tests pass, and the plan agent'
 
 ## Talk to
 Fati (decision format), Ali (which functions the API calls), Leader (log events).
+
+## Demo role
+Safa speaks about memory and the Impact numbers (about 30 seconds), using only real numbers from real runs. See `docs/DEMO_PLAN.md`. Feature freeze is at hour 40; after that only fix bugs that break a rehearsal.

@@ -13,10 +13,11 @@ Updated 26 Sep 2026, evening. "Verified" means the code was read and its tests w
 | Plan agent | Fati | Merged, verified, **not connected** | Returns a saved Bob output; the orchestrator still uses the stub |
 | Testing agent, Debug agent | Manar | Real, on her branch, verified by reading | Run real pytest; the debug agent really patches the file |
 | Memory and metrics | Safa | First version merged; fixes on her branch | The fix "filter by project" is not in the merged code yet |
-| Security agent, gate, fix | Haytam | **Not seen** | `security/*` are still one-line placeholders |
+| Security agent, gate, fix | Haytam | PR opened, **has merge conflicts**, not reviewed | He must update his branch from `main` (`git pull origin main`) and resolve the conflicts; `security/*` on `main` are still placeholders |
 | Backend API | Ali | **Not seen** | `backend/*` are placeholders (only `demo_bug.py`, from Manar) |
 | Dashboard | Ali | **Not seen** | `frontend/*` are placeholders |
 | Bob evidence | Everyone | Partly done | Done: Leader, Safa, Fati, Manar. Empty: Ali, Haytam |
+| Demo plan, submission checklist | Leader | Written | `docs/DEMO_PLAN.md`, `docs/SUBMISSION_CHECKLIST.md` |
 
 ## Problems found in the review
 
@@ -45,4 +46,4 @@ Updated 26 Sep 2026, evening. "Verified" means the code was read and its tests w
 | 40 | **Feature freeze** |
 | 40-48 | Demo rehearsal only |
 
-Each person's next tasks: `docs/tasks/next/<name>.md`.
+Each person's next tasks: `docs/tasks/next/<name>.md`. Schedule, demo roles and pieces that were unowned: `docs/tasks/next/README.md`. Demo script: `docs/DEMO_PLAN.md`. Final checks: `docs/SUBMISSION_CHECKLIST.md`.

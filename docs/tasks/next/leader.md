@@ -21,3 +21,12 @@ Architecture, contracts, orchestrator, tests, README, Bob evidence, status and n
 
 ## Done when
 A fresh clone of `main` runs the full demo (real agents where ready, stubs elsewhere), the dashboard shows it live, and approval works from the dashboard.
+
+## Also yours (nobody else owns these)
+
+12. **Root `requirements.txt`** (pydantic, pytest, fastapi, uvicorn, httpx) and a short "how to run everything" section in `README.md`.
+13. **Slides and script:** fill in `docs/DEMO_PLAN.md`, build the slides (problem, solution, architecture diagram, live demo, impact, how Bob was used), and ask each speaker for their 30-second text.
+14. **Backup video** of a full successful run, recorded before the freeze.
+15. **Stability:** 5 full runs in a row (restore `demo_bug.py` between runs) without a failure.
+16. **Bob evidence check:** every member's `bob_sessions/*.md` is filled and readable.
+17. **Fresh-clone test and submission:** follow `docs/SUBMISSION_CHECKLIST.md` on a clean clone of `main` and verify the format and deadline in the hackathon guide.
