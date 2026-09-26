@@ -1,3 +1,30 @@
+"""
+memory/memory_agent.py
+======================
+
+Public API (for Ali and other agents)
+--------------------------------------
+
+query(project_id, topic=None) -> list[dict]
+    Return all decisions stored for *project_id*, optionally filtered by
+    a case-insensitive substring *topic* matched against question and reason.
+
+query_gate_results(project_id, gate=None) -> list[dict]
+    Return all gate results stored for *project_id*, optionally filtered by
+    *gate* name (one of: plan, architecture, tests, security, release).
+
+store(decision) -> str
+    Validate and persist a decision dict; returns the assigned DEC-NNNN id.
+
+store_gate_result(gate_result) -> None
+    Validate and persist a gate-result dict.
+
+get_context(project_id) -> str
+    Return the 5 most-recently stored decisions for *project_id* formatted
+    as a prompt prefix.  Returns an empty-context message when no decisions
+    exist.
+"""
+
 from __future__ import annotations
 
 import json
@@ -136,15 +163,28 @@ def query_gate_results(project_id: str, gate: str | None = None) -> list[dict]:
     return results
 
 
+_CONTEXT_LIMIT = 5
+
+
 def get_context(project_id: str) -> str:
-    """Return a human-readable summary of all decisions for *project_id*.
+    """Return the most-recently stored decisions for *project_id* as a prompt prefix.
+
+    Only decisions belonging to *project_id* are included.
+    At most :data:`_CONTEXT_LIMIT` (5) decisions are returned; when more are
+    stored the **last** (most recently appended) ones are preferred, because
+    recent decisions are most relevant as context.
 
     Format per line:
         [DEC-NNN] <question> → <decision> (reason: <reason>)
+
+    Returns a clear empty-context message when no decisions exist.
     """
-    decisions = query(project_id)
-    if not decisions:
+    all_decisions = query(project_id)
+    if not all_decisions:
         return f"No decisions recorded for project '{project_id}'."
+
+    # Take the last _CONTEXT_LIMIT entries (insertion order = append order).
+    decisions = all_decisions[-_CONTEXT_LIMIT:]
 
     lines = [
         f"[{d['id']}] {d['question']} → {d['decision']} (reason: {d['reason']})"

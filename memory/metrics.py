@@ -1,3 +1,33 @@
+"""
+memory/metrics.py
+=================
+
+Public API (for Ali and other agents)
+--------------------------------------
+
+record_event(project_id, event_type, value, *, run_id=None) -> None
+    Append a single metric event for *project_id*.  *event_type* must be one
+    of the values defined in :data:`memory.schemas.EVENT_TYPES`.
+
+get_summary(project_id) -> dict
+    Aggregate all stored metric events for *project_id* and return a flat
+    summary dict with the following keys:
+        planning_time_seconds, implementation_time_seconds,
+        testing_time_seconds, debugging_time_seconds,
+        security_findings_count, tests_passed, tests_failed,
+        retry_count, human_interventions
+    All keys are always present; unrecorded metrics default to 0.
+    Time values are floats (seconds); count values are ints.
+
+get_impact_summary(project_id) -> str
+    Return a human-readable, emoji-annotated impact summary for *project_id*
+    suitable for demo output or console logging.
+
+run_already_ingested(project_id, run_id) -> bool
+    Return True if metrics for the given *run_id* are already stored.
+    Used by log_ingest to make ingestion idempotent.
+"""
+
 from __future__ import annotations
 
 import json
