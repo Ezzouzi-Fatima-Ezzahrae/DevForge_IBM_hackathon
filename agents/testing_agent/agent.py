@@ -1,66 +1,85 @@
-"""Testing Agent — stub implementation returning pre-recorded fixtures."""
+"""Testing Agent for the DevForge orchestrator."""
 
-import json
-import os
-from datetime import datetime
+import time
+from datetime import datetime, timezone
 
-# Resolve fixture paths relative to this file's location so the agent works
-# regardless of the working directory.
-_BASE = os.path.dirname(os.path.abspath(__file__))
-_FIXTURES = os.path.join(_BASE, "..", "..", "tests", "fixtures")
-
-_FAIL_FIXTURE = os.path.join(_FIXTURES, "test_fail_17_20.json")
-_PASS_FIXTURE = os.path.join(_FIXTURES, "test_pass_20_20.json")
+from orchestrator.agents_base import BaseAgent
+from orchestrator.contracts import AgentResult, AgentStatus, ProjectContext
 
 
-class TestingAgent:
-    """Stub Testing Agent.
+class TestingAgent(BaseAgent):
+    """Testing Agent compatible with the DevForge orchestrator.
 
-    First call to ``run`` returns the 17/20 FAIL fixture.
-    Second (and subsequent) calls return the 20/20 PASS fixture.
+    Demo behaviour:
+    - First call: 17/20 tests fail.
+    - Second and later calls: 20/20 tests pass.
+
+    This keeps the current hackathon demo behaviour while using
+    the official orchestrator AgentResult contract.
     """
 
-    def __init__(self) -> None:
-        self._call_count: int = 0
+    def __init__(self, fail_first: bool = True) -> None:
+        self._call_count = 0
+        self.fail_first = fail_first
 
-    # ------------------------------------------------------------------
-    # Public API
-    # ------------------------------------------------------------------
+    def reset(self) -> None:
+        """Reset the test call counter between milestones."""
+        self._call_count = 0
 
-    def run(self, milestone: dict, code_files: list[str]) -> dict:
-        """Execute (stub) tests for *milestone* and return an AgentResult.
-
-        Args:
-            milestone: Milestone descriptor dict from the orchestrator.
-            code_files: List of source-file paths belonging to the milestone.
-
-        Returns:
-            AgentResult dict with ``data`` shaped as::
-
-                {
-                    "total": int,
-                    "passed": int,
-                    "failed": int,
-                    "status": "PASS" | "FAIL",
-                    "failures": [{"test": str, "error": str}],
-                    "coverage_percent": float,
-                }
-        """
-        start = datetime.utcnow()
+    def run(self, context: ProjectContext) -> AgentResult:
+        start = time.time()
         self._call_count += 1
 
-        fixture_path = _FAIL_FIXTURE if self._call_count == 1 else _PASS_FIXTURE
+        milestone_id = None
+        if context.milestones:
+            milestone_id = context.milestones[
+                context.current_milestone_index
+            ].id
 
-        with open(fixture_path, encoding="utf-8") as fh:
-            result: dict = json.load(fh)
+        if self.fail_first and self._call_count == 1:
+            return AgentResult(
+                agent="tester_agent",
+                status=AgentStatus.FAIL,
+                summary="17/20 tests passed. 3 ownership-check failures.",
+                data={
+                    "total": 20,
+                    "passed": 17,
+                    "failed": 3,
+                    "status": "FAIL",
+                    "failures": [
+                        {
+                            "test": "test_delete_task_not_owner",
+                            "error": "AssertionError: expected 403, got 200",
+                        },
+                        {
+                            "test": "test_delete_task_other_user",
+                            "error": "AssertionError: expected 403, got 200",
+                        },
+                        {
+                            "test": "test_delete_task_unauthenticated",
+                            "error": "AssertionError: expected 401, got 200",
+                        },
+                    ],
+                    "coverage_percent": 72.0,
+                    "milestone_id": milestone_id,
+                },
+                duration_seconds=round(time.time() - start, 3),
+                timestamp=datetime.now(timezone.utc).isoformat(),
+            )
 
-        # Stamp the canonical agent identifier from the contract.
-        result["agent"] = "tester_agent"
-
-        # Refresh the timestamp to reflect actual execution time.
-        result["timestamp"] = datetime.utcnow().isoformat() + "Z"
-        result["duration_seconds"] = round(
-            (datetime.utcnow() - start).total_seconds(), 4
+        return AgentResult(
+            agent="tester_agent",
+            status=AgentStatus.PASS,
+            summary="20/20 tests passed.",
+            data={
+                "total": 20,
+                "passed": 20,
+                "failed": 0,
+                "status": "PASS",
+                "failures": [],
+                "coverage_percent": 85.0,
+                "milestone_id": milestone_id,
+            },
+            duration_seconds=round(time.time() - start, 3),
+            timestamp=datetime.now(timezone.utc).isoformat(),
         )
-
-        return result

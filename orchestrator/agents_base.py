@@ -57,15 +57,15 @@ def _bootstrap_stubs() -> None:
     """
     from orchestrator.stubs.plan_stub        import PlanStub
     from orchestrator.stubs.builder_stub     import BuilderStub
-    from orchestrator.stubs.tester_stub      import TesterStub
-    from orchestrator.stubs.debug_stub       import DebugStub
+    from agents.testing_agent.agent          import TestingAgent
+    from agents.debug_agent.agent            import DebugAgent
     from orchestrator.stubs.security_stub    import SecurityStub
     from orchestrator.stubs.fix_stub         import FixStub
 
     register_agent("plan",     PlanStub())
     register_agent("build",    BuilderStub())
-    register_agent("test",     TesterStub())
-    register_agent("debug",    DebugStub())
+    register_agent("test",     TestingAgent())
+    register_agent("debug",    DebugAgent())
     register_agent("security", SecurityStub())
     register_agent("fix",      FixStub())
 
