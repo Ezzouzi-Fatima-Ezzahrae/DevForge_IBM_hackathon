@@ -1,5 +1,6 @@
 """Testing Agent for the DevForge orchestrator."""
 
+import os
 import subprocess
 import sys
 import time
@@ -7,7 +8,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from orchestrator.contracts import AgentResult, AgentStatus, ProjectContext
-import os
 
 class TestingAgent:
     """Run the real pytest suite for the demo task backend."""
@@ -21,8 +21,10 @@ class TestingAgent:
 
     def run(self, context: ProjectContext) -> AgentResult:
         start = time.time()
+
         if os.getenv("DEVFORGE_TEST_AGENT_MODE", "real") == "stub":
             from orchestrator.stubs.tester_stub import TesterStub
+
             return TesterStub(fail_first=True).run(context)
 
         project_root = Path(__file__).resolve().parents[2]
@@ -36,22 +38,68 @@ class TestingAgent:
             "-q",
         ]
 
-        completed = subprocess.run(
-            command,
-            cwd=project_root,
-            capture_output=True,
-            text=True,
-        )
+        try:
+            completed = subprocess.run(
+                command,
+                cwd=project_root,
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+
+        except subprocess.TimeoutExpired as exc:
+            output = (exc.stdout or "") + (exc.stderr or "")
+
+            return AgentResult(
+                agent="tester_agent",
+                status=AgentStatus.ERROR,
+                summary="pytest timed out after 30 seconds.",
+                data={
+                    "total": 0,
+                    "passed": 0,
+                    "failed": 0,
+                    "status": "ERROR",
+                    "failures": [],
+                    "pytest_command": "python -m pytest tests/test_demo_tasks.py -q",
+                    "pytest_returncode": None,
+                    "pytest_output": output,
+                    "timeout_seconds": 30,
+                },
+                duration_seconds=round(time.time() - start, 3),
+                timestamp=datetime.now(timezone.utc).isoformat(),
+            )
+
+        except OSError as exc:
+            return AgentResult(
+                agent="tester_agent",
+                status=AgentStatus.ERROR,
+                summary=f"pytest could not run: {exc}",
+                data={
+                    "total": 0,
+                    "passed": 0,
+                    "failed": 0,
+                    "status": "ERROR",
+                    "failures": [],
+                    "pytest_command": "python -m pytest tests/test_demo_tasks.py -q",
+                    "pytest_returncode": None,
+                    "pytest_output": str(exc),
+                },
+                duration_seconds=round(time.time() - start, 3),
+                timestamp=datetime.now(timezone.utc).isoformat(),
+            )
 
         output = completed.stdout + completed.stderr
 
         passed = self._extract_count(output, "passed")
         failed = self._extract_count(output, "failed")
         total = passed + failed
-
         failures = self._extract_failures(output)
 
-        status = AgentStatus.PASS if completed.returncode == 0 else AgentStatus.FAIL
+        status = (
+            AgentStatus.PASS
+            if completed.returncode == 0
+            else AgentStatus.FAIL
+        )
 
         summary = (
             f"{passed}/{total} tests passed."
@@ -86,7 +134,6 @@ class TestingAgent:
         import re
 
         match = re.search(rf"(\d+)\s+{word}", output)
-
         return int(match.group(1)) if match else 0
 
     @staticmethod

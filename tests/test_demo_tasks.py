@@ -103,6 +103,7 @@ def test_delete_task_other_user():
         delete_task(3)
 
 
-def test_delete_task_unauthorized_owner():
+def test_unauthorized_delete_keeps_task():
     with pytest.raises(Exception):
         delete_task(1)
+    assert any(task.id == 1 for task in tasks)
