@@ -108,6 +108,17 @@ def evaluate_test_gate(
     # Config says "all_pass" → 100%
     pass_condition = _cfg()["gates"]["tests"]["pass_condition"]
     gate_pass = (passed == total) if pass_condition == "all_pass" else (passed >= total * 0.8)
+    if total <= 0:
+        # 0/0 must never count as "all tests pass": nothing was actually tested.
+        return GateResult(
+            gate=GateName.TESTS,
+            project_id=context.project_id,
+            milestone_id=milestone_id,
+            verdict=GateVerdict.FAIL,
+            reason="No tests were run (0 total): cannot pass the tests gate",
+            retry_number=retry,
+            timestamp=now,
+        )
 
     if gate_pass:
         return GateResult(
