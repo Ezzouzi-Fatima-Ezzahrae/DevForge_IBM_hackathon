@@ -71,7 +71,17 @@ def _bootstrap_stubs() -> None:
     register_agent("build", BuilderStub())
     register_agent("test", TestingAgent())
     register_agent("debug", DebugAgent())
-    register_agent("security", SecurityStub())
+    # Real security agent (Haytam), with the stub as fallback if it cannot be loaded.
+    # Set DEVFORGE_SECURITY_AGENT_MODE=stub to force the stub.
+    import os
+    security_agent: BaseAgent = SecurityStub()
+    if os.environ.get("DEVFORGE_SECURITY_AGENT_MODE", "real") != "stub":
+        try:
+            from orchestrator.adapters.security_adapter import SecurityAdapter
+            security_agent = SecurityAdapter()
+        except Exception:  # noqa: BLE001 - fall back to the stub
+            security_agent = SecurityStub()
+    register_agent("security", security_agent)
     register_agent("fix", FixStub())
 
 
