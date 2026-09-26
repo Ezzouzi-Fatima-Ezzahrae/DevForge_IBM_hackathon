@@ -38,6 +38,7 @@ from orchestrator.gates import (
     evaluate_test_gate,
 )
 from orchestrator.logger import get_logger
+from orchestrator.recorder import Recorder
 from orchestrator.state_machine import InvalidTransitionError, StateMachine
 
 
@@ -63,7 +64,7 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def _run_agent(stage: str, context: ProjectContext) -> AgentResult:
+def _run_agent(stage: str, context: ProjectContext, recorder: Recorder | None = None) -> AgentResult:
     logger = get_logger()
     agent = agents_base.get_agent(stage)
     logger.agent_start(context.project_id, agent.__class__.__name__, stage)
@@ -76,6 +77,8 @@ def _run_agent(stage: str, context: ProjectContext) -> AgentResult:
         result.duration_seconds,
         result.summary,
     )
+    if recorder is not None:
+        recorder.agent_done(stage, result)
     return result
 
 
@@ -97,6 +100,7 @@ def _transition(
 def _parallel_test_and_security(
     context: ProjectContext,
     milestone_id: str,
+    recorder: Recorder | None = None,
 ) -> tuple[AgentResult, AgentResult]:
     """
     Run tester and security agents concurrently.
@@ -105,7 +109,7 @@ def _parallel_test_and_security(
     results: dict[str, AgentResult] = {}
 
     def run_stage(stage: str) -> tuple[str, AgentResult]:
-        return stage, _run_agent(stage, context)
+        return stage, _run_agent(stage, context, recorder)
 
     with ThreadPoolExecutor(max_workers=2) as pool:
         futures = {pool.submit(run_stage, s): s for s in ("test", "security")}
@@ -147,6 +151,7 @@ def run_pipeline(
         created_at=_now(),
     )
     sm = StateMachine(ProjectStatus.IDLE)
+    recorder = Recorder(project_id)
     gate_results: list[GateResult] = []
 
     # If not demo_mode, configure stubs to always pass
@@ -169,7 +174,7 @@ def run_pipeline(
     plan_gate_result: GateResult | None = None
 
     for plan_attempt in range(max_plan_retries + 1):
-        plan_result = _run_agent("plan", context)
+        plan_result = _run_agent("plan", context, recorder)
         plan_gate_result = evaluate_plan_gate(plan_result, context)
         logger.gate(
             project_id, "plan",
@@ -178,8 +183,10 @@ def run_pipeline(
             plan_attempt,
         )
         gate_results.append(plan_gate_result)
+        recorder.gate(plan_gate_result)
 
         if plan_gate_result.verdict == GateVerdict.PASS:
+            recorder.decisions(plan_result)
             break
         context.retries["plan"] = plan_attempt + 1
         if plan_attempt == max_plan_retries:
@@ -187,6 +194,7 @@ def run_pipeline(
             _transition(sm, context, ProjectStatus.FAILED)
             return context
         logger.retry(project_id, "plan", plan_attempt + 1, max_plan_retries)
+        recorder.retry("plan")
 
     # Architecture human approval
     arch_approved = request_approval_cli(
@@ -195,7 +203,8 @@ def run_pipeline(
         prompt_text="Approve architecture and proceed to build?",
         auto_approve=auto_approve,
     )
-    logger.human_approval(project_id, "architecture", arch_approved)
+    logger.human_approval(project_id, "architecture", arch_approved, auto=auto_approve)
+    recorder.approval(arch_approved, auto_approve)
     if not arch_approved:
         _transition(sm, context, ProjectStatus.FAILED)
         return context
@@ -224,7 +233,7 @@ def run_pipeline(
 
         # ── BUILD ──────────────────────────────────────────────────────────────
         _transition(sm, context, ProjectStatus.BUILDING)
-        _run_agent("build", context)
+        _run_agent("build", context, recorder)
         milestone.status = MilestoneStatus.TESTING
         _save_state(context)
 
@@ -246,13 +255,15 @@ def run_pipeline(
 
         # Outer loop: test might fail → debug; security might fail → fix
         while True:
-            test_result, sec_result = _parallel_test_and_security(context, milestone.id)
+            test_result, sec_result = _parallel_test_and_security(context, milestone.id, recorder)
             context.last_test_result = test_result.model_dump()
             test_gate  = evaluate_test_gate(test_result, context, milestone.id)
             sec_gate   = evaluate_security_gate(sec_result, context, milestone.id)
             logger.gate(project_id, "tests", test_gate.verdict.value, test_gate.reason, test_retry)
             logger.gate(project_id, "security", sec_gate.verdict.value, sec_gate.reason, sec_retry)
             gate_results.extend([test_gate, sec_gate])
+            recorder.gate(test_gate)
+            recorder.gate(sec_gate)
 
             # ── Test FAIL → Debug ──────────────────────────────────────────────
             if test_gate.verdict != GateVerdict.PASS:
@@ -264,8 +275,9 @@ def run_pipeline(
                 test_retry += 1
                 context.retries["test"] = test_retry
                 logger.retry(project_id, "test", test_retry, test_max)
+                recorder.retry("test")
                 _transition(sm, context, ProjectStatus.DEBUGGING)
-                _run_agent("debug", context)
+                _run_agent("debug", context, recorder)
                 # Security ran in parallel and may ALSO have blocked: fix it in
                 # the same round so no finding is silently skipped.
                 if sec_gate.verdict != GateVerdict.PASS:
@@ -277,8 +289,9 @@ def run_pipeline(
                     sec_retry += 1
                     context.retries["security"] = sec_retry
                     logger.retry(project_id, "security", sec_retry, sec_max)
+                    recorder.retry("security")
                     _transition(sm, context, ProjectStatus.SECURITY_FIX)
-                    _run_agent("fix", context)
+                    _run_agent("fix", context, recorder)
                 _transition(sm, context, ProjectStatus.TESTING)
                 continue  # rerun both in parallel
 
@@ -292,8 +305,9 @@ def run_pipeline(
                 sec_retry += 1
                 context.retries["security"] = sec_retry
                 logger.retry(project_id, "security", sec_retry, sec_max)
+                recorder.retry("security")
                 _transition(sm, context, ProjectStatus.SECURITY_FIX)
-                _run_agent("fix", context)
+                _run_agent("fix", context, recorder)
                 _transition(sm, context, ProjectStatus.TESTING)
                 continue  # rerun both
 
@@ -316,7 +330,8 @@ def run_pipeline(
         prompt_text="All gates passed. Approve release?",
         auto_approve=auto_approve,
     )
-    logger.human_approval(project_id, "release", release_approved)
+    logger.human_approval(project_id, "release", release_approved, auto=auto_approve)
+    recorder.approval(release_approved, auto_approve)
 
     if not release_approved:
         context.human_approved_release = False
@@ -326,6 +341,7 @@ def run_pipeline(
         return context
 
     context.human_approved_release = True
+    recorder.gate(evaluate_release_gate(context))
     _transition(sm, context, ProjectStatus.RELEASED)
     logger.info(project_id, "🚀 Pipeline complete — project RELEASED")
     _save_state(context)

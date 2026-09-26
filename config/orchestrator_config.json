@@ -5,7 +5,10 @@
       "comment": "PASS only when passed == total (100%)"
     },
     "security": {
-      "block_on_severities": ["critical", "high"],
+      "block_on_severities": [
+        "critical",
+        "high"
+      ],
       "comment": "BLOCKED if any critical or high finding exists"
     }
   },
@@ -16,5 +19,9 @@
     "comment": "After max retries, escalate to a human (project status FAILED)"
   },
   "state_file": "data/project_state.json",
-  "log_file": "logs/orchestrator.jsonl"
+  "log_file": "logs/orchestrator.jsonl",
+  "memory": {
+    "enabled": true,
+    "comment": "Record decisions, gate results and metrics in memory/. Can be switched off with DEVFORGE_MEMORY=off. Never stops the pipeline."
+  }
 }

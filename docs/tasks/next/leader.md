@@ -12,8 +12,8 @@ Architecture, contracts, orchestrator, tests, README, Bob evidence, status and n
 3. **Register Fati's PlanAgent** (after her update) as the `plan` stage.
 4. **Fallback flags** in `config/orchestrator_config.json` (`"agents": {"plan": "real|stub", ...}`); in `agents_base.py` load real agents in try/except and fall back to the stub.
 5. **Approval through the API:** make the approval function injectable in `run_pipeline` (with a timeout) for Ali's `POST /projects/{id}/approve`. Keep the CLI.
-6. **Log the `auto` flag** in `HUMAN_APPROVAL` events, and add structured fields (counts, verdict) to the `GATE` events, so Safa's metrics do not parse text.
-7. **Wire memory:** after the plan gate store the decisions (`memory_agent.store`); after every gate call `store_gate_result`; at the end of a run ingest the log.
+6. ~~Log the `auto` flag~~ **Done** (`HUMAN_APPROVAL` events have `auto`).
+7. ~~Wire memory~~ **Done** (`orchestrator/recorder.py`: live metrics, decisions and gate results; see `orchestrator/README.md`).
 8. **Real tests:** `tests/test_gates.py` is a placeholder; add a test for each gate and for `FAILED` after the retry limits.
 9. **Demo script:** `scripts/demo.py`, offline stub demo under 2 minutes.
 10. **Diagram** of the architecture and the state machine in `docs/`.
