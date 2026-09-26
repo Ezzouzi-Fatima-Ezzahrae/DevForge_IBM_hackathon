@@ -51,15 +51,27 @@ def _time_in_state(transitions: list[dict], *state_names: str) -> float:
     return round(total, 3)
 
 
-def ingest() -> dict:
+def ingest(project_id: str | None = None) -> dict:
     """Parse the log once, record every metric event, return the resulting
     summary for the project. Safe to call multiple times (each call appends
-    new events on top of what's already stored)."""
-    events = _load_events()
+    new events on top of what's already stored).
+
+    If *project_id* is not given, it defaults to the project_id of the last
+    event in the file (i.e. the most recent run).  Only events belonging to
+    that project_id are processed, so runs are never mixed together.
+    """
+    all_events = _load_events()
+    if not all_events:
+        return {}
+
+    if project_id is None:
+        project_id = all_events[-1]["project_id"]
+    assert isinstance(project_id, str), "project_id must be a string"
+
+    events = [e for e in all_events if e.get("project_id") == project_id]
     if not events:
         return {}
 
-    project_id = events[0]["project_id"]
     transitions = [e for e in events if e["event"] == "STATE_TRANSITION"]
 
     # --- time-based metrics --------------------------------------------------

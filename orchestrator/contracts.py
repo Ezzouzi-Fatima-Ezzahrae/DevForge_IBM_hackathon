@@ -155,6 +155,7 @@ class TestResultData(BaseModel):
     'status' mirrors the gate decision: PASS only when passed == total.
     Matches the shape documented in docs/tasks/manar.md.
     """
+    __test__ = False  # prevent pytest from collecting this as a test class
     total: int = Field(ge=0)
     passed: int = Field(ge=0)
     failed: int = Field(ge=0)
