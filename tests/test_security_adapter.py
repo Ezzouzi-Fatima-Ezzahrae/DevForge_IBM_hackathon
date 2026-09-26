@@ -29,9 +29,11 @@ def test_buggy_demo_file_is_blocked_with_a_high_finding(tmp_path):
     assert result.status == AgentStatus.FAIL
     assert result.data["verdict"] == "BLOCKED"
     assert result.data["counts"]["high"] >= 1
-    finding = result.data["findings"][0]
-    assert finding["severity"] == "high"
-    assert finding["type"] == "broken_access_control"
+    # The demo file has two planted problems (ownership bug, hard-coded secret), so look for the
+    # high finding instead of assuming it comes first.
+    high = [f for f in result.data["findings"] if f["severity"] == "high"]
+    assert high, result.data["findings"]
+    assert high[0]["type"] == "broken_access_control"
     gate = evaluate_security_gate(result, _context())
     assert gate.verdict.value == "BLOCKED"
 
