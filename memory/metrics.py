@@ -66,11 +66,21 @@ def _save_all(events: list[dict]) -> None:
 # ---------------------------------------------------------------------------
 
 
-def record_event(project_id: str, event_type: str, value: float | int) -> None:
+def record_event(
+    project_id: str,
+    event_type: str,
+    value: float | int,
+    *,
+    run_id: str | None = None,
+) -> None:
     """Append a metric event to metrics.json.
 
     *event_type* must be one of the recognised event types defined in
     :data:`memory.schemas.EVENT_TYPES`.
+
+    If *run_id* is given, the event is tagged with it.  Callers that supply
+    a *run_id* should first call :func:`run_already_ingested` to avoid
+    double-counting a log run.
 
     Raises:
         ValueError: if *event_type* is not in ``EVENT_TYPES``.
@@ -84,11 +94,24 @@ def record_event(project_id: str, event_type: str, value: float | int) -> None:
         event_type=event_type,
         value=float(value),
         timestamp=datetime.now(timezone.utc).isoformat(),
+        run_id=run_id,
     )
     with _lock:
         events = _load_all()
         events.append(event.model_dump())
         _save_all(events)
+
+
+def run_already_ingested(project_id: str, run_id: str) -> bool:
+    """Return True if any metric event for *project_id* carries *run_id*.
+
+    Used by :func:`memory.log_ingest.ingest` to make ingestion idempotent:
+    calling ingest twice on the same log run will record the metrics only once.
+    """
+    return any(
+        e.get("project_id") == project_id and e.get("run_id") == run_id
+        for e in _load_all()
+    )
 
 
 def get_summary(project_id: str) -> dict:

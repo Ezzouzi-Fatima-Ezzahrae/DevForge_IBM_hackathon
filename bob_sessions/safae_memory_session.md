@@ -100,3 +100,17 @@ File tree first, then each file in full.
 - Getting the editor's type checker to actually see `pydantic` (via `pyrightconfig.json` pointing at `.venv`) surfaces real warnings that were silently hidden before — worth doing early, not right before a demo.
 - Config-only fixes (pyrightconfig strictness, venv path) are safer follow-up prompts than asking Bob to rewrite working code — they can't introduce regressions in files that already pass their tests.
 - `get_impact_summary(project_id)` only reflects data already ingested for that exact `project_id` — always run `log_ingest.py` on the latest orchestrator run before reading the summary, otherwise it correctly reports all zeros.
+
+## Session 5: Memory contracts, idempotent ingestion, and metrics tests
+
+- **Task given to Bob:** align the Memory module with the current contracts and complete the remaining Memory/Metrics work:
+  - Replace deprecated `datetime.utcnow()` usage with timezone-aware UTC timestamps.
+  - Align `memory/schemas.py` with the contracts: `Decision.alternatives` must contain at least one item; gate names must remain exactly `plan`, `architecture`, `tests`, `security`, `release`; `retry_number` must be non-negative.
+  - Make metrics ingestion safe against counting the same run more than once.
+  - Add pytest coverage for Memory and Metrics, including the requirement that two ingests of the same run do not double-count metrics.
+
+- **Result:** Bob updated the Memory/Metrics implementation and tests. `memory/metrics.py` now supports run IDs and checks whether a run has already been ingested. `memory/log_ingest.py` derives a stable run identifier and skips duplicate ingestion. `memory/schemas.py` now enforces at least one decision alternative and a non-negative retry number. Deprecated `datetime.utcnow()` usage was removed from the Memory module.
+
+- **Tests:** added `tests/test_metrics.py` covering metrics summaries, project isolation, run-id handling, log ingestion, deterministic run IDs, and duplicate-ingestion protection. Metrics tests were separated from `tests/test_memory.py`.
+
+- **Verification:** `python tests/restore_demo_bug.py` completed successfully, followed by the full pytest suite with `-W default -v`: **66 passed, 0 warnings**. `git diff --check` also passes cleanly.
