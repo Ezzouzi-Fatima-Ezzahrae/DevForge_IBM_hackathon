@@ -373,3 +373,99 @@ def test_e2e_demo_mode():
     # Restore
     agents_base.register_agent("test",     TesterStub())
     agents_base.register_agent("security", SecurityStub())
+
+def test_debug_loop_max_3_escalates():
+    """Three failed debug rounds should end the pipeline in FAILED."""
+    from orchestrator.stubs.tester_stub import TesterStub
+    from orchestrator.stubs.security_stub import SecurityStub
+
+    class AlwaysFailTester(TesterStub):
+        def run(self, context):
+            from datetime import datetime, timezone
+            return AgentResult(
+                agent="tester_agent",
+                status=AgentStatus.FAIL,
+                summary="tests still failing",
+                data={
+                    "total": 5,
+                    "passed": 3,
+                    "failed": 2,
+                    "status": "FAIL",
+                    "failures": [{"test": "t1", "error": "e1"}],
+                },
+                duration_seconds=0.01,
+                timestamp=datetime.now(timezone.utc).isoformat(),
+            )
+
+    class AlwaysFailDebug:
+        def run(self, context):
+            from datetime import datetime, timezone
+            return AgentResult(
+                agent="debug_agent",
+                status=AgentStatus.ERROR,
+                summary="debug failed",
+                data={"status": "ERROR"},
+                duration_seconds=0.01,
+                timestamp=datetime.now(timezone.utc).isoformat(),
+            )
+
+    agents_base.register_agent("test", AlwaysFailTester())
+    agents_base.register_agent("security", SecurityStub(fail_first=False))
+    agents_base.register_agent("debug", AlwaysFailDebug())
+
+    result = run_pipeline(
+        idea="debug escalation test",
+        project_id="debug_esc_test",
+        auto_approve=True,
+        demo_mode=False,
+    )
+
+    assert result.status == ProjectStatus.FAILED
+
+def test_debug_loop_max_3_escalates():
+    """Three failed debug rounds should end the pipeline in FAILED."""
+    from orchestrator.stubs.tester_stub import TesterStub
+    from orchestrator.stubs.security_stub import SecurityStub
+
+    class AlwaysFailTester(TesterStub):
+        def run(self, context):
+            from datetime import datetime, timezone
+            return AgentResult(
+                agent="tester_agent",
+                status=AgentStatus.FAIL,
+                summary="tests still failing",
+                data={
+                    "total": 5,
+                    "passed": 3,
+                    "failed": 2,
+                    "status": "FAIL",
+                    "failures": [{"test": "t1", "error": "e1"}],
+                },
+                duration_seconds=0.01,
+                timestamp=datetime.now(timezone.utc).isoformat(),
+            )
+
+    class AlwaysFailDebug:
+        def run(self, context):
+            from datetime import datetime, timezone
+            return AgentResult(
+                agent="debug_agent",
+                status=AgentStatus.ERROR,
+                summary="debug failed",
+                data={"status": "ERROR"},
+                duration_seconds=0.01,
+                timestamp=datetime.now(timezone.utc).isoformat(),
+            )
+
+    agents_base.register_agent("test", AlwaysFailTester())
+    agents_base.register_agent("security", SecurityStub(fail_first=False))
+    agents_base.register_agent("debug", AlwaysFailDebug())
+
+    result = run_pipeline(
+        idea="debug escalation test",
+        project_id="debug_esc_test",
+        auto_approve=True,
+        demo_mode=False,
+    )
+
+    assert result.status == ProjectStatus.FAILED

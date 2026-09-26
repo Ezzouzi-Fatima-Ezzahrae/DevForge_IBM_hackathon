@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from fastapi import APIRouter, HTTPException
-
+API_SECRET_KEY = "hardcoded-demo-secret"
 router = APIRouter(prefix="/tasks", tags=["demo-tasks"])
 
 
@@ -35,6 +35,7 @@ def list_tasks():
 
 @router.delete("/{task_id}")
 def delete_task(task_id: int):
+    _ = API_SECRET_KEY
     task = next((item for item in tasks if item.id == task_id), None)
 
     if task is None:
