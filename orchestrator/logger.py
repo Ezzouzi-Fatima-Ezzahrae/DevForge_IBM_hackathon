@@ -107,13 +107,14 @@ class OrchestratorLogger:
             "msg": f"⚠ ESCALATION stage='{stage}': {reason}",
         })
 
-    def human_approval(self, project_id: str, gate: str, approved: bool) -> None:
+    def human_approval(self, project_id: str, gate: str, approved: bool, auto: bool = False) -> None:
         self._write({
             "event": "HUMAN_APPROVAL",
             "project_id": project_id,
             "gate": gate,
             "approved": approved,
-            "msg": f"Human {'approved' if approved else 'rejected'} gate='{gate}'",
+            "auto": auto,
+            "msg": f"Human {'approved' if approved else 'rejected'} gate='{gate}'" + (" (automatic)" if auto else ""),
         })
 
     def info(self, project_id: str, msg: str, **extra: Any) -> None:
