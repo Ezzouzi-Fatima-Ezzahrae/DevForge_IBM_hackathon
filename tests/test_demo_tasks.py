@@ -104,6 +104,8 @@ def test_delete_task_other_user():
 
 
 def test_unauthorized_delete_keeps_task():
+    before = [(task.id, task.title, task.owner_id) for task in tasks]
     with pytest.raises(Exception):
         delete_task(1)
-    assert any(task.id == 1 for task in tasks)
+    after = [(task.id, task.title, task.owner_id) for task in tasks]
+    assert after == before
