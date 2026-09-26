@@ -196,7 +196,7 @@ The pipeline page should poll `GET /projects/{id}/status` every 3 s. The respons
 |---|---|---|
 | `project_id` | `str` | UUID, e.g. `"proj_abc123"` |
 | `idea` | `str` | Raw idea text from the user |
-| `status` | `str` | `IDLE` \| `PLANNING` \| `BUILDING` \| `TESTING` \| `DEBUGGING` \| `SECURITY_FIX` \| `SECURED` \| `AWAITING_APPROVAL` \| `RELEASED` \| `ERROR` |
+| `status` | `str` | `IDLE` \| `PLANNING` \| `BUILDING` \| `TESTING` \| `DEBUGGING` \| `SECURITY_FIX` \| `SECURED` \| `AWAITING_APPROVAL` \| `RELEASED` \| `FAILED` \| `ERROR` |
 | `current_milestone_index` | `int` | 0-based index into `milestones` list |
 | `milestones` | `list[Milestone]` | Ordered list; empty until planning completes |
 | `retries` | `dict[str, int]` | Keys: `"plan"`, `"test"`, `"security"` |
