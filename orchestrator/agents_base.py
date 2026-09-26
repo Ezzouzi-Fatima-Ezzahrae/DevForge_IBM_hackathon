@@ -50,39 +50,69 @@ def list_stages() -> list[str]:
     return list(_registry.keys())
 
 
-def _bootstrap_stubs() -> None:
+def _real_or_stub(env_var: str, real_factory, stub_factory) -> BaseAgent:
+    """Return the real agent, or the stub when it is switched off or cannot be loaded.
+
+    Set the environment variable (for example DEVFORGE_PLAN_AGENT_MODE=stub) to force the stub.
+    A problem while importing or creating the real agent must never break the orchestrator.
     """
-    Populate the registry with stubs on first import.
-    Real agents can override entries after this runs.
-    """
-
-  
-
-    from orchestrator.stubs.plan_stub import PlanStub
-    from orchestrator.stubs.builder_stub import BuilderStub
-
-    from agents.testing_agent.agent import TestingAgent
-    from agents.debug_agent.agent import DebugAgent
-
-    from orchestrator.stubs.security_stub import SecurityStub
-    from orchestrator.stubs.fix_stub import FixStub
-
-    register_agent("plan", PlanStub())
-    register_agent("build", BuilderStub())
-    register_agent("test", TestingAgent())
-    register_agent("debug", DebugAgent())
-    # Real security agent (Haytam), with the stub as fallback if it cannot be loaded.
-    # Set DEVFORGE_SECURITY_AGENT_MODE=stub to force the stub.
     import os
-    security_agent: BaseAgent = SecurityStub()
-    if os.environ.get("DEVFORGE_SECURITY_AGENT_MODE", "real") != "stub":
-        try:
-            from orchestrator.adapters.security_adapter import SecurityAdapter
-            security_agent = SecurityAdapter()
-        except Exception:  # noqa: BLE001 - fall back to the stub
-            security_agent = SecurityStub()
-    register_agent("security", security_agent)
+
+    if os.environ.get(env_var, "real").strip().lower() == "stub":
+        return stub_factory()
+    try:
+        return real_factory()
+    except Exception:  # noqa: BLE001 - fall back to the stub
+        return stub_factory()
+
+
+def _bootstrap_agents() -> None:
+    """
+    Populate the registry: every stage gets its real agent, with the stub as fallback.
+
+    Stage            Real agent (owner)                       Switch to the stub
+    plan             agents.plan_agent.PlanAgent (Fati)       DEVFORGE_PLAN_AGENT_MODE=stub
+    test             agents.testing_agent (Manar)             DEVFORGE_TEST_AGENT_MODE=stub
+    debug            agents.debug_agent (Manar)               DEVFORGE_DEBUG_AGENT_MODE=stub
+    security         orchestrator.adapters.security_adapter   DEVFORGE_SECURITY_AGENT_MODE=stub
+    build, fix       stubs only for now
+    """
+    from orchestrator.stubs.builder_stub import BuilderStub
+    from orchestrator.stubs.debug_stub import DebugStub
+    from orchestrator.stubs.fix_stub import FixStub
+    from orchestrator.stubs.plan_stub import PlanStub
+    from orchestrator.stubs.security_stub import SecurityStub
+    from orchestrator.stubs.tester_stub import TesterStub
+
+    def real_plan():
+        from agents.plan_agent import PlanAgent
+
+        return PlanAgent()
+
+    def real_test():
+        from agents.testing_agent.agent import TestingAgent
+
+        return TestingAgent()
+
+    def real_debug():
+        from agents.debug_agent.agent import DebugAgent
+
+        return DebugAgent()
+
+    def real_security():
+        from orchestrator.adapters.security_adapter import SecurityAdapter
+
+        return SecurityAdapter()
+
+    register_agent("plan", _real_or_stub("DEVFORGE_PLAN_AGENT_MODE", real_plan, PlanStub))
+    register_agent("build", BuilderStub())
+    register_agent("test", _real_or_stub("DEVFORGE_TEST_AGENT_MODE", real_test, TesterStub))
+    register_agent("debug", _real_or_stub("DEVFORGE_DEBUG_AGENT_MODE", real_debug, DebugStub))
+    register_agent("security", _real_or_stub("DEVFORGE_SECURITY_AGENT_MODE", real_security, SecurityStub))
     register_agent("fix", FixStub())
 
 
-_bootstrap_stubs()
+# Kept for older code that imported the previous name.
+_bootstrap_stubs = _bootstrap_agents
+
+_bootstrap_agents()
