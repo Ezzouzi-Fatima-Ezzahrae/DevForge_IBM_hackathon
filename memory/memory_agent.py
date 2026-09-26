@@ -128,7 +128,7 @@ def store_gate_result(gate_result: dict) -> None:
         _save_gate_results(results)
 
 
-def query_gate_results(project_id: str, gate: str = None) -> list[dict]:
+def query_gate_results(project_id: str, gate: str | None = None) -> list[dict]:
     """Return gate results for *project_id*, optionally filtered by *gate* name."""
     results = [r for r in _load_gate_results() if r.get("project_id") == project_id]
     if gate:
