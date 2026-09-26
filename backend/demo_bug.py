@@ -42,9 +42,7 @@ def delete_task(task_id: int):
 
     current_user = get_current_user()
 
-    if task.owner_id != current_user.id:
-        raise HTTPException(status_code=403, detail="Not authorized")
-
+    # BUG: no ownership check — any user can delete any task
     del tasks[tasks.index(task)]
 
     return {"deleted": task.id, "by_user": current_user.id}
