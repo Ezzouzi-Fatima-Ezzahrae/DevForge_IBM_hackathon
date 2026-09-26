@@ -1,75 +1,116 @@
 """Debug Agent for the DevForge orchestrator."""
 
+import re
+import subprocess
+import sys
 import time
 from datetime import datetime, timezone
+from pathlib import Path
 
-from orchestrator.agents_base import BaseAgent
 from orchestrator.contracts import AgentResult, AgentStatus, ProjectContext
+import os
 
-
-OWNERSHIP_TEST = "test_delete_task_not_owner"
-OWNERSHIP_ERROR = "expected 403, got 200"
-
-
-class DebugAgent(BaseAgent):
-    """Analyse les échecs du Testing Agent et propose un correctif."""
+class DebugAgent:
+    """Identify and apply the ownership-check fix."""
 
     def run(self, context: ProjectContext) -> AgentResult:
         start = time.time()
+        if os.getenv("DEVFORGE_DEBUG_AGENT_MODE", "real") == "stub":
+            from orchestrator.stubs.debug_stub import DebugStub
+            return DebugStub().run(context)
 
-        test_result = context.last_test_result or {}
-        failures = test_result.get("data", {}).get("failures", [])
 
-        ownership_failure = any(
-            failure.get("test") == OWNERSHIP_TEST
-            and OWNERSHIP_ERROR in failure.get("error", "")
-            for failure in failures
-        )
+        project_root = Path(__file__).resolve().parents[2]
+        bug_file = project_root / "backend" / "demo_bug.py"
 
-        if ownership_failure:
+        try:
+            source = bug_file.read_text(encoding="utf-8")
+
+            # Match the planted bug by its structure, not by the exact comment text,
+            # so it works with any encoding or line ending.
+            bug_pattern = re.compile(
+                r"^(?P<indent>[ \t]*)# BUG:[^\n]*\n(?=[ \t]*del tasks\[tasks\.index\(task\)\])",
+                re.MULTILINE,
+            )
+
+            def add_ownership_check(match: "re.Match[str]") -> str:
+                indent = match.group("indent")
+                return (
+                    f"{indent}if task.owner_id != current_user.id:\n"
+                    f'{indent}    raise HTTPException(status_code=403, detail="Not authorized")\n\n'
+                )
+
+            source_fixed, replacements = bug_pattern.subn(add_ownership_check, source)
+
+            if replacements:
+                bug_file.write_text(source_fixed, encoding="utf-8")
+                fix_applied = True
+            elif "if task.owner_id != current_user.id:" in source:
+                fix_applied = False
+            else:
+                raise RuntimeError("Ownership-check bug pattern not found.")
+
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "pytest",
+                    "tests/test_demo_tasks.py",
+                    "-q",
+                ],
+                cwd=project_root,
+                capture_output=True,
+                text=True,
+            )
+
+            output = result.stdout + result.stderr
+
+            passed = self._extract_count(output, "passed")
+            failed = self._extract_count(output, "failed")
+            total = passed + failed
+
+            status = (
+                AgentStatus.PASS
+                if result.returncode == 0
+                else AgentStatus.FAIL
+            )
+
             return AgentResult(
                 agent="debug_agent",
-                status=AgentStatus.PASS,
-                summary=(
-                    "Root cause identified: missing ownership check "
-                    "on DELETE /tasks/{id}. Fix applied."
-                ),
+                status=status,
+                summary=f"Ownership fix applied. Tests: {passed}/{total} passed.",
                 data={
-                    "root_cause": (
-                        "DELETE /tasks/{id} does not verify "
-                        "task ownership."
-                    ),
-                    "fix_applied": (
-                        "Added ownership check: "
-                        "task.owner_id == current_user.id"
-                    ),
-                    "fixed_file": "backend/routers/tasks.py",
-                    "rerun_result": {
-                        "total": 20,
-                        "passed": 20,
-                        "failed": 0,
-                        "status": "PASS",
-                    },
+                    "root_cause": "Missing ownership check in DELETE /tasks/{task_id}.",
+                    "fix_applied": fix_applied,
+                    "fixed_file": "backend/demo_bug.py",
+                    "total": total,
+                    "passed": passed,
+                    "failed": failed,
+                    "pytest_returncode": result.returncode,
+                    "pytest_output": output,
                 },
                 duration_seconds=round(time.time() - start, 3),
                 timestamp=datetime.now(timezone.utc).isoformat(),
             )
 
-        return AgentResult(
-            agent="debug_agent",
-            status=AgentStatus.ERROR,
-            summary="Unrecognised failure pattern — manual investigation required.",
-            data={
-                "root_cause": "Unknown",
-                "fix_applied": "None",
-                "fixed_file": "",
-                "rerun_result": {
-                    "total": test_result.get("data", {}).get("total", 0),
-                    "passed": test_result.get("data", {}).get("passed", 0),
-                    "failed": test_result.get("data", {}).get("failed", 0),
-                    "status": "FAIL",
+        except Exception as exc:
+            return AgentResult(
+                agent="debug_agent",
+                status=AgentStatus.ERROR,
+                summary=f"Debug agent failed: {exc}",
+                data={
+                    "root_cause": "Debug agent execution error.",
+                    "fix_applied": False,
+                    "fixed_file": "",
+                    "error": str(exc),
                 },
-            },
-            duration_seconds=round(time.time() - start, 3),
-            timestamp=datetime.now(timezone.utc).isoformat(),
-        )
+                duration_seconds=round(time.time() - start, 3),
+                timestamp=datetime.now(timezone.utc).isoformat(),
+            )
+
+    @staticmethod
+    def _extract_count(output: str, word: str) -> int:
+        import re
+
+        match = re.search(rf"(\d+)\s+{word}", output)
+        return int(match.group(1)) if match else 0
