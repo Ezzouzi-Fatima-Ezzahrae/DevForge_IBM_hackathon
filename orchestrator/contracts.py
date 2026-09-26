@@ -25,6 +25,7 @@ class ProjectStatus(str, Enum):
     SECURED            = "SECURED"
     AWAITING_APPROVAL  = "AWAITING_APPROVAL"
     RELEASED           = "RELEASED"
+    FAILED             = "FAILED"   # retries exhausted or aborted; human escalation
     ERROR              = "ERROR"
 
 
