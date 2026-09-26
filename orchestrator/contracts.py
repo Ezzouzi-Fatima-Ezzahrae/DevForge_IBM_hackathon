@@ -132,6 +132,7 @@ class ProjectContext(BaseModel):
     human_approved_arch: bool = False
     human_approved_release: bool = False
     created_at: str                      # ISO 8601 UTC
+    last_test_result: Optional[dict[str, Any]] = None
 
 
 class AgentResult(BaseModel):
