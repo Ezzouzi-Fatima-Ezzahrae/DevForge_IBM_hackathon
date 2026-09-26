@@ -20,6 +20,12 @@ build/
 .vscode/
 .idea/
 
+# Generated memory data
+memory/data/*.json
+!memory/data/.gitkeep
+.DS_Store
+
+
 # Orchestrator runtime output
 logs/
 data/project_state.json
