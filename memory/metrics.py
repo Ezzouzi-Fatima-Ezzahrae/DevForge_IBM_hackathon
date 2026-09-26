@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 import threading
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 from memory.schemas import EVENT_TYPES, MetricEvent
@@ -83,7 +83,7 @@ def record_event(project_id: str, event_type: str, value: float | int) -> None:
         project_id=project_id,
         event_type=event_type,
         value=float(value),
-        timestamp=datetime.utcnow().isoformat() + "Z",
+        timestamp=datetime.now(timezone.utc).isoformat(),
     )
     with _lock:
         events = _load_all()

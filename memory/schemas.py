@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import List, Literal, Optional
 from pydantic import BaseModel, Field
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 class Decision(BaseModel):
@@ -14,7 +14,7 @@ class Decision(BaseModel):
     reason: str
     source: str
     timestamp: str = Field(
-        default_factory=lambda: datetime.utcnow().isoformat() + "Z"
+        default_factory=lambda: datetime.now(timezone.utc).isoformat()
     )
 
 
@@ -26,7 +26,7 @@ class GateResult(BaseModel):
     reason: str
     retry_number: int = 0
     timestamp: str = Field(
-        default_factory=lambda: datetime.utcnow().isoformat() + "Z"
+        default_factory=lambda: datetime.now(timezone.utc).isoformat()
     )
 
 
@@ -48,5 +48,5 @@ class MetricEvent(BaseModel):
     event_type: str = Field(..., description=f"One of: {', '.join(sorted(EVENT_TYPES))}")
     value: float
     timestamp: str = Field(
-        default_factory=lambda: datetime.utcnow().isoformat() + "Z"
+        default_factory=lambda: datetime.now(timezone.utc).isoformat()
     )

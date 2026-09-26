@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 import threading
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -64,7 +64,7 @@ def store(decision: dict) -> str:
 
         # Assign timestamp when not provided
         if not decision.get("timestamp"):
-            decision["timestamp"] = datetime.utcnow().isoformat() + "Z"
+            decision["timestamp"] = datetime.now(timezone.utc).isoformat()
 
         # Validate via Pydantic
         validated = Decision(**decision)
