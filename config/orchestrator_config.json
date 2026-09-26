@@ -11,8 +11,9 @@
   },
   "retries": {
     "test_max": 3,
-    "security_max": 3,
-    "comment": "After max retries, escalate to human (FAILED state)"
+    "plan_max": 2,
+    "security_max": 2,
+    "comment": "After max retries, escalate to a human (project status FAILED)"
   },
   "state_file": "data/project_state.json",
   "log_file": "logs/orchestrator.jsonl"
