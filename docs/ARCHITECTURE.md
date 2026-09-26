@@ -123,8 +123,10 @@ IDEA
 
 ## 4. Orchestrator State Machine
 
-The orchestrator is a single Python class (`Orchestrator`) with an explicit state enum.
-It is the **only** component that writes `project.status`.
+The orchestrator is implemented as an explicit state machine (`orchestrator/state_machine.py`) driven by a pipeline runner
+(`orchestrator/runner.py`, entry point `run_pipeline()`; `orchestrator/orchestrator.py` re-exports both).
+It is the **only** component that writes `project.status`. Retry limits and gate thresholds are read from
+`config/orchestrator_config.json`.
 
 ```
 States
@@ -133,26 +135,28 @@ IDLE → PLANNING → BUILDING → TESTING → SECURED → AWAITING_APPROVAL →
                                   ↕
                              DEBUGGING  (loop, max 3)
                                   ↕
-               BUILDING ← SECURITY_FIX  (loop, max 2)
+               TESTING ← SECURITY_FIX  (loop, max 2)
+
+Any state → FAILED when retries are exhausted or a human aborts (terminal; needs human attention)
 
 Transitions
 ───────────
 IDLE              + create(idea)                → PLANNING
 PLANNING          + plan_gate PASS              → BUILDING  (milestone 1)
 PLANNING          + plan_gate FAIL, retry < 2   → PLANNING  (re-prompt with feedback)
-PLANNING          + plan_gate FAIL, retry = 2   → HUMAN_REVIEW
+PLANNING          + plan_gate FAIL, retry = 2   → FAILED (human review)
 
 BUILDING          + build done                  → TESTING   (fan-out: tester + security)
 
 TESTING           + test_gate PASS              → check security result
 TESTING           + test_gate FAIL, retry < 3   → DEBUGGING
-TESTING           + test_gate FAIL, retry = 3   → HUMAN_REVIEW
+TESTING           + test_gate FAIL, retry = 3   → FAILED (human review)
 
 DEBUGGING         + patch applied               → TESTING   (re-run tests)
 
 check security    + sec_gate PASS               → MILESTONE_APPROVED
-check security    + sec_gate BLOCKED, retry < 2 → SECURITY_FIX
-check security    + sec_gate BLOCKED, retry = 2 → HUMAN_REVIEW
+check security    + sec_gate BLOCKED, retry < 2 → SECURITY_FIX  (tests and security run in parallel; if tests also failed, DEBUGGING runs first, then SECURITY_FIX)
+check security    + sec_gate BLOCKED, retry = 2 → FAILED (human review)
 
 SECURITY_FIX      + patch applied               → TESTING   (re-run both)
 
@@ -175,7 +179,7 @@ DEBUGGING  (Debugger Agent: root cause + patch)
 TESTING  (re-run with patched code)
   │ PASS ──────────────────────► continue
   │ FAIL, retry < 3 ───────────► DEBUGGING again
-  │ FAIL, retry = 3 ───────────► HUMAN_REVIEW (escalate with full log)
+  │ FAIL, retry = 3 ───────────► FAILED (escalate to a human with full log)
 ```
 
 ### Security-fix loop
@@ -184,13 +188,13 @@ TESTING  (re-run with patched code)
 SECURITY
   │ CRITICAL or HIGH findings
   ▼
-SECURITY_FIX  (Builder patches specific file + line)
+SECURITY_FIX  (Fix agent patches specific file + line)
   │
   ▼
 TESTING + SECURITY  (re-run both — patch can introduce regressions)
   │ PASS ──────────────────────► MILESTONE_APPROVED
   │ FAIL, retry < 2 ───────────► SECURITY_FIX again
-  │ FAIL, retry = 2 ───────────► HUMAN_REVIEW
+  │ FAIL, retry = 2 ───────────► FAILED (escalate to a human)
 ```
 
 ---
@@ -397,7 +401,9 @@ devforge/
 │   └── db.py
 │
 ├── orchestrator/                    # (Leader)
-│   ├── orchestrator.py              # FSM: states, transitions, gate evaluation
+│   ├── orchestrator.py              # public entry point (re-exports run_pipeline and the state machine)
+│   ├── state_machine.py             # states and allowed transitions
+│   ├── runner.py                    # pipeline loop, retries, parallel test + security
 │   ├── gates.py                     # Pass/fail logic for each gate
 │   └── runner.py                    # Parallel dispatch + result merge
 │
@@ -527,7 +533,7 @@ time elapsed, tests run/passed, bugs fixed, vulnerabilities found/fixed, retries
 | Hours | Task | Output |
 |---|---|---|
 | H 0–2 | Set up repo, branches, Docker, Bob account. Share architecture doc with team. | Repo cloned by all, `docker-compose up`, `ARCHITECTURE.md` pushed |
-| H 2–6 | Finalise `docs/ARCHITECTURE.md`. Scaffold `orchestrator/orchestrator.py`: state enum, transition table, gate stubs (all return PASS). Write `orchestrator/gates.py` with hardcoded pass criteria. | Orchestrator transitions through all states when agents are mocked |
+| H 2–6 | Finalise `docs/ARCHITECTURE.md`. Scaffold the orchestrator: `orchestrator/state_machine.py` (state enum, transition table), `orchestrator/runner.py` (pipeline loop) and `orchestrator/gates.py` (pass criteria from `config/orchestrator_config.json`). | Orchestrator transitions through all states when agents are mocked |
 | H 6–10 | Implement `orchestrator/runner.py`: parallel dispatch (call Tester + Security concurrently via asyncio), collect results, call `merge()`. | `runner.py` calls two stub agents in parallel and merges their `AgentResult` |
 | H 10–14 | Wire orchestrator to Ali's API: replace in-memory state with HTTP calls to `/projects/{id}/start`, `/projects/{id}/status`, `/agents/results`. Write `tests/test_orchestrator.py`. | Orchestrator drives pipeline via backend API. Integration test green. |
 | H 14–18 | Swap mock agent calls for real agent calls (Fati's plan_agent, Ali's builder, Manar's tester, Haytam's security). Run one full pipeline with stub data. | Pipeline completes PLAN → RELEASED with stub agents. Dashboard shows real state changes. |
@@ -605,7 +611,7 @@ time elapsed, tests run/passed, bugs fixed, vulnerabilities found/fixed, retries
 
 | Hours | Task | Output |
 |---|---|---|
-| H 24–28 | Fix top bugs from H24 sync. Run pipeline 3× with real agents. Confirm retry counters increment correctly. Confirm both HUMAN_REVIEW escalations (test retry=3, security retry=2) work. | Pipeline runs 3× without crashing. Escalation paths tested. |
+| H 24–28 | Fix top bugs from H24 sync. Run pipeline 3× with real agents. Confirm retry counters increment correctly. Confirm both FAILED (human review) escalations (test retry=3, security retry=2) work. | Pipeline runs 3× without crashing. Escalation paths tested. |
 | H 28–32 | Create all demo fixture files. Run pipeline once in "demo mode" (reads fixtures instead of calling agents live). Confirm full pipeline completes in under 60 seconds. | Demo mode pipeline completes <60 s. All fixtures committed. |
 | H 32–36 | Final code review using Bob Agent mode: review `orchestrator/`, `agents/`, `security/`, `memory/` for bugs, hardcoded values, missing error handling. Save to `bob_sessions/leader_orchestrator_session.md`. | Code review session saved. Critical findings fixed. |
 | H 36–40 | Write `README.md`. Draw architecture diagram (pipeline + state machine), add to `docs/`. Verify all `bob_sessions/` files are non-empty. **Feature freeze.** | README done. Diagram in docs/. All bob_sessions populated. Freeze confirmed. |
@@ -656,7 +662,7 @@ time elapsed, tests run/passed, bugs fixed, vulnerabilities found/fixed, retries
 | H 24–28 | Replace Security Agent stub with real Bob Agent mode + Bandit pipeline. Run against demo code with planted vulnerability. Confirm SecurityFinding severity=HIGH, cwe=CWE-639, file=tasks.py:54. Gate evaluates to BLOCKED. | Real Security Agent returns the planted HIGH finding. Gate BLOCKED confirmed. |
 | H 28–32 | Test the full security fix loop: BLOCKED → Builder patches `tasks.py:54` → Security reruns → PASS. Confirm finding status = FIXED in DB. Dashboard Security stage shows ✅. | Security fix loop runs end-to-end. Finding = FIXED. Dashboard updated. |
 | H 32–36 | Prepare the demo vulnerability narrative: one-paragraph explanation of CWE-639, why it is dangerous, how DevForge caught it automatically. Practice in under 20 seconds. Coordinate with Manar: same file, same line, different tool. | Vulnerability narrative scripted. Coordination with Manar confirmed. |
-| H 36–40 | Complete Bob session evidence: `bob_sessions/haytam_security_session.md`. Test max-retry escalation path (force 2 failed fix attempts → HUMAN_REVIEW fires). | Bob session saved. Escalation path tested. |
+| H 36–40 | Complete Bob session evidence: `bob_sessions/haytam_security_session.md`. Test max-retry escalation path (force 2 failed fix attempts → FAILED (human review) fires). | Bob session saved. Escalation path tested. |
 | H 40–48 | Demo rehearsal. Speak during "security finds vulnerability / fix" steps. Explain CWE-639, the automated fix, why the gate blocked release. | Confident, concise explanation of the security phase. |
 
 ---
