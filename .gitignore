@@ -22,3 +22,4 @@ build/
 # Generated memory data
 memory/data/*.json
 !memory/data/.gitkeep
+.DS_Store
