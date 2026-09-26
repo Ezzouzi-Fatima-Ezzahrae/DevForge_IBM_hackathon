@@ -1,1 +1,28 @@
-﻿{}
+{
+  "agent": "testing_agent",
+  "status": "FAIL",
+  "summary": "17 of 20 tests passed. 3 failures on ownership check for DELETE /tasks/{id}.",
+  "data": {
+    "total": 20,
+    "passed": 17,
+    "failed": 3,
+    "status": "FAIL",
+    "failures": [
+      {
+        "test": "test_delete_task_not_owner",
+        "error": "AssertionError: expected 403, got 200"
+      },
+      {
+        "test": "test_delete_task_not_owner",
+        "error": "AssertionError: expected 403, got 200"
+      },
+      {
+        "test": "test_delete_task_not_owner",
+        "error": "AssertionError: expected 403, got 200"
+      }
+    ],
+    "coverage_percent": 72.0
+  },
+  "duration_seconds": 4.31,
+  "timestamp": "2025-01-15T10:00:00.000000Z"
+}
