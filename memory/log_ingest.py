@@ -13,6 +13,7 @@ Run once after each pipeline execution:
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from datetime import datetime
@@ -51,10 +52,31 @@ def _time_in_state(transitions: list[dict], *state_names: str) -> float:
     return round(total, 3)
 
 
+def _run_id_for(events: list[dict]) -> str:
+    """Derive a stable fingerprint for a set of log events.
+
+    Built from the sorted JSON of every event's (ts, event, project_id) triple
+    so that the same logical run always produces the same run_id regardless of
+    file position or wall-clock time.
+    """
+    fingerprint = json.dumps(
+        sorted(
+            (e.get("ts", ""), e.get("event", ""), e.get("project_id", ""))
+            for e in events
+        ),
+        sort_keys=True,
+    )
+    return hashlib.sha1(fingerprint.encode()).hexdigest()
+
+
 def ingest(project_id: str | None = None) -> dict:
     """Parse the log once, record every metric event, return the resulting
-    summary for the project. Safe to call multiple times (each call appends
-    new events on top of what's already stored).
+    summary for the project.
+
+    This function is **idempotent**: calling it a second time with the same
+    log file and project_id returns the already-stored summary without
+    appending duplicate metric events.  Idempotency is guaranteed via a
+    content-based ``run_id`` fingerprint stored on every metric event.
 
     If *project_id* is not given, it defaults to the project_id of the last
     event in the file (i.e. the most recent run).  Only events belonging to
@@ -72,18 +94,23 @@ def ingest(project_id: str | None = None) -> dict:
     if not events:
         return {}
 
+    # --- idempotency guard -----------------------------------------------------
+    run_id = _run_id_for(events)
+    if metrics.run_already_ingested(project_id, run_id):
+        return metrics.get_summary(project_id)
+
     transitions = [e for e in events if e["event"] == "STATE_TRANSITION"]
 
     # --- time-based metrics --------------------------------------------------
-    metrics.record_event(project_id, "planning_time", _time_in_state(transitions, "PLANNING"))
-    metrics.record_event(project_id, "implementation_time", _time_in_state(transitions, "BUILDING"))
-    metrics.record_event(project_id, "testing_time", _time_in_state(transitions, "TESTING"))
-    metrics.record_event(project_id, "debugging_time", _time_in_state(transitions, "DEBUGGING", "SECURITY_FIX"))
+    metrics.record_event(project_id, "planning_time", _time_in_state(transitions, "PLANNING"), run_id=run_id)
+    metrics.record_event(project_id, "implementation_time", _time_in_state(transitions, "BUILDING"), run_id=run_id)
+    metrics.record_event(project_id, "testing_time", _time_in_state(transitions, "TESTING"), run_id=run_id)
+    metrics.record_event(project_id, "debugging_time", _time_in_state(transitions, "DEBUGGING", "SECURITY_FIX"), run_id=run_id)
 
     # --- retries ---------------------------------------------------------------
     for e in events:
         if e["event"] == "RETRY":
-            metrics.record_event(project_id, "retry", 1)
+            metrics.record_event(project_id, "retry", 1, run_id=run_id)
 
     # --- human approvals ---------------------------------------------------------
     # NOTE: the log does not currently distinguish an auto-approve from a real
@@ -92,7 +119,7 @@ def ingest(project_id: str | None = None) -> dict:
     # reliable when --auto-approve is used.
     for e in events:
         if e["event"] == "HUMAN_APPROVAL" and e.get("approved"):
-            metrics.record_event(project_id, "human_intervention", 1)
+            metrics.record_event(project_id, "human_intervention", 1, run_id=run_id)
 
     # --- test pass/fail counts (parsed from the 'tests' GATE reason) -----------
     for e in events:
@@ -100,15 +127,15 @@ def ingest(project_id: str | None = None) -> dict:
             m = re.search(r"(\d+)/(\d+)", e.get("reason", ""))
             if m:
                 passed, total = int(m.group(1)), int(m.group(2))
-                metrics.record_event(project_id, "test_passed", passed)
-                metrics.record_event(project_id, "test_failed", total - passed)
+                metrics.record_event(project_id, "test_passed", passed, run_id=run_id)
+                metrics.record_event(project_id, "test_failed", total - passed, run_id=run_id)
 
     # --- security findings (parsed from the security_agent AGENT_DONE summary) -
     for e in events:
         if e["event"] == "AGENT_DONE" and e.get("agent") == "security_agent":
             m = re.search(r"(\d+)\s+(CRITICAL|HIGH|MEDIUM|LOW)", e.get("summary", ""), re.I)
             if m:
-                metrics.record_event(project_id, "security_finding", int(m.group(1)))
+                metrics.record_event(project_id, "security_finding", int(m.group(1)), run_id=run_id)
 
     # --- plan-stage decisions ----------------------------------------------------
     # Not stored here: per docs/agent_contracts.md, Decisions are produced by

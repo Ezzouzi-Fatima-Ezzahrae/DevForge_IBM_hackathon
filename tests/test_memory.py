@@ -1,8 +1,10 @@
 """
 tests/test_memory.py
 
-Basic pytest coverage for memory/memory_agent.py and memory/metrics.py.
-Each test uses a unique project_id so tests don't interfere with each
+Pytest coverage for memory/memory_agent.py.
+Metrics-specific tests live in tests/test_metrics.py.
+
+Each test uses a unique project_id so tests never interfere with each
 other or with real demo data on disk.
 """
 
@@ -12,7 +14,7 @@ import uuid
 
 import pytest
 
-from memory import memory_agent, metrics
+from memory import memory_agent
 
 
 @pytest.fixture
@@ -93,54 +95,77 @@ def test_get_context_empty_project() -> None:
 
 
 # --------------------------------------------------------------------------
-# metrics.py
+# Task 8: get_context — top-5 cap and cross-project isolation
 # --------------------------------------------------------------------------
 
-
-def test_record_event_and_get_summary(project_id: str) -> None:
-    metrics.record_event(project_id, "planning_time", 12.5)
-    metrics.record_event(project_id, "test_passed", 20)
-    metrics.record_event(project_id, "test_failed", 3)
-    metrics.record_event(project_id, "retry", 1)
-    metrics.record_event(project_id, "retry", 1)
-    metrics.record_event(project_id, "human_intervention", 1)
-
-    summary = metrics.get_summary(project_id)
-
-    assert summary["planning_time_seconds"] == 12.5
-    assert summary["tests_passed"] == 20
-    assert summary["tests_failed"] == 3
-    assert summary["retry_count"] == 2
-    assert summary["human_interventions"] == 1
+def _make_decision(project_id: str, n: int) -> dict:
+    """Helper: build a minimal valid decision dict for project_id."""
+    return {
+        "project_id": project_id,
+        "question": f"Question {n}",
+        "alternatives": [f"Option {n}A", f"Option {n}B"],
+        "decision": f"Decision {n}",
+        "reason": f"Reason {n}",
+        "source": "plan_agent",
+    }
 
 
-def test_get_summary_only_counts_matching_project(project_id: str) -> None:
+def test_get_context_contains_expected_fields(project_id: str) -> None:
+    """get_context must include id, question, decision, and reason for each entry."""
+    memory_agent.store(_make_decision(project_id, 1))
+
+    context = memory_agent.get_context(project_id)
+
+    assert "DEC-" in context          # id
+    assert "Question 1" in context    # question
+    assert "Decision 1" in context    # decision
+    assert "Reason 1" in context      # reason
+
+
+def test_get_context_excludes_other_project(project_id: str) -> None:
+    """Decisions from another project must never appear in get_context output."""
     other_id = f"other_{uuid.uuid4().hex[:8]}"
 
-    metrics.record_event(project_id, "test_passed", 5)
-    metrics.record_event(other_id, "test_passed", 999)
+    memory_agent.store(_make_decision(project_id, 1))
+    memory_agent.store(_make_decision(other_id, 99))
 
-    summary = metrics.get_summary(project_id)
-    assert summary["tests_passed"] == 5  # not polluted by other_id's events
+    context = memory_agent.get_context(project_id)
 
-
-def test_get_impact_summary_matches_get_summary(project_id: str) -> None:
-    metrics.record_event(project_id, "test_passed", 10)
-    metrics.record_event(project_id, "test_failed", 2)
-    metrics.record_event(project_id, "security_finding", 1)
-
-    summary = metrics.get_summary(project_id)
-    impact_text = metrics.get_impact_summary(project_id)
-
-    assert str(summary["tests_passed"]) in impact_text
-    assert str(summary["tests_failed"]) in impact_text
-    assert str(summary["security_findings_count"]) in impact_text
+    assert "Question 1" in context
+    assert "Question 99" not in context
+    assert "Decision 99" not in context
 
 
-def test_get_summary_empty_project_returns_zeros() -> None:
-    empty_id = f"empty_{uuid.uuid4().hex[:8]}"
-    summary = metrics.get_summary(empty_id)
+def test_get_context_returns_at_most_5_decisions(project_id: str) -> None:
+    """get_context must return no more than 5 decisions even when more are stored."""
+    for i in range(1, 9):   # store 8 decisions
+        memory_agent.store(_make_decision(project_id, i))
 
-    assert summary["planning_time_seconds"] == 0
-    assert summary["tests_passed"] == 0
-    assert summary["retry_count"] == 0
+    context = memory_agent.get_context(project_id)
+    lines = [l for l in context.splitlines() if l.strip()]
+
+    assert len(lines) <= 5
+
+
+def test_get_context_returns_most_recent_when_capped(project_id: str) -> None:
+    """When more than 5 decisions exist, the last-stored ones must appear."""
+    for i in range(1, 9):   # store 8 decisions; last stored are 4..8
+        memory_agent.store(_make_decision(project_id, i))
+
+    context = memory_agent.get_context(project_id)
+
+    # Decisions 4-8 (the last 5 stored) must be present
+    for i in range(4, 9):
+        assert f"Question {i}" in context
+
+    # Decisions 1-3 (the first 3 stored, outside the cap) must NOT appear
+    for i in range(1, 4):
+        assert f"Question {i}" not in context
+
+
+def test_get_context_empty_returns_no_decisions_message(project_id: str) -> None:
+    """An empty project must return the expected no-decisions message."""
+    context = memory_agent.get_context(project_id)
+
+    assert "No decisions recorded" in context
+    assert project_id in context

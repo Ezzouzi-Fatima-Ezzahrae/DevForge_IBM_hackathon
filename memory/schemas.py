@@ -9,7 +9,7 @@ class Decision(BaseModel):
     id: str = Field(..., description="Decision identifier, e.g. DEC-0001")
     project_id: str
     question: str
-    alternatives: List[str] = Field(default_factory=list)
+    alternatives: List[str] = Field(min_length=1)
     decision: str
     reason: str
     source: str
@@ -24,7 +24,7 @@ class GateResult(BaseModel):
     milestone_id: Optional[str] = None
     verdict: Literal["PASS", "FAIL", "BLOCKED"]
     reason: str
-    retry_number: int = 0
+    retry_number: int = Field(default=0, ge=0)
     timestamp: str = Field(
         default_factory=lambda: datetime.now(timezone.utc).isoformat()
     )
@@ -50,3 +50,4 @@ class MetricEvent(BaseModel):
     timestamp: str = Field(
         default_factory=lambda: datetime.now(timezone.utc).isoformat()
     )
+    run_id: Optional[str] = None  # set by log_ingest to prevent double-counting
