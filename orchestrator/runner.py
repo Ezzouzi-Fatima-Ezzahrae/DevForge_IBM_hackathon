@@ -165,7 +165,7 @@ def run_pipeline(
 
     # ── PLANNING ───────────────────────────────────────────────────────────────
     _transition(sm, context, ProjectStatus.PLANNING)
-    max_plan_retries: int = 2
+    max_plan_retries: int = cfg["retries"].get("plan_max", 2)
     plan_gate_result: GateResult | None = None
 
     for plan_attempt in range(max_plan_retries + 1):

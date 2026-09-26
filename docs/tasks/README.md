@@ -12,7 +12,7 @@ Demo app: a simple task-management SaaS. Stack: Next.js + TypeScript + Tailwind,
 
 | Member | Branch | Folder(s) they own | First task (one line) | Deliverable at first sync (~hour 4) |
 |---|---|---|---|---|
-| **Leader** | `leader/orchestrator` | `orchestrator/` | Finalise `docs/ARCHITECTURE.md` and scaffold the orchestrator state machine | `orchestrator/orchestrator.py` with state enum and all transitions stubbed |
+| **Leader** | `leader/orchestrator` | `orchestrator/` | Finalise `docs/ARCHITECTURE.md` and scaffold the orchestrator state machine | `orchestrator/state_machine.py` + `runner.py` with all transitions, stub agents and gates (done, see `orchestrator/README.md`) |
 | **Ali** | `ali/platform` | `frontend/`, `backend/` | Scaffold Next.js dashboard + FastAPI backend with Docker Compose | App runs locally; pipeline page returns data from `GET /projects/{id}/status` |
 | **Haytam** | `haytam/security` | `security/` | Stub the Security Agent and define the FindingResult JSON contract | `security/security_agent.py` stub + `tests/fixtures/security_finding_HIGH.json` |
 | **Fati** | `fati/agents` | `agents/research_agent`, `agents/requirements_agent`, `agents/architecture_agent` | Write `docs/agent_contracts.md` and stub all three agents | All three agents return a valid `AgentResult` JSON when called |

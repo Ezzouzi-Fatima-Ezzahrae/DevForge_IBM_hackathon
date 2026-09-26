@@ -31,7 +31,7 @@ TESTING: tests and security run in parallel
   tests FAIL         -> DEBUGGING -> (if security also blocked: SECURITY_FIX) -> TESTING
   tests PASS, security BLOCKED -> SECURITY_FIX -> TESTING
   both PASS          -> SECURED -> AWAITING_APPROVAL -> RELEASED
-Retries: max 3 per stage (see config). After that: FAILED (escalate to a human).
+Retries (config/orchestrator_config.json): plan 2, test/debug 3, security fix 2. After that: FAILED (escalate to a human).
 ```
 
 ## Replace a stub with a real agent
