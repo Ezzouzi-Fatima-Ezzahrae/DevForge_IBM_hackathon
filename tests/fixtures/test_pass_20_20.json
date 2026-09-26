@@ -1,1 +1,15 @@
-﻿{}
+{
+  "agent": "testing_agent",
+  "status": "PASS",
+  "summary": "All 20 tests passed.",
+  "data": {
+    "total": 20,
+    "passed": 20,
+    "failed": 0,
+    "status": "PASS",
+    "failures": [],
+    "coverage_percent": 85.0
+  },
+  "duration_seconds": 3.97,
+  "timestamp": "2025-01-15T10:05:00.000000Z"
+}
