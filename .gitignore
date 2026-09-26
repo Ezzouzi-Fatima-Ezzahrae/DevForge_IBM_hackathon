@@ -19,3 +19,6 @@ build/
 # IDE files
 .vscode/
 .idea/
+# Generated memory data
+memory/data/*.json
+!memory/data/.gitkeep
