@@ -9,7 +9,7 @@ Real testing agent (17/20), real debug agent (patch and rerun, 20/20), restore s
 
 1. **Insights endpoints, only if Safa has not pushed them** (ask her first): `GET /projects/{id}/decisions|gates|metrics|tests|security` in a router included from `backend/main.py`. Shapes are in `docs/API.md`.
 2. **Tests:** one more `TestClient` test for `/reset` and one for a second `POST /start` on a running project.
-3. **Clean-up:** remove or use the old placeholders that are still in the repo (`backend/db.py`, `backend/routers/agents.py`, `decisions.py`, `milestones.py`, `docker-compose.yml`).
+3. **Clean-up:** done by the Leader (unused placeholders removed).
 4. **Regression after the security fix:** when Haytam's fix agent lands, the tests must still be 20/20 (`tests/test_regression.py`).
 5. **Demo:** explain the 17/20, root cause, patch and 20/20 in 30 seconds.
 
