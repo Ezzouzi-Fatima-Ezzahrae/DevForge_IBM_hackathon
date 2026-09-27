@@ -1,6 +1,13 @@
 <div align="center">
 
-# DevForge
+```
+██████╗ ███████╗██╗   ██╗███████╗ ██████╗ ██████╗  ██████╗ ███████╗
+██╔══██╗██╔════╝██║   ██║██╔════╝██╔═══██╗██╔══██╗██╔════╝ ██╔════╝
+██║  ██║█████╗  ██║   ██║█████╗  ██║   ██║██████╔╝██║  ███╗█████╗
+██║  ██║██╔══╝  ╚██╗ ██╔╝██╔══╝  ██║   ██║██╔══██╗██║   ██║██╔══╝
+██████╔╝███████╗ ╚████╔╝ ██║     ╚██████╔╝██║  ██║╚██████╔╝███████╗
+╚═════╝ ╚══════╝  ╚═══╝  ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝
+```
 
 **AI that doesn't just build software. It proves it's ready to ship.**
 
@@ -11,7 +18,7 @@ An AI Software Development Lifecycle Orchestrator, built for the IBM Bob 2.0 Hac
 [![FastAPI](https://img.shields.io/badge/API-FastAPI-009688)](https://fastapi.tiangolo.com/)
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](tests/)
 
-<img src="docs/dashboard-hero.png" alt="DevForge dashboard: pipeline stages for Plan, Build, Test, Debug, Security, Fix, Release" width="640"/>
+<img src="docs/dashboard-hero.png" alt="DevForge dashboard: pipeline stages for Plan, Build, Test, Debug, Security, Fix, Release" width="800"/>
 
 </div>
 
