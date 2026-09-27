@@ -1,64 +1,50 @@
-# Next tasks (round 2)
+# Next tasks (round 3, final)
 
-Each person has a file here with what to do next. Read `docs/STATUS.md` first.
+Updated 27 Sep 2026. Read `docs/STATUS.md` first: it says what is done and verified. Each person has a file here with what is left.
 
 | Person | File | Main goal |
 |---|---|---|
-| Ali | `ali.md` | Backend API that runs the orchestrator, then the dashboard |
-| Fati | `fati.md` | Open your Pull Request, plug the real plan agent in, decisions and sources |
-| Haytam | `haytam.md` | Security agent and fix agent that work on `backend/demo_bug.py` |
-| Manar | `manar.md` | Make the testing and debug agents real, restore script, regression |
-| Safa | `safa.md` | Tests, contract alignment, live metrics, the Impact numbers |
-| Leader | `leader.md` | Integration, approval through the API, fallbacks, demo mode |
+| Fati | `fati.md` | The dashboard page in `frontend/static/` |
+| Haytam | `haytam.md` | Real fix agent and the hard-coded-secret rule, in one PR |
+| Manar | `manar.md` | Insights endpoints if needed, test clean-up, demo speech |
+| Safa | `safa.md` | Insights endpoints and screen, honest Impact numbers |
+| Leader | `leader.md` | Review and merge, final checks, video, slides, submission |
 
 ## Rules for everyone
 
-1. Open a Pull Request as soon as one piece works, even a partial one. Do not wait until everything is finished.
-2. Work only in your own folder. If you need a change elsewhere, ask the Leader.
-3. Your agent's output must follow `docs/agent_contracts.md`. Do not change the contracts yourself.
-4. Every real agent needs a `real` or `stub` fallback and at least one pytest test.
-5. Fill your `bob_sessions/*.md` file: the task you gave Bob, what it produced, the Bob features used, and your screenshots.
-6. Run `git pull origin main` before you start and before you open a PR.
-7. Message the Leader when you are blocked. Do not wait.
+1. Branch from the latest `main` (`git fetch origin && git checkout -b <new-branch> origin/main`). Open a Pull Request as soon as one piece works, even a partial one.
+2. Work only in your own files. If you need a change elsewhere, ask the Leader.
+3. Follow `docs/agent_contracts.md` and `docs/API.md`. Do not change them yourself.
+4. Every real agent needs a stub fallback and at least one pytest test. Run `python -m pytest -q` before you open a PR.
+5. Never commit the fixed version of `backend/demo_bug.py`. `python tests/restore_demo_bug.py` puts the bug back.
+6. Message the Leader when you are blocked. Do not wait.
 
-## Decisions for the demo (read this)
+## Done so far (verified on a fresh clone of `main`)
 
-1. **Two planted bugs in `backend/demo_bug.py`:** bug 1 = missing ownership check on DELETE (found by the tests, fixed by the debug agent); bug 2 = a hard-coded secret (found and fixed by the security agent). This keeps both stories separate. Manar adds bug 2 to the file (without changing the 20 tests); Haytam's agent finds and fixes it.
-2. **Restore before every run:** `python tests/restore_demo_bug.py` puts the file back in its buggy state. Never commit the fixed version of `demo_bug.py`.
-3. **Plan output:** one fixture only, `fixtures/plan_output.json`.
+Orchestrator, gates, retries, parallel checks, approval broker, real testing / debug / security agents, plan agent (replays a saved Bob plan), memory and metrics wiring, backend API (create, start, status, approve, reset), offline terminal demo (`scripts/demo.py`), README with diagram, slides, 128 tests.
+
+## Still open
+
+1. Dashboard page (Fati).
+2. Real fix agent and secret rule (Haytam).
+3. Insights endpoints and screen, Impact numbers (Safa; Manar takes the endpoints if she cannot).
+4. Backup video, rehearsals, final checks and submission (Leader and everyone).
 
 ## Shared facts
 
-- Stage names in the orchestrator: `plan`, `build`, `test`, `debug`, `security`, `fix`. Register an agent with `orchestrator.agents_base.register_agent("<stage>", YourAgent())`.
-- Every agent returns an `AgentResult` (`orchestrator/contracts.py`).
-- Plan result keys the gate reads: `data["requirements"]` (at least 5) and `data["architecture"]["adr"]` (at least 1).
-- Test result keys: `total`, `passed`, `failed`, `failures`, `coverage_percent`. The gate passes only if `passed == total`.
-- Security result keys: `verdict` (`PASS` or `BLOCKED`), `counts`, `findings` (each finding follows `SecurityFinding`). The gate blocks on `critical` or `high`.
-- The demo bug: `backend/demo_bug.py`, function `delete_task` (no ownership check, CWE-639).
-- Run the orchestrator: `python -m orchestrator.run --idea "task management SaaS" --auto-approve`.
+- Stage names: `plan`, `build`, `test`, `debug`, `security`, `fix`. Register with `orchestrator.agents_base.register_agent("<stage>", YourAgent())`.
+- Every agent returns an `AgentResult` (`orchestrator/contracts.py`). Plan result keys: `data["requirements"]` (at least 5) and `data["architecture"]["adr"]` (at least 1). Test keys: `total`, `passed`, `failed`, `failures`, `coverage_percent` (passes only if `passed == total` and total is above 0). Security keys: `verdict`, `counts`, `findings` (blocks on `critical` or `high`).
+- The demo app is `backend/demo_bug.py`: bug 1 = missing ownership check in `delete_task` (CWE-639, found by the tests and the scanner, fixed by the Debugger); bug 2 = hard-coded secret `API_SECRET_KEY` (currently rated LOW by the scanner, so it does not block).
+- Run everything: `python scripts/demo.py` (terminal) or `uvicorn backend.main:app` (API, page at `/`).
 
-## Schedule for the rest of the project
+## Timeline
 
 | When | Everyone | Leader |
 |---|---|---|
-| Now to the hour-24 sync | Push and open PRs for what works. Register your agent with a stub fallback. Fill your Bob summary. | Merge PRs, connect agents, fallback flags, approval through the API, memory wiring |
-| Hour-24 sync (30 min, mandatory) | Demo your part alone; note the top 3 bugs | Run the full pipeline live; assign the fixes |
-| Hours 24 to 40 | Fix bugs, polish, tests, Bob evidence; prepare your 30-second demo speech | Stability (5 full runs), demo script, slides, diagram, README, submission checklist |
-| Hour 40 | **Feature freeze**: only fixes for rehearsal-breaking bugs | Announce the freeze; final `main` check on a fresh clone |
-| Hours 40 to 48 | Four timed rehearsals (`docs/DEMO_PLAN.md`) | Record the backup video; submit |
-
-## Pieces that nobody owned before (now assigned)
-
-| Piece | Owner |
-|---|---|
-| Root `requirements.txt` and one-page run instructions | Leader |
-| Slides and the 4-minute script (`docs/DEMO_PLAN.md`) | Leader, with every speaker's part |
-| Backup video of a successful run | Leader |
-| Fresh-clone test and submission (`docs/SUBMISSION_CHECKLIST.md`) | Leader |
-| Dashboard `package.json` and start instructions | Ali |
-| Real numbers for the Impact slide | Safa |
-| Bob evidence check for the whole team | Leader (check), each member (write) |
+| Now | Push what works and open PRs | Review and merge each PR, rerun the fresh-clone test |
+| Cut-off (set by the Leader) | Last merge. If the page is not merged, we demo the terminal version | Announce the freeze |
+| After the freeze | Only fixes that break a rehearsal. Two timed rehearsals (`docs/DEMO_PLAN.md`) | Final fresh-clone test, backup video, submit |
 
 ## Demo roles
 
-Leader: introduction, approval, closing. Ali: drives the dashboard. Fati: planning step. Manar: tests and debug. Haytam: security. Safa: memory and impact. Details and timing: `docs/DEMO_PLAN.md`.
+Leader: introduction, approval clicks, closing, and drives the screen. Fati: planning step. Manar: tests and debug. Haytam: security. Safa: memory and impact. Details and timing: `docs/DEMO_PLAN.md`.

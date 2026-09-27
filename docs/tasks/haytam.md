@@ -65,7 +65,7 @@ The `data` field of `AgentResult` must contain `{ "findings": [...], "verdict": 
 |---|---|
 | **Manar** | Agree on the shared `PASS/FAIL/FINDING/SEVERITY/FIX/RETEST` format before hour 4. Security runs _after_ tests pass. |
 | **Leader** | Gate rules: BLOCKED threshold, retry limit (max 2 fix attempts before human escalation) |
-| **Ali** | `GET /security` endpoint must match your FindingResult shape exactly |
+| **Manar and Fati** | `GET /projects/{id}/security` (from the log) and the dashboard must match your FindingResult shape |
 
 ---
 

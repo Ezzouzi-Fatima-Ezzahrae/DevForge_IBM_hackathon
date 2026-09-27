@@ -2,7 +2,7 @@
 memory/metrics.py
 =================
 
-Public API (for Ali and other agents)
+Public API (for the backend API and other agents)
 --------------------------------------
 
 record_event(project_id, event_type, value, *, run_id=None) -> None

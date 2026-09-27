@@ -1,16 +1,23 @@
 # Fati: next tasks
 
-**Branch:** `fati/agents`. **Folders:** `agents/plan_agent.py`, `agents/prompts/`, `fixtures/`, `DATA_SOURCES.md`.
+**Branch:** create `fati/dashboard` from the latest `main`. **Files:** `frontend/static/` only (plus `DATA_SOURCES.md`, `fixtures/` if you touch them).
 
-## Status (reviewed)
-Done and connected: `PlanAgent` extends `BaseAgent`, takes `project_id` and `idea` from the context, returns an ERROR when the fixture is missing or invalid, has gate tests (fewer than 5 stories, no ADR, project id), and `DATA_SOURCES.md` has 3 sources. The Leader registered it as the `plan` stage (with a fallback to the stub), and the full pipeline runs with it. Two small edits were made to your file: it now reports the real duration and the current time (the fixture said 4.21 seconds, which would have polluted the impact numbers), and it marks its output as a replay of the saved Bob session.
+## Done (merged)
+`PlanAgent` (a `BaseAgent`, registered as the `plan` stage, reports real duration, gate tests), `DATA_SOURCES.md` with sources, Bob evidence (PR merged).
 
-## What is left
+## To do, in order
 
-1. **Bob evidence:** add your screenshots to `bob_sessions/` and name the Bob features used in `fati_plan_agent_session.md`.
-2. **A second saved plan** for a different idea (optional but valuable): save it as `fixtures/plan_output_<name>.json` and let `PlanAgent` pick the fixture by keyword, so the demo does not look hard-coded. Right now every idea returns the task-management plan.
-3. **Research and requirements evidence:** in `DATA_SOURCES.md`, add the source for each technical claim you make in the demo (PostgreSQL, JWT, Next.js are done).
-4. **Help the team:** you have the most free time now. Ask Ali if he wants help with the dashboard, or Manar with test cases.
+1. **The dashboard page** (the main open item). The backend already serves `frontend/static/` at `/` and every endpoint exists; the contract is `docs/API.md`.
+   - `index.html`, `pipeline.js`, `style.css`: one card per stage (`state`: pending, running, done, failed), verdict, summary, duration, retry badges from `retries`, a **"stub" label** when `real` is false, a live event list, a red "Needs human attention" banner when `status` is `FAILED`.
+   - An **approval panel** when `awaiting_approval` is not null: show `gate_results`, a button Approve and a button Request changes, calling `POST /projects/{id}/approve` with `{"gate": awaiting_approval.gate, "approved": true|false}`.
+   - **Start** (creates a project with `POST /projects`, then `/start`) and **Reset** buttons. Poll `GET /projects/{id}/status` every 2 seconds.
+   - Try it: `pip install -r requirements.txt`, then `uvicorn backend.main:app --port 8000` from the repository root, and open `http://localhost:8000`.
+   - Safa adds an Insights section (`insights.html`); leave her a link to it.
+2. **Second saved plan** (optional): `fixtures/plan_output_<name>.json`, picked by keyword, so the demo does not look hard-coded.
+3. **Demo:** be ready to explain the planning step in 30 seconds.
 
-## Demo role
-Fati speaks about the planning step (about 30 seconds). Practice with the timer. See `docs/DEMO_PLAN.md`. Feature freeze is at hour 40; after that only fix bugs that break a rehearsal.
+## Done when
+A full run is visible live from Start to RELEASED, and Approve unblocks it, on a fresh clone.
+
+## Talk to
+Manar (API), Safa (Insights section), Leader (approval flow).

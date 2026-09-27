@@ -72,7 +72,7 @@ Every agent returns:
 |---|---|
 | **Leader** | Gate threshold (100% pass required); max debug retry limit (3 attempts before human escalation) |
 | **Haytam** | Agree on shared `PASS/FAIL/FINDING/SEVERITY/FIX/RETEST` format before hour 4. Tests must pass before security runs. |
-| **Ali** | `GET /tests` endpoint must match your TestResult data shape exactly |
+| **Fati** | The dashboard reads the test runs from your backend; keep the `TestResult` shape |
 
 ---
 

@@ -2,7 +2,7 @@
 memory/memory_agent.py
 ======================
 
-Public API (for Ali and other agents)
+Public API (for the backend API and other agents)
 --------------------------------------
 
 query(project_id, topic=None) -> list[dict]

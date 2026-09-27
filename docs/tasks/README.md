@@ -13,7 +13,6 @@ Demo app: a simple task-management SaaS. Stack: Next.js + TypeScript + Tailwind,
 | Member | Branch | Folder(s) they own | First task (one line) | Deliverable at first sync (~hour 4) |
 |---|---|---|---|---|
 | **Leader** | `leader/orchestrator` | `orchestrator/` | Finalise `docs/ARCHITECTURE.md` and scaffold the orchestrator state machine | `orchestrator/state_machine.py` + `runner.py` with all transitions, stub agents and gates (done, see `orchestrator/README.md`) |
-| **Ali** | `ali/platform` | `frontend/`, `backend/` | Scaffold Next.js dashboard + FastAPI backend with Docker Compose | App runs locally; pipeline page returns data from `GET /projects/{id}/status` |
 | **Haytam** | `haytam/security` | `security/` | Stub the Security Agent and define the FindingResult JSON contract | `security/security_agent.py` stub + `tests/fixtures/security_finding_HIGH.json` |
 | **Fati** | `fati/agents` | `agents/research_agent`, `agents/requirements_agent`, `agents/architecture_agent` | Write `docs/agent_contracts.md` and stub all three agents | All three agents return a valid `AgentResult` JSON when called |
 | **Manar** | `manar/testing` | `agents/testing_agent`, `agents/debug_agent`, `tests/` | Stub Testing Agent + create demo fixtures (17/20 fail → 20/20 pass) | Tester stub + `tests/fixtures/test_fail_17_20.json` and `test_pass_20_20.json` |
@@ -26,10 +25,11 @@ Demo app: a simple task-management SaaS. Stack: Next.js + TypeScript + Tailwind,
 | Pair / Group | Collaborate on |
 |---|---|
 | **Leader + Fati** | Agent input/output shapes; how each agent calls the orchestrator back |
-| **Leader + Ali** | Orchestrator → backend API → frontend pipeline view wiring (integrate early) |
+| **Leader + Manar** | Orchestrator → backend API (approval broker, status, events) |
+| **Manar + Fati** | Backend API → dashboard page (contract in `docs/API.md`) |
 | **Manar + Haytam** | Shared `PASS/FAIL/FINDING/SEVERITY/FIX/RETEST` format; testing runs first, security runs after |
 | **Safa + Fati** | Research and architecture decisions are stored in memory via `memory_agent.store()` |
-| **Safa + Ali** | Memory query endpoint and DevForge Impact metrics panel shown on the dashboard |
+| **Safa + Fati** | Insights endpoints and the Insights section of the dashboard |
 
 ---
 
@@ -49,13 +49,13 @@ Demo app: a simple task-management SaaS. Stack: Next.js + TypeScript + Tailwind,
 
 ```bash
 # 1. Switch to your branch
-git checkout <your-branch>          # e.g. git checkout ali/platform
+git checkout <your-branch>          # e.g. git checkout manar/testing
 
 # 2. Sync with main
 git pull origin main
 
 # 3. Open your task file
-# docs/tasks/ali.md  (or haytam.md / fati.md / manar.md / safa.md)
+# docs/tasks/<your-name>.md, then docs/tasks/next/<your-name>.md
 ```
 
 Read your task file top to bottom before writing any code. The first thing every member must do is run the Bob prompt at the bottom of their file and save the output screenshot to `bob_sessions/`.

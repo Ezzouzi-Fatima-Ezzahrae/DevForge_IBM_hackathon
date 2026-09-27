@@ -9,7 +9,7 @@ Before every run: `python tests/restore_demo_bug.py` (puts the two planted probl
 | Time | Step | What the screen shows | Who speaks |
 |---|---|---|---|
 | 0:00 | The problem and what DevForge is | Slide: problem, idea, pipeline | Leader |
-| 0:30 | Developer gives the idea | Dashboard, "task management SaaS", Start | Ali (drives the screen) |
+| 0:30 | Developer gives the idea | Dashboard, "task management SaaS", Start | Leader (drives the screen) |
 | 0:45 | Research, requirements, architecture | PLAN card green: 6 user stories, stack, 3 decisions | Fati |
 | 1:15 | Build, then tests fail | BUILD green, TEST red: 17/20 | Manar |
 | 1:35 | Debugger finds and fixes the bug | DEBUG card: root cause, patch; TEST green 20/20; retry badge 1 | Manar |

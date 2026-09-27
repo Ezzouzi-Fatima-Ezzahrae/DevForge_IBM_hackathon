@@ -1,3 +1,5 @@
+> **Update, 27 Sep 2026.** The team is now five people. The dashboard is now plain HTML served by FastAPI (Fati, with Manar's backend and Safa's insights), state and memory live in files instead of PostgreSQL, and the Builder and Fix agents are stubs. The current state is in `docs/STATUS.md`; this document is the original design.
+
 # DevForge — Final MVP Architecture
 
 > **Technical Architect Review** — This document supersedes all prior drafts.
@@ -46,7 +48,7 @@
 
 ### Bottlenecks fixed
 
-- **Ali owns too much.** API surface trimmed to 10 endpoints scoped to what the demo actually calls.
+- **The API must stay small.** API surface trimmed to 10 endpoints scoped to what the demo actually calls.
 - **Agent contracts blocked everyone.** All five contracts are defined in this document. Nobody waits.
 - **LLM non-determinism during demo.** Agents run for real during development; the demo replays pre-recorded JSON fixtures. Zero live LLM calls during the 4-minute presentation.
 
@@ -110,7 +112,7 @@ IDEA
 | # | Agent | Owner | Input | Output | Bob usage |
 |---|---|---|---|---|---|
 | 1 | **Plan Agent** | Fati | `{idea, constraints}` | `requirements[], architecture, decisions[]` | Bob **Plan mode** |
-| 2 | **Builder Agent** | Ali | `{milestone, architecture, prior_code}` | `files[], diff` | Bob **Agent mode** (file tools) |
+| 2 | **Builder Agent** | Leader (stub for the demo) | `{milestone, architecture, prior_code}` | `files[], diff` | Bob **Agent mode** (file tools) |
 | 3 | **Tester Agent** | Manar | `{milestone, files[]}` | `test_results[], pass_count, fail_count, coverage` | Bob **Agent mode** |
 | 4 | **Debugger Agent** | Manar | `{failing_tests[], files[], logs}` | `patch_diff, root_cause, fixed: bool` | Bob **Agent mode** multi-step task |
 | 5 | **Security Agent** | Haytam | `{files[], dependencies}` | `findings[], verdict: PASS\|BLOCKED` | Bob **Agent mode** + Bandit/Semgrep |
@@ -380,7 +382,7 @@ Minimum content: prompt sent, output received, one-line note on what Bob decided
 
 ```
 devforge/
-├── frontend/                        # Next.js + TypeScript + Tailwind  (Ali)
+├── frontend/                        # dashboard page (Fati): plain HTML in frontend/static/, see docs/API.md
 │   ├── app/
 │   │   ├── pipeline/page.tsx        # THE demo screen
 │   │   ├── approval/page.tsx        # Human approval card
@@ -390,7 +392,7 @@ devforge/
 │       ├── GateBadge.tsx
 │       └── ApprovalCard.tsx
 │
-├── backend/                         # FastAPI + PostgreSQL  (Ali)
+├── backend/                         # FastAPI (Manar); state and memory in files, no PostgreSQL
 │   ├── main.py
 │   ├── routers/
 │   │   ├── projects.py
@@ -409,7 +411,7 @@ devforge/
 │
 ├── agents/
 │   ├── plan_agent.py                # (Fati)
-│   ├── builder_agent.py             # (Ali)
+│   ├── builder_agent.py             # (stub only)
 │   ├── tester_agent.py              # (Manar)
 │   ├── debugger_agent.py            # (Manar)
 │   └── prompts/
@@ -462,7 +464,7 @@ devforge/
 
 ## 12. Backend API
 
-Only what the dashboard and orchestrator actually call. Ali implements all 10 in the first 8 hours, even as mocks.
+Only what the dashboard and orchestrator actually call. The backend (Manar) implements them; the current contract is in `docs/API.md`.
 
 | Method | Endpoint | Purpose |
 |---|---|---|
@@ -535,23 +537,15 @@ time elapsed, tests run/passed, bugs fixed, vulnerabilities found/fixed, retries
 | H 0–2 | Set up repo, branches, Docker, Bob account. Share architecture doc with team. | Repo cloned by all, `docker-compose up`, `ARCHITECTURE.md` pushed |
 | H 2–6 | Finalise `docs/ARCHITECTURE.md`. Scaffold the orchestrator: `orchestrator/state_machine.py` (state enum, transition table), `orchestrator/runner.py` (pipeline loop) and `orchestrator/gates.py` (pass criteria from `config/orchestrator_config.json`). | Orchestrator transitions through all states when agents are mocked |
 | H 6–10 | Implement `orchestrator/runner.py`: parallel dispatch (call Tester + Security concurrently via asyncio), collect results, call `merge()`. | `runner.py` calls two stub agents in parallel and merges their `AgentResult` |
-| H 10–14 | Wire orchestrator to Ali's API: replace in-memory state with HTTP calls to `/projects/{id}/start`, `/projects/{id}/status`, `/agents/results`. Write `tests/test_orchestrator.py`. | Orchestrator drives pipeline via backend API. Integration test green. |
-| H 14–18 | Swap mock agent calls for real agent calls (Fati's plan_agent, Ali's builder, Manar's tester, Haytam's security). Run one full pipeline with stub data. | Pipeline completes PLAN → RELEASED with stub agents. Dashboard shows real state changes. |
-| H 18–24 | First full integration run. Fix wiring bugs. Write `tests/test_gates.py`. Verify retry logic. Sync with Ali on API contract mismatches. | Pipeline runs end-to-end with planted failure and fix. All state transitions verified. |
+| H 10–14 | Wire orchestrator to the backend API: replace in-memory state with HTTP calls to `/projects/{id}/start`, `/projects/{id}/status`, `/agents/results`. Write `tests/test_orchestrator.py`. | Orchestrator drives pipeline via backend API. Integration test green. |
+| H 14–18 | Swap mock agent calls for real agent calls (Fati's plan_agent, the builder, Manar's tester, Haytam's security). Run one full pipeline with stub data. | Pipeline completes PLAN → RELEASED with stub agents. Dashboard shows real state changes. |
+| H 18–24 | First full integration run. Fix wiring bugs. Write `tests/test_gates.py`. Verify retry logic. Sync with Manar on API contract mismatches. | Pipeline runs end-to-end with planted failure and fix. All state transitions verified. |
 
 ---
 
-### Ali — Full-Stack
+### Dashboard and backend (Manar, Fati, Safa)
 
-| Hours | Task | Output |
-|---|---|---|
-| H 0–2 | Set up FastAPI project. Create `docker-compose.yml` (api + postgres). Create `.env.example`. | `docker-compose up` starts API on :8000, DB on :5432 |
-| H 2–6 | Scaffold all 10 API endpoints returning hard-coded mock JSON. Create PostgreSQL schema: 5 tables. Write SQLAlchemy models. | All 10 endpoints return valid mock JSON. DB tables created. |
-| H 6–10 | Replace mocks with real DB reads/writes for the three critical-path endpoints: `POST /projects`, `POST /projects/{id}/start`, `GET /projects/{id}/status`. | Leader can start and poll a project through the real API. |
-| H 10–14 | Implement remaining 7 endpoints with real DB. Scaffold Next.js app. Create `PipelineView.tsx` (static layout). Add 3-second polling. | All endpoints backed by DB. Pipeline UI renders (static). |
-| H 14–18 | Implement `builder_agent.py` stub. Connect `PipelineView.tsx` to polling. Each stage card reads from `GET /agents/results`. | Dashboard Pipeline View updates live as orchestrator transitions states. |
-| H 18–24 | Wire `POST /projects/{id}/approve` to `ApprovalCard` component. Test full approval flow: orchestrator → AWAITING_APPROVAL → banner → Approve → RELEASED. Fix CORS/serialization issues. | Human approval flow works end-to-end from dashboard button to RELEASED state. |
-
+See `docs/tasks/dashboard_split.md` and `docs/API.md` for who builds what and the current state.
 ---
 
 ### Fati — AI Agent Engineer
@@ -592,7 +586,7 @@ time elapsed, tests run/passed, bugs fixed, vulnerabilities found/fixed, retries
 
 | Hours | Task | Output |
 |---|---|---|
-| H 0–4 | Coordinate with Ali on `decisions` and `gate_results` table schema. Define Pydantic models in `memory/schemas.py`. | `memory/schemas.py` committed. DB tables agreed with Ali. |
+| H 0–4 | Coordinate with the backend owner (Manar) on `decisions` and `gate_results` table schema. Define Pydantic models in `memory/schemas.py`. | `memory/schemas.py` committed. DB tables agreed with the backend owner. |
 | H 4–10 | Implement `memory/memory_agent.py`: `store(decision)` writes to DB (async). `query(project_id, topic)` returns top 3 decisions by keyword. `get_context(project_id)` returns formatted string of all decisions. | Memory agent stores and retrieves decisions. Unit test green. |
 | H 10–16 | Implement `memory/metrics.py`: 8 counters (total_time, tests_run, tests_passed, bugs_found, bugs_fixed, vulns_found, vulns_fixed, retry_count, human_interventions). Updated by AgentResult events from orchestrator. | Metrics update correctly. `GET /metrics` returns real numbers. |
 | H 16–24 | Wire Memory Agent into orchestrator: after each gate result and Plan Agent decision, call `memory_agent.store()`. Verify Decision Log screen shows real entries. Save Bob session. | Decision log on dashboard shows real decisions from the pipeline run. Bob session saved. |
@@ -619,15 +613,6 @@ time elapsed, tests run/passed, bugs fixed, vulnerabilities found/fixed, retries
 
 ---
 
-### Ali — Full-Stack
-
-| Hours | Task | Output |
-|---|---|---|
-| H 24–28 | Fix API bugs from H24 sync. Ensure all 10 endpoints return correctly typed responses matching Pydantic schemas. Add CORS headers if missing. | All 10 endpoints return valid JSON matching `agent_contracts.md`. |
-| H 28–32 | Polish `PipelineView.tsx`: stage cards animate between states (CSS transitions). Expand/collapse test failure and security finding cards. Add retry count badge. Make "Waiting for Human" banner prominent. | Pipeline View is demo-ready. State transitions visually smooth. |
-| H 32–36 | Build `ApprovalCard.tsx`: gate summary, milestone statuses, coverage %, security posture, decision count, changelog. Wire Approve / Request Changes buttons. Build `decisions/page.tsx` with Impact metrics panel. | Both approval screens work. Metrics panel shows real numbers from Safa's API. |
-| H 36–40 | End-to-end UI test with full demo script. Fix display bugs. Save Bob builder session evidence. **Feature freeze at H40.** | Dashboard runs full 4-minute demo without visual errors. Bob session saved. |
-| H 40–48 | Demo rehearsal: control the browser. No new code unless a rehearsal-breaking defect is found. | Dashboard performs cleanly in every rehearsal run. |
 
 ---
 
@@ -672,7 +657,7 @@ time elapsed, tests run/passed, bugs fixed, vulnerabilities found/fixed, retries
 | Hours | Task | Output |
 |---|---|---|
 | H 24–28 | Run full pipeline and verify all 8 metrics counters update correctly. Fix any events the orchestrator is not yet calling `memory_agent.store()` for. | All 8 metrics are correct after a full pipeline run. |
-| H 28–32 | Wire `GET /metrics` to Ali's DevForge Impact panel. Confirm panel shows: "1 bug auto-fixed, 1 vulnerability auto-patched, 2 retries, 2 human interventions" after the full demo run. Must be real DB values, not hardcoded strings. | Impact panel shows accurate real numbers from the pipeline run. |
+| H 28–32 | Wire `GET /projects/{id}/metrics` to the DevForge Impact panel. Confirm panel shows: "1 bug auto-fixed, 1 vulnerability auto-patched, 2 retries, 2 human interventions" after the full demo run. Must be real DB values, not hardcoded strings. | Impact panel shows accurate real numbers from the pipeline run. |
 | H 32–36 | Implement context injection: `memory_agent.get_context(project_id)` formats the top 5 decisions as a prompt prefix. Test that Builder on milestone 2 receives the PostgreSQL ADR decision in its context. Save Bob session evidence. | Context injection works. Builder receives prior decisions in prompt. Bob session saved. |
 | H 36–40 | Prepare Decision Log screen for the demo: ensure 7–8 decisions from the pipeline appear with correct source (agent name) and timestamp. Confirm the screen looks presentable. | Decision Log shows 7+ real decisions. Looks presentable. |
 | H 40–48 | Demo rehearsal. Speak during the closing "DevForge Impact" section. Present the metrics panel and explain what each number means. Answer judge questions about decision memory. | Clear, compelling explanation of memory and metrics value. |
@@ -704,7 +689,7 @@ time elapsed, tests run/passed, bugs fixed, vulnerabilities found/fixed, retries
 | 0:00 | "Here is our idea: a task-management SaaS for small teams." | Developer types idea. Pipeline starts. Status = PLANNING. | Leader |
 | 0:15 | "The Plan Agent researches and produces requirements and an architecture." | ✅ PLAN — 6 user stories, PostgreSQL ADR, API list. Gate PASS. | Fati |
 | 0:45 | "We review and approve the architecture." | Approval Card shown. Presenter clicks Approve. | Leader |
-| 1:05 | "The Builder generates Milestone 1: the Task CRUD API." | ✅ BUILD — code files listed. | Ali |
+| 1:05 | "The Builder generates Milestone 1: the Task CRUD API." | ✅ BUILD — code files listed. | Leader |
 | 1:25 | "The Tester and Security Agent run in parallel." | Both stage cards animate to IN PROGRESS simultaneously. | Leader |
 | 1:45 | "The test fails. 17 out of 20 pass. Three ownership checks are broken." | 🔴 TEST 17/20 — failure detail expands. | Manar |
 | 2:05 | "The Debugger finds the root cause and patches the ownership check." | ⚙ DEBUG — root cause shown. Patch applied. | Manar |
