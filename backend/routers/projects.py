@@ -1,5 +1,7 @@
 from pathlib import Path
 import json
+import os
+import time
 import uuid
 import subprocess
 import sys
@@ -30,8 +32,14 @@ def _load_state() -> dict:
     if not STATE_FILE.exists():
         return {}
 
-    with STATE_FILE.open() as f:
-        return json.load(f)
+    # The pipeline rewrites this file at every step: retry if we read it half-written.
+    for _ in range(5):
+        try:
+            with STATE_FILE.open(encoding="utf-8") as f:
+                return json.load(f)
+        except json.JSONDecodeError:
+            time.sleep(0.05)
+    return {}
 
 
 def _save_state(state: dict) -> None:
@@ -121,6 +129,14 @@ def _build_stages(events: list[dict]) -> list[dict]:
     return list(stages.values())
 
 
+def _restore_demo_bug() -> None:
+    try:
+        subprocess.run([sys.executable, "tests/restore_demo_bug.py"], check=True,
+                       stdout=subprocess.DEVNULL)
+    except (subprocess.CalledProcessError, OSError) as exc:
+        raise HTTPException(status_code=500, detail="Failed to restore demo bug") from exc
+
+
 @router.post("")
 def create_project(payload: ProjectCreate):
     project_id = f"proj_{uuid.uuid4().hex[:8]}"
@@ -150,6 +166,11 @@ def start_project(project_id: str):
 
     if is_running(project_id):
         return {"status": "started"}
+
+    # The real debug agent patches backend/demo_bug.py: put the planted bug back
+    # so every demo run starts from the same broken code.
+    if os.environ.get("DEVFORGE_TEST_AGENT_MODE", "real") != "stub":
+        _restore_demo_bug()
 
     if not start_run(project_id, state["idea"]):
         raise HTTPException(
@@ -190,6 +211,13 @@ def approve_project(project_id: str, payload: ApprovalRequest):
 
     if payload.gate not in {"architecture", "release"}:
         raise HTTPException(status_code=400, detail="Invalid gate")
+
+    pending = broker.pending(project_id)
+    if pending is not None and pending["gate"] != payload.gate:
+        raise HTTPException(
+            status_code=409,
+            detail=f"The pending approval is for the {pending['gate']} gate",
+        )
 
     if not broker.resolve(project_id, payload.approved):
         raise HTTPException(

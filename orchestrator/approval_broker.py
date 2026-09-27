@@ -74,11 +74,14 @@ class ApprovalBroker:
             req = self._requests.get(project_id)
         if req is None or req.event.is_set():
             return None
+        gate = "architecture" if "architecture" in req.prompt.lower() else "release"
         return {
             "project_id": req.project_id,
+            "gate": gate,  # "architecture" or "release" (the API contract in docs/API.md)
             "prompt": req.prompt,
             "idea": req.idea,
-            "gates": req.gates,
+            "gate_results": req.gates,
+            "gates": req.gates,  # older name, kept so nothing breaks
             "waiting_seconds": round(time.time() - req.created_at, 1),
         }
 

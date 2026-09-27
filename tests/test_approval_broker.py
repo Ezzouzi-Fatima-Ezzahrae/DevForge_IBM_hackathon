@@ -145,3 +145,20 @@ def test_pipeline_timeout_rejects_release(stub_agents):
     fn = make_approval_fn(target=ApprovalBroker(), timeout=0.2)
     ctx = run_pipeline("idea", project_id="broker_pipe_timeout", approval_fn=fn)
     assert ctx.status != ProjectStatus.RELEASED
+
+
+def test_pending_uses_the_names_of_the_api_contract():
+    b = ApprovalBroker()
+    ctx = _ctx("broker_names")
+    out = {}
+    t = threading.Thread(target=lambda: out.update(v=b.request(ctx, [], "Approve architecture and proceed to build?", 5)))
+    t.start()
+    p = _wait_pending(b, "broker_names")
+    assert p["gate"] == "architecture" and p["gate_results"] == []
+    b.resolve("broker_names", True)
+    t.join(5)
+    t2 = threading.Thread(target=lambda: b.request(ctx, [], "All gates passed. Approve release?", 5))
+    t2.start()
+    assert _wait_pending(b, "broker_names")["gate"] == "release"
+    b.resolve("broker_names", False)
+    t2.join(5)
