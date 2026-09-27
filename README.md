@@ -104,6 +104,8 @@ Each run writes `logs/orchestrator.jsonl` (events) and `data/project_state.json`
 - Orchestrator internals and how to plug in an agent: [`orchestrator/README.md`](orchestrator/README.md)
 - Dashboard API: [`docs/API.md`](docs/API.md)
 - Demo script and timing: [`docs/DEMO_PLAN.md`](docs/DEMO_PLAN.md)
+- Measured impact: [`docs/IMPACT.md`](docs/IMPACT.md)
+- Submission text and checklist: [`docs/SUBMISSION_TEXT.md`](docs/SUBMISSION_TEXT.md), [`docs/SUBMISSION_CHECKLIST.md`](docs/SUBMISSION_CHECKLIST.md)
 
 ## Repository layout
 
@@ -152,7 +154,16 @@ Generated at run time and not committed: `logs/`, `data/`, `memory/data/*.json`.
 
 ## How IBM Bob was used
 
-Every team member used Bob for a real part of the build, with sessions recorded in [`bob_sessions/`](bob_sessions/). The leader used Bob (Plan and Agent modes) for the architecture, the data contracts and the first version of the orchestrator; the plan agent replays a saved Bob Plan session.
+IBM Bob IDE was used by every team member and is documented in [`bob_sessions/`](bob_sessions/README.md): **21 task screenshots** (PNG, `devforge_taskNN_owner_description.png`) and a session note per member.
+
+| Bob feature | Used for |
+|---|---|
+| Plan mode | Architecture and state machine (Leader); requirements, user stories and decisions of the plan agent (Fati) |
+| Agent mode | Contracts and orchestrator (Leader); testing and debug agents (Manar); memory and metrics (Safa); security agent (Haytam) |
+| Task list | Long multi-step tasks, for example 13/21 on the orchestrator |
+| Code review | Bob reviews the memory APIs (Safa) |
+
+Bob's budget was reached during the orchestrator task; the integration of all agents, the API, the tests and the demo were finished by the team with another AI assistant. The plan agent replays a saved Bob Plan session and does not call Bob live. Nothing is presented as Bob's work that was not.
 
 ## Team
 

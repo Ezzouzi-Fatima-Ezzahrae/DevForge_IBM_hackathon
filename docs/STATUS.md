@@ -18,11 +18,13 @@ Updated 27 Sep 2026, about 02:00. Everything marked "verified" was checked on a 
 | Backend API | Manar | Done, verified | `POST /projects`, `/start`, `GET /status`, `POST /approve`, `/reset`. Runs the real pipeline to RELEASED |
 | Security agent, gate | Haytam | Done, connected | Finds the ownership bug (HIGH, CWE-639) and the hard-coded secret (LOW) |
 | Fix agent | Haytam | **Open** | Still a stub. The security gate passes only because the Debugger already fixed the ownership bug |
-| Memory and metrics | Safa | Merged | Insights endpoints, Impact wording and `docs/IMPACT.md` still open |
+| Memory and metrics | Safa | Merged | |
+| Insights endpoints, Impact wording, `docs/IMPACT.md` | Safa | Done (PR #30), reviewed by the Leader | `/tests` and `/security` now follow `docs/API.md`; wording in English; tests added |
 | Dashboard page | Fati | **Open** | Backend serves `frontend/static/` but it does not exist yet: `/` returns 404. Terminal demo is the fallback |
-| Insights endpoints and screen | Safa | **Open** | `docs/API.md` |
-| Bob evidence | Everyone | Files present for all members | Check each file has the task, the Bob features used and readable screenshots |
+| Insights section of the dashboard | Safa, Fati | **Open** | HTML and JS sent to Fati |
+| Bob evidence | Everyone | 21 screenshots renamed to the guide's convention, index in `bob_sessions/README.md` | Haytam still needs at least one task screenshot |
 | Demo rehearsals, backup video | Everyone | **Open** | `docs/DEMO_PLAN.md` |
+| Submission (12 lablab fields, text, cover image, slides) | Leader | Drafts ready | `docs/SUBMISSION_TEXT.md`, `docs/SUBMISSION_CHECKLIST.md`, `docs/cover.png`, `docs/DevForge_Slides.pptx`; hosted demo URL still open |
 
 ## What is real and what is simulated
 

@@ -1,36 +1,59 @@
-# Submission checklist
+# Submission checklist (IBM Bob 2.0 Hackathon, lablab.ai)
 
-Check each item on a **fresh clone** of `main` (`git clone <repo> test-clone`). Verify the required format and deadline in the hackathon guide, because they were not checked here.
+Requirements come from the hackathon guide and the lablab event page. The 12 form fields and the deadline (Sun 27 Sep 2026, 11:00 AM EDT = 16:00 in Casablanca) come from a third-party tracker: **confirm them on the lablab submission form**. Check every item on a fresh clone of `main`.
 
-## Repository
-- [ ] `README.md` explains the problem, the solution, the architecture and how to run it, in a way a stranger can follow
-- [ ] `docs/ARCHITECTURE.md`, `docs/agent_contracts.md`, `docs/STATUS.md` are current
-- [ ] Architecture and state-machine diagram in `docs/`
-- [ ] `requirements.txt` (Python) and the dashboard's `package.json` exist, and installing from them works
-- [ ] `.env.example` has names only; no secrets, keys or `.env` in the repository (search: `git grep -i -E "secret|password|token|api_key"`)
+## Required by the guide
+- [ ] Working prototype built with IBM Bob IDE as a core component
+- [ ] Public code repository (open the URL in a private window)
+- [ ] `bob_sessions/` folder with Bob task-session summary screenshots, PNG, named `teamname_taskXX_description.png`, from each team member (see `bob_sessions/README.md`)
+- [ ] No client data, personal data or confidential data in the repository
+
+## The 12 lablab fields (text drafts in `docs/SUBMISSION_TEXT.md`)
+- [ ] Project title
+- [ ] Short description
+- [ ] Long description
+- [ ] IBM Bob usage statement
+- [ ] Technology and category tags
+- [ ] Public code repository URL
+- [ ] Bob task-session screenshots (in the repository)
+- [ ] Demo application platform
+- [ ] Application URL (hosted, or the closest available link)
+- [ ] Cover image (`docs/cover.png`)
+- [ ] Video demonstration (script: `docs/VIDEO_SCRIPT.md`, 5 minutes)
+- [ ] Slide presentation (`docs/DevForge_Slides.pptx`, exported to PDF if the form asks)
+
+## Judging criteria (from the tracker) and where we answer them
+| Criterion | Our answer |
+|---|---|
+| Application of technology (a clear use of Bob 2.0) | `bob_sessions/` index, slides 6 and 7, Bob usage statement |
+| Presentation | video, slides, narrated demo, cover image |
+| Business value | slide 8 (target user, market, revenue model), slide 9, `docs/IMPACT.md` (measured numbers only) |
+| Originality | orchestrator with gates and loops, parallel checks, human in the loop, honest labels |
+
+## The repository
+- [ ] `README.md` explains problem, solution, architecture, how to run
+- [ ] `requirements.txt` installs on a clean machine
+- [ ] `.env.example` has names only; no secrets (`git grep -i -E "secret|password|token|api_key"`)
 - [ ] `backend/demo_bug.py` is the **buggy** version (`python tests/restore_demo_bug.py`)
-- [ ] `logs/` and generated data files are not committed
+- [ ] `logs/`, `data/` and `memory/data/*.json` are not committed
 - [ ] `DATA_SOURCES.md` lists the real sources
+- [ ] `docs/STATUS.md` is current
 
-## It works
+## It works (fresh clone)
 - [ ] `python -m pytest -q` passes
-- [ ] `python -m orchestrator.run --idea "task management SaaS" --auto-approve` ends in RELEASED
-- [ ] The backend starts, the dashboard shows the pipeline live, Approve leads to RELEASED
-- [ ] Two runs in a row give the same result (restore between runs)
+- [ ] `python scripts/demo.py --auto-approve` ends in RELEASED, twice in a row
+- [ ] `uvicorn backend.main:app` starts; a run reaches RELEASED through the API
 - [ ] Each real agent has a working stub fallback
 - [ ] The retry limits work: the pipeline ends in FAILED, not in a loop
 
-## Bob evidence
-- [ ] Every member has a filled `bob_sessions/<name>_*.md` (task, what Bob produced, Bob features used, screenshots)
-- [ ] Screenshots are readable and contain no secrets
-- [ ] The Bob features used are named: Plan mode, Agent mode, task list, and others if used
-
-## Demo
-- [ ] Full 4-minute run timed at least 4 times (`docs/DEMO_PLAN.md`)
-- [ ] Video of a successful run recorded as a backup
-- [ ] Slides finished; each speaker knows their part
-- [ ] The "DevForge Impact" numbers come from real runs only
+## Honesty
+- [ ] The plan agent is described as a replay of a saved Bob Plan session
+- [ ] Build and fix are described as stubs
+- [ ] No simulated run is presented as Bob's work
+- [ ] The Impact numbers come from real runs only
 
 ## Team
-- [ ] Every member's work is merged into `main` (no important work left only on a branch)
-- [ ] Final `git pull` done by everyone, and the demo machine runs the final `main`
+- [ ] Every member's work is merged into `main`
+- [ ] Every member has at least one Bob screenshot in `bob_sessions/`
+- [ ] Slides finished; each speaker knows their part
+- [ ] Final `git pull` on the demo machine
