@@ -77,3 +77,8 @@ def test_approving_the_wrong_gate_is_rejected(client):
     assert r.status_code == 409
     client.post(f"/projects/{pid}/approve", json={"gate": "architecture", "approved": False})
     _wait(client, pid, lambda s: not s["running"])
+
+
+def test_project_status_not_found(client):
+    response = client.get("/projects/proj_does_not_exist/status")
+    assert response.status_code == 404
