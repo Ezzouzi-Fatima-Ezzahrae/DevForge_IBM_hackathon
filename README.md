@@ -108,18 +108,47 @@ Each run writes `logs/orchestrator.jsonl` (events) and `data/project_state.json`
 ## Repository layout
 
 ```
-orchestrator/   state machine, runner, gates, approval, adapters, stub agents
-agents/         plan, testing and debug agents
-security/       security red-team agent and gate
-memory/         decision memory and metrics
-backend/        FastAPI API and the demo app with the planted bug
-frontend/       dashboard page
-scripts/        offline terminal demo
-config/         gate thresholds and retry limits
-tests/          unit and end-to-end tests
-docs/           architecture, contracts, tasks
-bob_sessions/   evidence of how IBM Bob was used
+DevForge/
+├── README.md                    this file
+├── requirements.txt             Python dependencies
+├── pytest.ini                   test settings
+├── .env.example                 optional settings (names only)
+├── DATA_SOURCES.md              sources behind the plan agent's claims
+│
+├── orchestrator/                the brain
+│   ├── runner.py                pipeline loop: retries, parallel test + security, approvals
+│   ├── state_machine.py         allowed state transitions
+│   ├── gates.py                 PASS / FAIL / BLOCKED rules
+│   ├── approval.py              terminal approval
+│   ├── approval_broker.py       approval from the API (approve / reject / timeout)
+│   ├── agents_base.py           BaseAgent interface, agent registry, real-or-stub loading
+│   ├── contracts.py             shared data models (AgentResult, GateResult, ...)
+│   ├── recorder.py              live recording into memory and metrics
+│   ├── logger.py                JSON event log
+│   ├── run.py                   command-line entry point
+│   ├── adapters/                security_adapter.py (connects the security package)
+│   └── stubs/                   fake agents: fallback for every stage
+│
+├── agents/                      the agents
+│   ├── plan_agent.py            plan agent (replays a saved Bob plan)
+│   ├── testing_agent/           runs the real test suite
+│   ├── debug_agent/             patches the real file and reruns
+│   └── prompts/plan.md          the Bob prompt behind the plan
+│
+├── security/                    security scanner, agent and gate
+├── memory/                      decision memory and metrics (data in memory/data/)
+├── backend/                     FastAPI API (main.py, runs.py, routers/projects.py)
+│   └── demo_bug.py              the demo app with the two planted problems
+├── frontend/static/             dashboard page (plain HTML, served by the API)
+├── scripts/demo.py              narrated terminal demo
+├── fixtures/plan_output.json    the saved plan
+├── config/                      gate thresholds and retry limits
+├── tests/                       automated tests, the demo-bug restore script, fixtures
+├── docs/                        ARCHITECTURE, API, agent_contracts, STATUS, DEMO_PLAN, SUBMISSION_CHECKLIST, tasks/
+└── bob_sessions/                evidence of how IBM Bob was used
 ```
+
+Generated at run time and not committed: `logs/`, `data/`, `memory/data/*.json`.
 
 ## How IBM Bob was used
 

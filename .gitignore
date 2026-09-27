@@ -9,9 +9,6 @@ __pycache__/
 .venv/
 venv/
 
-# Node.js
-node_modules/
-
 # Build files
 dist/
 build/
