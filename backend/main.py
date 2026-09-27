@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from backend.routers.projects import router as projects_router
+from backend.insights import router as insights_router
 
 
 app = FastAPI(title="DevForge API")
@@ -18,6 +19,7 @@ app.add_middleware(
 )
 
 app.include_router(projects_router)
+app.include_router(insights_router)
 
 
 frontend_dir = Path("frontend/static")
