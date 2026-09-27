@@ -1,6 +1,19 @@
+<div align="center">
+
 # DevForge
 
-**An AI Software Development Lifecycle Orchestrator**, built for the IBM Bob hackathon.
+**AI that doesn't just build software. It proves it's ready to ship.**
+
+An AI Software Development Lifecycle Orchestrator, built for the IBM Bob 2.0 Hackathon.
+
+[![Built with IBM Bob](https://img.shields.io/badge/Built%20with-IBM%20Bob-orange)](https://lablab.ai)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/API-FastAPI-009688)](https://fastapi.tiangolo.com/)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](tests/)
+
+<img src="docs/dashboard-hero.png" alt="DevForge dashboard: pipeline stages for Plan, Build, Test, Debug, Security, Fix, Release" width="640"/>
+
+</div>
 
 DevForge is not just an AI code generator. It orchestrates the whole development lifecycle with specialized agents and explicit quality gates, and it keeps a human in the loop for the decisions that matter.
 
