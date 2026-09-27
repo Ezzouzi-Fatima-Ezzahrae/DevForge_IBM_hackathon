@@ -1,0 +1,5278 @@
+[
+  {
+    "id": "DEC-0001",
+    "project_id": "proj-devforge-001",
+    "question": "Which database should we use for persistent storage?",
+    "alternatives": [
+      "PostgreSQL",
+      "SQLite",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Production-grade, ACID-compliant, native JSON support.",
+    "source": "architecture_agent",
+    "timestamp": "2026-09-26T18:31:53.920652Z"
+  },
+  {
+    "id": "DEC-0002",
+    "project_id": "proj-devforge-001",
+    "question": "Should we add Redis for caching?",
+    "alternatives": [
+      "Redis",
+      "Memcached",
+      "No cache"
+    ],
+    "decision": "No cache",
+    "reason": "Premature optimisation; revisit after performance profiling.",
+    "source": "architecture_agent",
+    "timestamp": "2026-09-26T18:31:53.933175Z"
+  },
+  {
+    "id": "DEC-0003",
+    "project_id": "test_fbc14947",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T19:27:49.463405+00:00"
+  },
+  {
+    "id": "DEC-0004",
+    "project_id": "test_3eae8e02",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T19:27:49.473905+00:00"
+  },
+  {
+    "id": "DEC-0005",
+    "project_id": "test_3eae8e02",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T19:27:49.483718+00:00"
+  },
+  {
+    "id": "DEC-0006",
+    "project_id": "test_ec11d6d3",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T19:27:49.494140+00:00"
+  },
+  {
+    "id": "DEC-0007",
+    "project_id": "test_186d5da6",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T19:28:48.452437+00:00"
+  },
+  {
+    "id": "DEC-0008",
+    "project_id": "test_8767e651",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T19:28:48.466358+00:00"
+  },
+  {
+    "id": "DEC-0009",
+    "project_id": "test_8767e651",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T19:28:48.475726+00:00"
+  },
+  {
+    "id": "DEC-0010",
+    "project_id": "test_eee3bdf9",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T19:28:48.485550+00:00"
+  },
+  {
+    "id": "DEC-0011",
+    "project_id": "test_c348a521",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.312132+00:00"
+  },
+  {
+    "id": "DEC-0012",
+    "project_id": "test_805164a6",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.327219+00:00"
+  },
+  {
+    "id": "DEC-0013",
+    "project_id": "test_805164a6",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.337227+00:00"
+  },
+  {
+    "id": "DEC-0014",
+    "project_id": "test_9f53d6e3",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.346321+00:00"
+  },
+  {
+    "id": "DEC-0015",
+    "project_id": "test_ba48443b",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.378913+00:00"
+  },
+  {
+    "id": "DEC-0016",
+    "project_id": "test_16706fe5",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.393871+00:00"
+  },
+  {
+    "id": "DEC-0017",
+    "project_id": "other_a8784477",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.439129+00:00"
+  },
+  {
+    "id": "DEC-0018",
+    "project_id": "test_7b5acadf",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.500449+00:00"
+  },
+  {
+    "id": "DEC-0019",
+    "project_id": "test_7b5acadf",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.523654+00:00"
+  },
+  {
+    "id": "DEC-0020",
+    "project_id": "test_7b5acadf",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.536478+00:00"
+  },
+  {
+    "id": "DEC-0021",
+    "project_id": "test_7b5acadf",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.547189+00:00"
+  },
+  {
+    "id": "DEC-0022",
+    "project_id": "test_7b5acadf",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.557310+00:00"
+  },
+  {
+    "id": "DEC-0023",
+    "project_id": "test_7b5acadf",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.566411+00:00"
+  },
+  {
+    "id": "DEC-0024",
+    "project_id": "test_7b5acadf",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.576603+00:00"
+  },
+  {
+    "id": "DEC-0025",
+    "project_id": "test_7b5acadf",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.584109+00:00"
+  },
+  {
+    "id": "DEC-0026",
+    "project_id": "test_9e851fd6",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.592976+00:00"
+  },
+  {
+    "id": "DEC-0027",
+    "project_id": "test_9e851fd6",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.599889+00:00"
+  },
+  {
+    "id": "DEC-0028",
+    "project_id": "test_9e851fd6",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.609632+00:00"
+  },
+  {
+    "id": "DEC-0029",
+    "project_id": "test_9e851fd6",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.618373+00:00"
+  },
+  {
+    "id": "DEC-0030",
+    "project_id": "test_9e851fd6",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.626214+00:00"
+  },
+  {
+    "id": "DEC-0031",
+    "project_id": "test_9e851fd6",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.636087+00:00"
+  },
+  {
+    "id": "DEC-0032",
+    "project_id": "test_9e851fd6",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.644134+00:00"
+  },
+  {
+    "id": "DEC-0033",
+    "project_id": "test_9e851fd6",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:38:32.653110+00:00"
+  },
+  {
+    "id": "DEC-0034",
+    "project_id": "test_8c1589e2",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.803876+00:00"
+  },
+  {
+    "id": "DEC-0035",
+    "project_id": "test_7d93f799",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.816894+00:00"
+  },
+  {
+    "id": "DEC-0036",
+    "project_id": "test_7d93f799",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.828480+00:00"
+  },
+  {
+    "id": "DEC-0037",
+    "project_id": "test_cdc8adc0",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.840607+00:00"
+  },
+  {
+    "id": "DEC-0038",
+    "project_id": "test_97ce22c3",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.854511+00:00"
+  },
+  {
+    "id": "DEC-0039",
+    "project_id": "test_8381974e",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.865790+00:00"
+  },
+  {
+    "id": "DEC-0040",
+    "project_id": "other_377ba86f",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.874642+00:00"
+  },
+  {
+    "id": "DEC-0041",
+    "project_id": "test_a69a0ff3",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.886298+00:00"
+  },
+  {
+    "id": "DEC-0042",
+    "project_id": "test_a69a0ff3",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.896948+00:00"
+  },
+  {
+    "id": "DEC-0043",
+    "project_id": "test_a69a0ff3",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.908413+00:00"
+  },
+  {
+    "id": "DEC-0044",
+    "project_id": "test_a69a0ff3",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.918859+00:00"
+  },
+  {
+    "id": "DEC-0045",
+    "project_id": "test_a69a0ff3",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.928150+00:00"
+  },
+  {
+    "id": "DEC-0046",
+    "project_id": "test_a69a0ff3",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.937627+00:00"
+  },
+  {
+    "id": "DEC-0047",
+    "project_id": "test_a69a0ff3",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.946915+00:00"
+  },
+  {
+    "id": "DEC-0048",
+    "project_id": "test_a69a0ff3",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.956104+00:00"
+  },
+  {
+    "id": "DEC-0049",
+    "project_id": "test_4ed2c205",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.967217+00:00"
+  },
+  {
+    "id": "DEC-0050",
+    "project_id": "test_4ed2c205",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.977727+00:00"
+  },
+  {
+    "id": "DEC-0051",
+    "project_id": "test_4ed2c205",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.987325+00:00"
+  },
+  {
+    "id": "DEC-0052",
+    "project_id": "test_4ed2c205",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:48.997198+00:00"
+  },
+  {
+    "id": "DEC-0053",
+    "project_id": "test_4ed2c205",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:49.006778+00:00"
+  },
+  {
+    "id": "DEC-0054",
+    "project_id": "test_4ed2c205",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:49.018473+00:00"
+  },
+  {
+    "id": "DEC-0055",
+    "project_id": "test_4ed2c205",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:49.028364+00:00"
+  },
+  {
+    "id": "DEC-0056",
+    "project_id": "test_4ed2c205",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:46:49.037286+00:00"
+  },
+  {
+    "id": "DEC-0057",
+    "project_id": "test_1977dfa5",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.744470+00:00"
+  },
+  {
+    "id": "DEC-0058",
+    "project_id": "test_2955ae80",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.756671+00:00"
+  },
+  {
+    "id": "DEC-0059",
+    "project_id": "test_2955ae80",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.764202+00:00"
+  },
+  {
+    "id": "DEC-0060",
+    "project_id": "test_944f8f2c",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.773702+00:00"
+  },
+  {
+    "id": "DEC-0061",
+    "project_id": "test_0d39ac93",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.784272+00:00"
+  },
+  {
+    "id": "DEC-0062",
+    "project_id": "test_cce6b4c5",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.795060+00:00"
+  },
+  {
+    "id": "DEC-0063",
+    "project_id": "other_eb627bbd",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.804138+00:00"
+  },
+  {
+    "id": "DEC-0064",
+    "project_id": "test_f412d012",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.813481+00:00"
+  },
+  {
+    "id": "DEC-0065",
+    "project_id": "test_f412d012",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.822938+00:00"
+  },
+  {
+    "id": "DEC-0066",
+    "project_id": "test_f412d012",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.831113+00:00"
+  },
+  {
+    "id": "DEC-0067",
+    "project_id": "test_f412d012",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.839007+00:00"
+  },
+  {
+    "id": "DEC-0068",
+    "project_id": "test_f412d012",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.847183+00:00"
+  },
+  {
+    "id": "DEC-0069",
+    "project_id": "test_f412d012",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.854539+00:00"
+  },
+  {
+    "id": "DEC-0070",
+    "project_id": "test_f412d012",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.862034+00:00"
+  },
+  {
+    "id": "DEC-0071",
+    "project_id": "test_f412d012",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.869065+00:00"
+  },
+  {
+    "id": "DEC-0072",
+    "project_id": "test_c0e033f5",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.880862+00:00"
+  },
+  {
+    "id": "DEC-0073",
+    "project_id": "test_c0e033f5",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.891366+00:00"
+  },
+  {
+    "id": "DEC-0074",
+    "project_id": "test_c0e033f5",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.899128+00:00"
+  },
+  {
+    "id": "DEC-0075",
+    "project_id": "test_c0e033f5",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.908243+00:00"
+  },
+  {
+    "id": "DEC-0076",
+    "project_id": "test_c0e033f5",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.916764+00:00"
+  },
+  {
+    "id": "DEC-0077",
+    "project_id": "test_c0e033f5",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.923820+00:00"
+  },
+  {
+    "id": "DEC-0078",
+    "project_id": "test_c0e033f5",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.932167+00:00"
+  },
+  {
+    "id": "DEC-0079",
+    "project_id": "test_c0e033f5",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:51:54.941463+00:00"
+  },
+  {
+    "id": "DEC-0080",
+    "project_id": "test_bef7f462",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.359122+00:00"
+  },
+  {
+    "id": "DEC-0081",
+    "project_id": "test_05341427",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.370490+00:00"
+  },
+  {
+    "id": "DEC-0082",
+    "project_id": "test_05341427",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.380576+00:00"
+  },
+  {
+    "id": "DEC-0083",
+    "project_id": "test_9c290ceb",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.391902+00:00"
+  },
+  {
+    "id": "DEC-0084",
+    "project_id": "test_1992cfd5",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.403861+00:00"
+  },
+  {
+    "id": "DEC-0085",
+    "project_id": "test_32a0ac72",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.414061+00:00"
+  },
+  {
+    "id": "DEC-0086",
+    "project_id": "other_8545ac09",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.423041+00:00"
+  },
+  {
+    "id": "DEC-0087",
+    "project_id": "test_d8c6d58d",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.434713+00:00"
+  },
+  {
+    "id": "DEC-0088",
+    "project_id": "test_d8c6d58d",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.443910+00:00"
+  },
+  {
+    "id": "DEC-0089",
+    "project_id": "test_d8c6d58d",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.452386+00:00"
+  },
+  {
+    "id": "DEC-0090",
+    "project_id": "test_d8c6d58d",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.462978+00:00"
+  },
+  {
+    "id": "DEC-0091",
+    "project_id": "test_d8c6d58d",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.475940+00:00"
+  },
+  {
+    "id": "DEC-0092",
+    "project_id": "test_d8c6d58d",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.486856+00:00"
+  },
+  {
+    "id": "DEC-0093",
+    "project_id": "test_d8c6d58d",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.497102+00:00"
+  },
+  {
+    "id": "DEC-0094",
+    "project_id": "test_d8c6d58d",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.512030+00:00"
+  },
+  {
+    "id": "DEC-0095",
+    "project_id": "test_55fa0672",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.525339+00:00"
+  },
+  {
+    "id": "DEC-0096",
+    "project_id": "test_55fa0672",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.535015+00:00"
+  },
+  {
+    "id": "DEC-0097",
+    "project_id": "test_55fa0672",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.545040+00:00"
+  },
+  {
+    "id": "DEC-0098",
+    "project_id": "test_55fa0672",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.555019+00:00"
+  },
+  {
+    "id": "DEC-0099",
+    "project_id": "test_55fa0672",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.563521+00:00"
+  },
+  {
+    "id": "DEC-0100",
+    "project_id": "test_55fa0672",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.573769+00:00"
+  },
+  {
+    "id": "DEC-0101",
+    "project_id": "test_55fa0672",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.585575+00:00"
+  },
+  {
+    "id": "DEC-0102",
+    "project_id": "test_55fa0672",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T20:55:09.595349+00:00"
+  },
+  {
+    "id": "DEC-0103",
+    "project_id": "test_11f50b33",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.557046+00:00"
+  },
+  {
+    "id": "DEC-0104",
+    "project_id": "test_ceda15dc",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.568769+00:00"
+  },
+  {
+    "id": "DEC-0105",
+    "project_id": "test_ceda15dc",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.578787+00:00"
+  },
+  {
+    "id": "DEC-0106",
+    "project_id": "test_013010fd",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.589995+00:00"
+  },
+  {
+    "id": "DEC-0107",
+    "project_id": "test_7eaef618",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.602729+00:00"
+  },
+  {
+    "id": "DEC-0108",
+    "project_id": "test_edff3b45",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.613384+00:00"
+  },
+  {
+    "id": "DEC-0109",
+    "project_id": "other_8a77b21c",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.622927+00:00"
+  },
+  {
+    "id": "DEC-0110",
+    "project_id": "test_28573996",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.633093+00:00"
+  },
+  {
+    "id": "DEC-0111",
+    "project_id": "test_28573996",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.644436+00:00"
+  },
+  {
+    "id": "DEC-0112",
+    "project_id": "test_28573996",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.654358+00:00"
+  },
+  {
+    "id": "DEC-0113",
+    "project_id": "test_28573996",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.664600+00:00"
+  },
+  {
+    "id": "DEC-0114",
+    "project_id": "test_28573996",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.674135+00:00"
+  },
+  {
+    "id": "DEC-0115",
+    "project_id": "test_28573996",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.684954+00:00"
+  },
+  {
+    "id": "DEC-0116",
+    "project_id": "test_28573996",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.692235+00:00"
+  },
+  {
+    "id": "DEC-0117",
+    "project_id": "test_28573996",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.700394+00:00"
+  },
+  {
+    "id": "DEC-0118",
+    "project_id": "test_68baa5d0",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.710356+00:00"
+  },
+  {
+    "id": "DEC-0119",
+    "project_id": "test_68baa5d0",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.720109+00:00"
+  },
+  {
+    "id": "DEC-0120",
+    "project_id": "test_68baa5d0",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.732767+00:00"
+  },
+  {
+    "id": "DEC-0121",
+    "project_id": "test_68baa5d0",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.741818+00:00"
+  },
+  {
+    "id": "DEC-0122",
+    "project_id": "test_68baa5d0",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.754365+00:00"
+  },
+  {
+    "id": "DEC-0123",
+    "project_id": "test_68baa5d0",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.762808+00:00"
+  },
+  {
+    "id": "DEC-0124",
+    "project_id": "test_68baa5d0",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.771824+00:00"
+  },
+  {
+    "id": "DEC-0125",
+    "project_id": "test_68baa5d0",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:03:02.780637+00:00"
+  },
+  {
+    "id": "DEC-0126",
+    "project_id": "proj_fd0efdb1",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with clear ownership foreign keys and ACID transaction requirements.",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T00:00:00Z"
+  },
+  {
+    "id": "DEC-0127",
+    "project_id": "proj_fd0efdb1",
+    "question": "How should users be authenticated?",
+    "alternatives": [
+      "JWT",
+      "Session cookies + Redis",
+      "OAuth2 third-party provider"
+    ],
+    "decision": "JWT",
+    "reason": "Stateless authentication avoids a shared session store between frontend and backend services.",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T00:00:00Z"
+  },
+  {
+    "id": "DEC-0128",
+    "project_id": "proj_fd0efdb1",
+    "question": "Which frontend framework should we use?",
+    "alternatives": [
+      "Next.js + TypeScript + Tailwind",
+      "React + Vite",
+      "Vue 3"
+    ],
+    "decision": "Next.js + TypeScript + Tailwind",
+    "reason": "File-based routing, TypeScript safety, and rapid UI iteration support the 48-hour build.",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T00:00:00Z"
+  },
+  {
+    "id": "DEC-0129",
+    "project_id": "test_6af8b8c9",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.517664+00:00"
+  },
+  {
+    "id": "DEC-0130",
+    "project_id": "test_38a99dc1",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.529604+00:00"
+  },
+  {
+    "id": "DEC-0131",
+    "project_id": "test_38a99dc1",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.540551+00:00"
+  },
+  {
+    "id": "DEC-0132",
+    "project_id": "test_624ca913",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.552505+00:00"
+  },
+  {
+    "id": "DEC-0133",
+    "project_id": "test_1ada16fd",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.567155+00:00"
+  },
+  {
+    "id": "DEC-0134",
+    "project_id": "test_24bdb2ba",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.579335+00:00"
+  },
+  {
+    "id": "DEC-0135",
+    "project_id": "other_1911e656",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.590370+00:00"
+  },
+  {
+    "id": "DEC-0136",
+    "project_id": "test_3aeb7456",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.602981+00:00"
+  },
+  {
+    "id": "DEC-0137",
+    "project_id": "test_3aeb7456",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.612852+00:00"
+  },
+  {
+    "id": "DEC-0138",
+    "project_id": "test_3aeb7456",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.623113+00:00"
+  },
+  {
+    "id": "DEC-0139",
+    "project_id": "test_3aeb7456",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.632308+00:00"
+  },
+  {
+    "id": "DEC-0140",
+    "project_id": "test_3aeb7456",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.640305+00:00"
+  },
+  {
+    "id": "DEC-0141",
+    "project_id": "test_3aeb7456",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.652021+00:00"
+  },
+  {
+    "id": "DEC-0142",
+    "project_id": "test_3aeb7456",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.662561+00:00"
+  },
+  {
+    "id": "DEC-0143",
+    "project_id": "test_3aeb7456",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.672341+00:00"
+  },
+  {
+    "id": "DEC-0144",
+    "project_id": "test_53b3b048",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.686049+00:00"
+  },
+  {
+    "id": "DEC-0145",
+    "project_id": "test_53b3b048",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.694415+00:00"
+  },
+  {
+    "id": "DEC-0146",
+    "project_id": "test_53b3b048",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.705904+00:00"
+  },
+  {
+    "id": "DEC-0147",
+    "project_id": "test_53b3b048",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.716782+00:00"
+  },
+  {
+    "id": "DEC-0148",
+    "project_id": "test_53b3b048",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.727426+00:00"
+  },
+  {
+    "id": "DEC-0149",
+    "project_id": "test_53b3b048",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.737395+00:00"
+  },
+  {
+    "id": "DEC-0150",
+    "project_id": "test_53b3b048",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.749011+00:00"
+  },
+  {
+    "id": "DEC-0151",
+    "project_id": "test_53b3b048",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:14:53.758315+00:00"
+  },
+  {
+    "id": "DEC-0152",
+    "project_id": "test_9034f961",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.582495+00:00"
+  },
+  {
+    "id": "DEC-0153",
+    "project_id": "test_1074f613",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.595561+00:00"
+  },
+  {
+    "id": "DEC-0154",
+    "project_id": "test_1074f613",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.606019+00:00"
+  },
+  {
+    "id": "DEC-0155",
+    "project_id": "test_6ee654c8",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.619620+00:00"
+  },
+  {
+    "id": "DEC-0156",
+    "project_id": "test_92e6b3d6",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.636361+00:00"
+  },
+  {
+    "id": "DEC-0157",
+    "project_id": "test_0632f14b",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.647809+00:00"
+  },
+  {
+    "id": "DEC-0158",
+    "project_id": "other_8d0e71cb",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.657442+00:00"
+  },
+  {
+    "id": "DEC-0159",
+    "project_id": "test_fd63da44",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.669595+00:00"
+  },
+  {
+    "id": "DEC-0160",
+    "project_id": "test_fd63da44",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.680092+00:00"
+  },
+  {
+    "id": "DEC-0161",
+    "project_id": "test_fd63da44",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.691274+00:00"
+  },
+  {
+    "id": "DEC-0162",
+    "project_id": "test_fd63da44",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.701635+00:00"
+  },
+  {
+    "id": "DEC-0163",
+    "project_id": "test_fd63da44",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.712385+00:00"
+  },
+  {
+    "id": "DEC-0164",
+    "project_id": "test_fd63da44",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.723598+00:00"
+  },
+  {
+    "id": "DEC-0165",
+    "project_id": "test_fd63da44",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.733492+00:00"
+  },
+  {
+    "id": "DEC-0166",
+    "project_id": "test_fd63da44",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.743982+00:00"
+  },
+  {
+    "id": "DEC-0167",
+    "project_id": "test_bbe9e730",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.756278+00:00"
+  },
+  {
+    "id": "DEC-0168",
+    "project_id": "test_bbe9e730",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.765725+00:00"
+  },
+  {
+    "id": "DEC-0169",
+    "project_id": "test_bbe9e730",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.774309+00:00"
+  },
+  {
+    "id": "DEC-0170",
+    "project_id": "test_bbe9e730",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.786730+00:00"
+  },
+  {
+    "id": "DEC-0171",
+    "project_id": "test_bbe9e730",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.797459+00:00"
+  },
+  {
+    "id": "DEC-0172",
+    "project_id": "test_bbe9e730",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.807621+00:00"
+  },
+  {
+    "id": "DEC-0173",
+    "project_id": "test_bbe9e730",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.818762+00:00"
+  },
+  {
+    "id": "DEC-0174",
+    "project_id": "test_bbe9e730",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:20:17.832644+00:00"
+  },
+  {
+    "id": "DEC-0175",
+    "project_id": "test_9428c872",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.470574+00:00"
+  },
+  {
+    "id": "DEC-0176",
+    "project_id": "test_59ed1216",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.489432+00:00"
+  },
+  {
+    "id": "DEC-0177",
+    "project_id": "test_59ed1216",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.501703+00:00"
+  },
+  {
+    "id": "DEC-0178",
+    "project_id": "test_ebb30323",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.518787+00:00"
+  },
+  {
+    "id": "DEC-0179",
+    "project_id": "test_e6928f15",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.534808+00:00"
+  },
+  {
+    "id": "DEC-0180",
+    "project_id": "test_2c1280ad",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.545936+00:00"
+  },
+  {
+    "id": "DEC-0181",
+    "project_id": "other_72b2ab7b",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.557755+00:00"
+  },
+  {
+    "id": "DEC-0182",
+    "project_id": "test_e6bc8095",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.570774+00:00"
+  },
+  {
+    "id": "DEC-0183",
+    "project_id": "test_e6bc8095",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.581120+00:00"
+  },
+  {
+    "id": "DEC-0184",
+    "project_id": "test_e6bc8095",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.591616+00:00"
+  },
+  {
+    "id": "DEC-0185",
+    "project_id": "test_e6bc8095",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.602649+00:00"
+  },
+  {
+    "id": "DEC-0186",
+    "project_id": "test_e6bc8095",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.612858+00:00"
+  },
+  {
+    "id": "DEC-0187",
+    "project_id": "test_e6bc8095",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.622898+00:00"
+  },
+  {
+    "id": "DEC-0188",
+    "project_id": "test_e6bc8095",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.632904+00:00"
+  },
+  {
+    "id": "DEC-0189",
+    "project_id": "test_e6bc8095",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.643482+00:00"
+  },
+  {
+    "id": "DEC-0190",
+    "project_id": "test_9dd7ee09",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.656785+00:00"
+  },
+  {
+    "id": "DEC-0191",
+    "project_id": "test_9dd7ee09",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.670019+00:00"
+  },
+  {
+    "id": "DEC-0192",
+    "project_id": "test_9dd7ee09",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.681736+00:00"
+  },
+  {
+    "id": "DEC-0193",
+    "project_id": "test_9dd7ee09",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.692295+00:00"
+  },
+  {
+    "id": "DEC-0194",
+    "project_id": "test_9dd7ee09",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.703099+00:00"
+  },
+  {
+    "id": "DEC-0195",
+    "project_id": "test_9dd7ee09",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.716226+00:00"
+  },
+  {
+    "id": "DEC-0196",
+    "project_id": "test_9dd7ee09",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.726338+00:00"
+  },
+  {
+    "id": "DEC-0197",
+    "project_id": "test_9dd7ee09",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:25:35.737442+00:00"
+  },
+  {
+    "id": "DEC-0198",
+    "project_id": "test_c1de4129",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.521073+00:00"
+  },
+  {
+    "id": "DEC-0199",
+    "project_id": "test_d8afc6e7",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.533889+00:00"
+  },
+  {
+    "id": "DEC-0200",
+    "project_id": "test_d8afc6e7",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.545009+00:00"
+  },
+  {
+    "id": "DEC-0201",
+    "project_id": "test_5781719a",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.556320+00:00"
+  },
+  {
+    "id": "DEC-0202",
+    "project_id": "test_00a546ad",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.569820+00:00"
+  },
+  {
+    "id": "DEC-0203",
+    "project_id": "test_bfc0aabe",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.582923+00:00"
+  },
+  {
+    "id": "DEC-0204",
+    "project_id": "other_b95c8e90",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.594517+00:00"
+  },
+  {
+    "id": "DEC-0205",
+    "project_id": "test_b53842da",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.606006+00:00"
+  },
+  {
+    "id": "DEC-0206",
+    "project_id": "test_b53842da",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.617036+00:00"
+  },
+  {
+    "id": "DEC-0207",
+    "project_id": "test_b53842da",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.630885+00:00"
+  },
+  {
+    "id": "DEC-0208",
+    "project_id": "test_b53842da",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.642131+00:00"
+  },
+  {
+    "id": "DEC-0209",
+    "project_id": "test_b53842da",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.654543+00:00"
+  },
+  {
+    "id": "DEC-0210",
+    "project_id": "test_b53842da",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.666233+00:00"
+  },
+  {
+    "id": "DEC-0211",
+    "project_id": "test_b53842da",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.676940+00:00"
+  },
+  {
+    "id": "DEC-0212",
+    "project_id": "test_b53842da",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.686034+00:00"
+  },
+  {
+    "id": "DEC-0213",
+    "project_id": "test_2481c778",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.696768+00:00"
+  },
+  {
+    "id": "DEC-0214",
+    "project_id": "test_2481c778",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.706219+00:00"
+  },
+  {
+    "id": "DEC-0215",
+    "project_id": "test_2481c778",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.721423+00:00"
+  },
+  {
+    "id": "DEC-0216",
+    "project_id": "test_2481c778",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.732457+00:00"
+  },
+  {
+    "id": "DEC-0217",
+    "project_id": "test_2481c778",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.743024+00:00"
+  },
+  {
+    "id": "DEC-0218",
+    "project_id": "test_2481c778",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.752841+00:00"
+  },
+  {
+    "id": "DEC-0219",
+    "project_id": "test_2481c778",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.763106+00:00"
+  },
+  {
+    "id": "DEC-0220",
+    "project_id": "test_2481c778",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T21:32:18.773680+00:00"
+  },
+  {
+    "id": "DEC-0221",
+    "project_id": "test_7da57465",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.463801+00:00"
+  },
+  {
+    "id": "DEC-0222",
+    "project_id": "test_c1ac7c97",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.480714+00:00"
+  },
+  {
+    "id": "DEC-0223",
+    "project_id": "test_c1ac7c97",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.494005+00:00"
+  },
+  {
+    "id": "DEC-0224",
+    "project_id": "test_bbf8b391",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.509645+00:00"
+  },
+  {
+    "id": "DEC-0225",
+    "project_id": "test_15d50c30",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.526653+00:00"
+  },
+  {
+    "id": "DEC-0226",
+    "project_id": "test_36e16871",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.540391+00:00"
+  },
+  {
+    "id": "DEC-0227",
+    "project_id": "other_af01aab3",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.552990+00:00"
+  },
+  {
+    "id": "DEC-0228",
+    "project_id": "test_ba8aeaf4",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.568020+00:00"
+  },
+  {
+    "id": "DEC-0229",
+    "project_id": "test_ba8aeaf4",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.580771+00:00"
+  },
+  {
+    "id": "DEC-0230",
+    "project_id": "test_ba8aeaf4",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.594952+00:00"
+  },
+  {
+    "id": "DEC-0231",
+    "project_id": "test_ba8aeaf4",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.609105+00:00"
+  },
+  {
+    "id": "DEC-0232",
+    "project_id": "test_ba8aeaf4",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.624433+00:00"
+  },
+  {
+    "id": "DEC-0233",
+    "project_id": "test_ba8aeaf4",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.639037+00:00"
+  },
+  {
+    "id": "DEC-0234",
+    "project_id": "test_ba8aeaf4",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.653184+00:00"
+  },
+  {
+    "id": "DEC-0235",
+    "project_id": "test_ba8aeaf4",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.670368+00:00"
+  },
+  {
+    "id": "DEC-0236",
+    "project_id": "test_f7b2c259",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.688870+00:00"
+  },
+  {
+    "id": "DEC-0237",
+    "project_id": "test_f7b2c259",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.703963+00:00"
+  },
+  {
+    "id": "DEC-0238",
+    "project_id": "test_f7b2c259",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.719818+00:00"
+  },
+  {
+    "id": "DEC-0239",
+    "project_id": "test_f7b2c259",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.732359+00:00"
+  },
+  {
+    "id": "DEC-0240",
+    "project_id": "test_f7b2c259",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.746958+00:00"
+  },
+  {
+    "id": "DEC-0241",
+    "project_id": "test_f7b2c259",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.761004+00:00"
+  },
+  {
+    "id": "DEC-0242",
+    "project_id": "test_f7b2c259",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.773679+00:00"
+  },
+  {
+    "id": "DEC-0243",
+    "project_id": "test_f7b2c259",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T22:54:23.786703+00:00"
+  },
+  {
+    "id": "DEC-0244",
+    "project_id": "test_47a3f024",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.132035+00:00"
+  },
+  {
+    "id": "DEC-0245",
+    "project_id": "test_51f3cd91",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.153290+00:00"
+  },
+  {
+    "id": "DEC-0246",
+    "project_id": "test_51f3cd91",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.168058+00:00"
+  },
+  {
+    "id": "DEC-0247",
+    "project_id": "test_c608b791",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.183855+00:00"
+  },
+  {
+    "id": "DEC-0248",
+    "project_id": "test_7019b3d0",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.205420+00:00"
+  },
+  {
+    "id": "DEC-0249",
+    "project_id": "test_19ebc233",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.224748+00:00"
+  },
+  {
+    "id": "DEC-0250",
+    "project_id": "other_9f78241d",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.242349+00:00"
+  },
+  {
+    "id": "DEC-0251",
+    "project_id": "test_8d84e471",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.255368+00:00"
+  },
+  {
+    "id": "DEC-0252",
+    "project_id": "test_8d84e471",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.269050+00:00"
+  },
+  {
+    "id": "DEC-0253",
+    "project_id": "test_8d84e471",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.283626+00:00"
+  },
+  {
+    "id": "DEC-0254",
+    "project_id": "test_8d84e471",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.299324+00:00"
+  },
+  {
+    "id": "DEC-0255",
+    "project_id": "test_8d84e471",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.314109+00:00"
+  },
+  {
+    "id": "DEC-0256",
+    "project_id": "test_8d84e471",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.326049+00:00"
+  },
+  {
+    "id": "DEC-0257",
+    "project_id": "test_8d84e471",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.338938+00:00"
+  },
+  {
+    "id": "DEC-0258",
+    "project_id": "test_8d84e471",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.354644+00:00"
+  },
+  {
+    "id": "DEC-0259",
+    "project_id": "test_81b8e7bb",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.371249+00:00"
+  },
+  {
+    "id": "DEC-0260",
+    "project_id": "test_81b8e7bb",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.387637+00:00"
+  },
+  {
+    "id": "DEC-0261",
+    "project_id": "test_81b8e7bb",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.407371+00:00"
+  },
+  {
+    "id": "DEC-0262",
+    "project_id": "test_81b8e7bb",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.423170+00:00"
+  },
+  {
+    "id": "DEC-0263",
+    "project_id": "test_81b8e7bb",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.435044+00:00"
+  },
+  {
+    "id": "DEC-0264",
+    "project_id": "test_81b8e7bb",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.449767+00:00"
+  },
+  {
+    "id": "DEC-0265",
+    "project_id": "test_81b8e7bb",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.481796+00:00"
+  },
+  {
+    "id": "DEC-0266",
+    "project_id": "test_81b8e7bb",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:07:28.495990+00:00"
+  },
+  {
+    "id": "DEC-0267",
+    "project_id": "test_872875f9",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.301582+00:00"
+  },
+  {
+    "id": "DEC-0268",
+    "project_id": "test_9a4b5349",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.326511+00:00"
+  },
+  {
+    "id": "DEC-0269",
+    "project_id": "test_9a4b5349",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.343740+00:00"
+  },
+  {
+    "id": "DEC-0270",
+    "project_id": "test_92f47a99",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.368757+00:00"
+  },
+  {
+    "id": "DEC-0271",
+    "project_id": "test_04bde291",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.390174+00:00"
+  },
+  {
+    "id": "DEC-0272",
+    "project_id": "test_a7459239",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.474263+00:00"
+  },
+  {
+    "id": "DEC-0273",
+    "project_id": "other_85849766",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.495240+00:00"
+  },
+  {
+    "id": "DEC-0274",
+    "project_id": "test_9bbc081b",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.514694+00:00"
+  },
+  {
+    "id": "DEC-0275",
+    "project_id": "test_9bbc081b",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.532390+00:00"
+  },
+  {
+    "id": "DEC-0276",
+    "project_id": "test_9bbc081b",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.548907+00:00"
+  },
+  {
+    "id": "DEC-0277",
+    "project_id": "test_9bbc081b",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.564832+00:00"
+  },
+  {
+    "id": "DEC-0278",
+    "project_id": "test_9bbc081b",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.581437+00:00"
+  },
+  {
+    "id": "DEC-0279",
+    "project_id": "test_9bbc081b",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.597886+00:00"
+  },
+  {
+    "id": "DEC-0280",
+    "project_id": "test_9bbc081b",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.612458+00:00"
+  },
+  {
+    "id": "DEC-0281",
+    "project_id": "test_9bbc081b",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.627144+00:00"
+  },
+  {
+    "id": "DEC-0282",
+    "project_id": "test_851871c3",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.644282+00:00"
+  },
+  {
+    "id": "DEC-0283",
+    "project_id": "test_851871c3",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.705713+00:00"
+  },
+  {
+    "id": "DEC-0284",
+    "project_id": "test_851871c3",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.720522+00:00"
+  },
+  {
+    "id": "DEC-0285",
+    "project_id": "test_851871c3",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.734838+00:00"
+  },
+  {
+    "id": "DEC-0286",
+    "project_id": "test_851871c3",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.747912+00:00"
+  },
+  {
+    "id": "DEC-0287",
+    "project_id": "test_851871c3",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.765036+00:00"
+  },
+  {
+    "id": "DEC-0288",
+    "project_id": "test_851871c3",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.779246+00:00"
+  },
+  {
+    "id": "DEC-0289",
+    "project_id": "test_851871c3",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-26T23:17:24.793623+00:00"
+  },
+  {
+    "id": "DEC-0290",
+    "project_id": "test_9debd572",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.156443+00:00"
+  },
+  {
+    "id": "DEC-0291",
+    "project_id": "test_5c36f37b",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.181628+00:00"
+  },
+  {
+    "id": "DEC-0292",
+    "project_id": "test_5c36f37b",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.199205+00:00"
+  },
+  {
+    "id": "DEC-0293",
+    "project_id": "test_8424ea98",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.218864+00:00"
+  },
+  {
+    "id": "DEC-0294",
+    "project_id": "test_19926a1c",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.241780+00:00"
+  },
+  {
+    "id": "DEC-0295",
+    "project_id": "test_27d2c664",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.261764+00:00"
+  },
+  {
+    "id": "DEC-0296",
+    "project_id": "other_b4657310",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.278621+00:00"
+  },
+  {
+    "id": "DEC-0297",
+    "project_id": "test_b21b7080",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.299124+00:00"
+  },
+  {
+    "id": "DEC-0298",
+    "project_id": "test_b21b7080",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.315825+00:00"
+  },
+  {
+    "id": "DEC-0299",
+    "project_id": "test_b21b7080",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.332454+00:00"
+  },
+  {
+    "id": "DEC-0300",
+    "project_id": "test_b21b7080",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.350861+00:00"
+  },
+  {
+    "id": "DEC-0301",
+    "project_id": "test_b21b7080",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.367227+00:00"
+  },
+  {
+    "id": "DEC-0302",
+    "project_id": "test_b21b7080",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.386128+00:00"
+  },
+  {
+    "id": "DEC-0303",
+    "project_id": "test_b21b7080",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.403853+00:00"
+  },
+  {
+    "id": "DEC-0304",
+    "project_id": "test_b21b7080",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.419769+00:00"
+  },
+  {
+    "id": "DEC-0305",
+    "project_id": "test_d98f99cf",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.440966+00:00"
+  },
+  {
+    "id": "DEC-0306",
+    "project_id": "test_d98f99cf",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.458297+00:00"
+  },
+  {
+    "id": "DEC-0307",
+    "project_id": "test_d98f99cf",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.477605+00:00"
+  },
+  {
+    "id": "DEC-0308",
+    "project_id": "test_d98f99cf",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.495173+00:00"
+  },
+  {
+    "id": "DEC-0309",
+    "project_id": "test_d98f99cf",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.515269+00:00"
+  },
+  {
+    "id": "DEC-0310",
+    "project_id": "test_d98f99cf",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.535764+00:00"
+  },
+  {
+    "id": "DEC-0311",
+    "project_id": "test_d98f99cf",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.554222+00:00"
+  },
+  {
+    "id": "DEC-0312",
+    "project_id": "test_d98f99cf",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:42:41.572556+00:00"
+  },
+  {
+    "id": "DEC-0313",
+    "project_id": "test_830fe765",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.086423+00:00"
+  },
+  {
+    "id": "DEC-0314",
+    "project_id": "test_98c87b11",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.108649+00:00"
+  },
+  {
+    "id": "DEC-0315",
+    "project_id": "test_98c87b11",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.125497+00:00"
+  },
+  {
+    "id": "DEC-0316",
+    "project_id": "test_3e28bdf0",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.147124+00:00"
+  },
+  {
+    "id": "DEC-0317",
+    "project_id": "test_23221125",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.170600+00:00"
+  },
+  {
+    "id": "DEC-0318",
+    "project_id": "test_c13ad275",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.195005+00:00"
+  },
+  {
+    "id": "DEC-0319",
+    "project_id": "other_9e23cbca",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.213729+00:00"
+  },
+  {
+    "id": "DEC-0320",
+    "project_id": "test_a9bdf135",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.236558+00:00"
+  },
+  {
+    "id": "DEC-0321",
+    "project_id": "test_a9bdf135",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.258746+00:00"
+  },
+  {
+    "id": "DEC-0322",
+    "project_id": "test_a9bdf135",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.306831+00:00"
+  },
+  {
+    "id": "DEC-0323",
+    "project_id": "test_a9bdf135",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.325822+00:00"
+  },
+  {
+    "id": "DEC-0324",
+    "project_id": "test_a9bdf135",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.344232+00:00"
+  },
+  {
+    "id": "DEC-0325",
+    "project_id": "test_a9bdf135",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.363338+00:00"
+  },
+  {
+    "id": "DEC-0326",
+    "project_id": "test_a9bdf135",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.382104+00:00"
+  },
+  {
+    "id": "DEC-0327",
+    "project_id": "test_a9bdf135",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.437306+00:00"
+  },
+  {
+    "id": "DEC-0328",
+    "project_id": "test_4654b45c",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.458976+00:00"
+  },
+  {
+    "id": "DEC-0329",
+    "project_id": "test_4654b45c",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.479201+00:00"
+  },
+  {
+    "id": "DEC-0330",
+    "project_id": "test_4654b45c",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.553201+00:00"
+  },
+  {
+    "id": "DEC-0331",
+    "project_id": "test_4654b45c",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.572813+00:00"
+  },
+  {
+    "id": "DEC-0332",
+    "project_id": "test_4654b45c",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.597590+00:00"
+  },
+  {
+    "id": "DEC-0333",
+    "project_id": "test_4654b45c",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.615697+00:00"
+  },
+  {
+    "id": "DEC-0334",
+    "project_id": "test_4654b45c",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.634368+00:00"
+  },
+  {
+    "id": "DEC-0335",
+    "project_id": "test_4654b45c",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:46:50.654335+00:00"
+  },
+  {
+    "id": "DEC-0336",
+    "project_id": "test_054cd764",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.121315+00:00"
+  },
+  {
+    "id": "DEC-0337",
+    "project_id": "test_4bab2346",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.150473+00:00"
+  },
+  {
+    "id": "DEC-0338",
+    "project_id": "test_4bab2346",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.172131+00:00"
+  },
+  {
+    "id": "DEC-0339",
+    "project_id": "test_3ef61cf6",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.198089+00:00"
+  },
+  {
+    "id": "DEC-0340",
+    "project_id": "test_d6b1aaaa",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.225982+00:00"
+  },
+  {
+    "id": "DEC-0341",
+    "project_id": "test_64d8b1ad",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.246344+00:00"
+  },
+  {
+    "id": "DEC-0342",
+    "project_id": "other_36d70c2f",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.265968+00:00"
+  },
+  {
+    "id": "DEC-0343",
+    "project_id": "test_d4c664ad",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.286549+00:00"
+  },
+  {
+    "id": "DEC-0344",
+    "project_id": "test_d4c664ad",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.337766+00:00"
+  },
+  {
+    "id": "DEC-0345",
+    "project_id": "test_d4c664ad",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.355692+00:00"
+  },
+  {
+    "id": "DEC-0346",
+    "project_id": "test_d4c664ad",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.374420+00:00"
+  },
+  {
+    "id": "DEC-0347",
+    "project_id": "test_d4c664ad",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.394267+00:00"
+  },
+  {
+    "id": "DEC-0348",
+    "project_id": "test_d4c664ad",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.413093+00:00"
+  },
+  {
+    "id": "DEC-0349",
+    "project_id": "test_d4c664ad",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.430798+00:00"
+  },
+  {
+    "id": "DEC-0350",
+    "project_id": "test_d4c664ad",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.450842+00:00"
+  },
+  {
+    "id": "DEC-0351",
+    "project_id": "test_77712851",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.474284+00:00"
+  },
+  {
+    "id": "DEC-0352",
+    "project_id": "test_77712851",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.545935+00:00"
+  },
+  {
+    "id": "DEC-0353",
+    "project_id": "test_77712851",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.568090+00:00"
+  },
+  {
+    "id": "DEC-0354",
+    "project_id": "test_77712851",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.591799+00:00"
+  },
+  {
+    "id": "DEC-0355",
+    "project_id": "test_77712851",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.613541+00:00"
+  },
+  {
+    "id": "DEC-0356",
+    "project_id": "test_77712851",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.679943+00:00"
+  },
+  {
+    "id": "DEC-0357",
+    "project_id": "test_77712851",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.698903+00:00"
+  },
+  {
+    "id": "DEC-0358",
+    "project_id": "test_77712851",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T00:49:05.718896+00:00"
+  },
+  {
+    "id": "DEC-0359",
+    "project_id": "test_6a2ae0ea",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.696943+00:00"
+  },
+  {
+    "id": "DEC-0360",
+    "project_id": "test_d56b3697",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.713191+00:00"
+  },
+  {
+    "id": "DEC-0361",
+    "project_id": "test_d56b3697",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.728443+00:00"
+  },
+  {
+    "id": "DEC-0362",
+    "project_id": "test_c29c48bd",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.743553+00:00"
+  },
+  {
+    "id": "DEC-0363",
+    "project_id": "test_577e344c",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.762853+00:00"
+  },
+  {
+    "id": "DEC-0364",
+    "project_id": "test_89c16fa8",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.779826+00:00"
+  },
+  {
+    "id": "DEC-0365",
+    "project_id": "other_90ba0297",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.791261+00:00"
+  },
+  {
+    "id": "DEC-0366",
+    "project_id": "test_fab9e7e9",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.806217+00:00"
+  },
+  {
+    "id": "DEC-0367",
+    "project_id": "test_fab9e7e9",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.818864+00:00"
+  },
+  {
+    "id": "DEC-0368",
+    "project_id": "test_fab9e7e9",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.834482+00:00"
+  },
+  {
+    "id": "DEC-0369",
+    "project_id": "test_fab9e7e9",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.847537+00:00"
+  },
+  {
+    "id": "DEC-0370",
+    "project_id": "test_fab9e7e9",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.863598+00:00"
+  },
+  {
+    "id": "DEC-0371",
+    "project_id": "test_fab9e7e9",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.882469+00:00"
+  },
+  {
+    "id": "DEC-0372",
+    "project_id": "test_fab9e7e9",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.897856+00:00"
+  },
+  {
+    "id": "DEC-0373",
+    "project_id": "test_fab9e7e9",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.913176+00:00"
+  },
+  {
+    "id": "DEC-0374",
+    "project_id": "test_ee36c2fc",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.929364+00:00"
+  },
+  {
+    "id": "DEC-0375",
+    "project_id": "test_ee36c2fc",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.942488+00:00"
+  },
+  {
+    "id": "DEC-0376",
+    "project_id": "test_ee36c2fc",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.960765+00:00"
+  },
+  {
+    "id": "DEC-0377",
+    "project_id": "test_ee36c2fc",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.975423+00:00"
+  },
+  {
+    "id": "DEC-0378",
+    "project_id": "test_ee36c2fc",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:52.987874+00:00"
+  },
+  {
+    "id": "DEC-0379",
+    "project_id": "test_ee36c2fc",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:53.000790+00:00"
+  },
+  {
+    "id": "DEC-0380",
+    "project_id": "test_ee36c2fc",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:53.014351+00:00"
+  },
+  {
+    "id": "DEC-0381",
+    "project_id": "test_ee36c2fc",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:29:53.029334+00:00"
+  },
+  {
+    "id": "DEC-0382",
+    "project_id": "test_809eaed7",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "Relational data with ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.549993+00:00"
+  },
+  {
+    "id": "DEC-0383",
+    "project_id": "test_6a138672",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.565879+00:00"
+  },
+  {
+    "id": "DEC-0384",
+    "project_id": "test_6a138672",
+    "question": "Which frontend framework?",
+    "alternatives": [
+      "React",
+      "Vue"
+    ],
+    "decision": "React",
+    "reason": "Team familiarity",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.579237+00:00"
+  },
+  {
+    "id": "DEC-0385",
+    "project_id": "test_a46ca79f",
+    "question": "Which database should we use?",
+    "alternatives": [
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    "decision": "PostgreSQL",
+    "reason": "ACID transactions required",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.596347+00:00"
+  },
+  {
+    "id": "DEC-0386",
+    "project_id": "test_99b608d0",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.613509+00:00"
+  },
+  {
+    "id": "DEC-0387",
+    "project_id": "test_1b0b2b10",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.627825+00:00"
+  },
+  {
+    "id": "DEC-0388",
+    "project_id": "other_ad141303",
+    "question": "Question 99",
+    "alternatives": [
+      "Option 99A",
+      "Option 99B"
+    ],
+    "decision": "Decision 99",
+    "reason": "Reason 99",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.639818+00:00"
+  },
+  {
+    "id": "DEC-0389",
+    "project_id": "test_cffc3eed",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.654275+00:00"
+  },
+  {
+    "id": "DEC-0390",
+    "project_id": "test_cffc3eed",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.669690+00:00"
+  },
+  {
+    "id": "DEC-0391",
+    "project_id": "test_cffc3eed",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.685894+00:00"
+  },
+  {
+    "id": "DEC-0392",
+    "project_id": "test_cffc3eed",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.697195+00:00"
+  },
+  {
+    "id": "DEC-0393",
+    "project_id": "test_cffc3eed",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.709916+00:00"
+  },
+  {
+    "id": "DEC-0394",
+    "project_id": "test_cffc3eed",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.724434+00:00"
+  },
+  {
+    "id": "DEC-0395",
+    "project_id": "test_cffc3eed",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.737746+00:00"
+  },
+  {
+    "id": "DEC-0396",
+    "project_id": "test_cffc3eed",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.749502+00:00"
+  },
+  {
+    "id": "DEC-0397",
+    "project_id": "test_0a2dc875",
+    "question": "Question 1",
+    "alternatives": [
+      "Option 1A",
+      "Option 1B"
+    ],
+    "decision": "Decision 1",
+    "reason": "Reason 1",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.764144+00:00"
+  },
+  {
+    "id": "DEC-0398",
+    "project_id": "test_0a2dc875",
+    "question": "Question 2",
+    "alternatives": [
+      "Option 2A",
+      "Option 2B"
+    ],
+    "decision": "Decision 2",
+    "reason": "Reason 2",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.776427+00:00"
+  },
+  {
+    "id": "DEC-0399",
+    "project_id": "test_0a2dc875",
+    "question": "Question 3",
+    "alternatives": [
+      "Option 3A",
+      "Option 3B"
+    ],
+    "decision": "Decision 3",
+    "reason": "Reason 3",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.789665+00:00"
+  },
+  {
+    "id": "DEC-0400",
+    "project_id": "test_0a2dc875",
+    "question": "Question 4",
+    "alternatives": [
+      "Option 4A",
+      "Option 4B"
+    ],
+    "decision": "Decision 4",
+    "reason": "Reason 4",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.803256+00:00"
+  },
+  {
+    "id": "DEC-0401",
+    "project_id": "test_0a2dc875",
+    "question": "Question 5",
+    "alternatives": [
+      "Option 5A",
+      "Option 5B"
+    ],
+    "decision": "Decision 5",
+    "reason": "Reason 5",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.816257+00:00"
+  },
+  {
+    "id": "DEC-0402",
+    "project_id": "test_0a2dc875",
+    "question": "Question 6",
+    "alternatives": [
+      "Option 6A",
+      "Option 6B"
+    ],
+    "decision": "Decision 6",
+    "reason": "Reason 6",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.829906+00:00"
+  },
+  {
+    "id": "DEC-0403",
+    "project_id": "test_0a2dc875",
+    "question": "Question 7",
+    "alternatives": [
+      "Option 7A",
+      "Option 7B"
+    ],
+    "decision": "Decision 7",
+    "reason": "Reason 7",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.843517+00:00"
+  },
+  {
+    "id": "DEC-0404",
+    "project_id": "test_0a2dc875",
+    "question": "Question 8",
+    "alternatives": [
+      "Option 8A",
+      "Option 8B"
+    ],
+    "decision": "Decision 8",
+    "reason": "Reason 8",
+    "source": "plan_agent",
+    "timestamp": "2026-09-27T01:38:02.856707+00:00"
+  }
+]

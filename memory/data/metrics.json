@@ -1,0 +1,2266 @@
+[
+  {
+    "project_id": "proj-devforge-001",
+    "event_type": "planning_time",
+    "value": 42.5,
+    "timestamp": "2026-09-26T18:31:53.943660Z"
+  },
+  {
+    "project_id": "proj-devforge-001",
+    "event_type": "test_passed",
+    "value": 1.0,
+    "timestamp": "2026-09-26T18:31:53.944444Z"
+  },
+  {
+    "project_id": "proj-devforge-001",
+    "event_type": "security_finding",
+    "value": 2.0,
+    "timestamp": "2026-09-26T18:31:53.950012Z"
+  },
+  {
+    "project_id": "test_76a0a848",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T19:27:49.506828+00:00"
+  },
+  {
+    "project_id": "test_76a0a848",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T19:27:49.508953+00:00"
+  },
+  {
+    "project_id": "test_76a0a848",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T19:27:49.515645+00:00"
+  },
+  {
+    "project_id": "test_76a0a848",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T19:27:49.523326+00:00"
+  },
+  {
+    "project_id": "test_76a0a848",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T19:27:49.531390+00:00"
+  },
+  {
+    "project_id": "test_76a0a848",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T19:27:49.540714+00:00"
+  },
+  {
+    "project_id": "test_c1676b01",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T19:27:49.556488+00:00"
+  },
+  {
+    "project_id": "other_b06761e8",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T19:27:49.557039+00:00"
+  },
+  {
+    "project_id": "test_2f6ed48d",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T19:27:49.574087+00:00"
+  },
+  {
+    "project_id": "test_2f6ed48d",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T19:27:49.574832+00:00"
+  },
+  {
+    "project_id": "test_2f6ed48d",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T19:27:49.582837+00:00"
+  },
+  {
+    "project_id": "test_fd6705a9",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T19:28:48.496547+00:00"
+  },
+  {
+    "project_id": "test_fd6705a9",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T19:28:48.497741+00:00"
+  },
+  {
+    "project_id": "test_fd6705a9",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T19:28:48.506462+00:00"
+  },
+  {
+    "project_id": "test_fd6705a9",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T19:28:48.516953+00:00"
+  },
+  {
+    "project_id": "test_fd6705a9",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T19:28:48.525286+00:00"
+  },
+  {
+    "project_id": "test_fd6705a9",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T19:28:48.533358+00:00"
+  },
+  {
+    "project_id": "test_0a12f5ef",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T19:28:48.551090+00:00"
+  },
+  {
+    "project_id": "other_6306bc75",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T19:28:48.552198+00:00"
+  },
+  {
+    "project_id": "test_f2921eba",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T19:28:48.569356+00:00"
+  },
+  {
+    "project_id": "test_f2921eba",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T19:28:48.570038+00:00"
+  },
+  {
+    "project_id": "test_f2921eba",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T19:28:48.580827+00:00"
+  },
+  {
+    "project_id": "test_018c796e",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T20:38:32.663598+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_018c796e",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T20:38:32.665073+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_018c796e",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T20:38:32.674946+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_018c796e",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:38:32.683067+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_018c796e",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:38:32.693824+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_018c796e",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:38:32.702980+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_ccb0f4be",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T20:38:32.721831+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_26dbde0d",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T20:38:32.722683+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_f0464e0f",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-26T20:38:32.744781+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_f0464e0f",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T20:38:32.745465+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_06c09b35",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-26T20:38:32.763441+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a209ec6b",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T20:38:32.776633+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a209ec6b",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T20:38:32.777380+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a209ec6b",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:38:32.786097+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_25efc08a",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-26T20:38:32.806958+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_b09addde",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:38:32.820217+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_43937aaf",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:38:32.829539+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_a2962d26",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T20:46:49.049248+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a2962d26",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T20:46:49.059732+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a2962d26",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T20:46:49.069247+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a2962d26",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:46:49.077918+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a2962d26",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:46:49.088493+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a2962d26",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:46:49.097458+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_109ae6d7",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T20:46:49.113994+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_f00ee516",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T20:46:49.114697+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c916875c",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-26T20:46:49.138245+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c916875c",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T20:46:49.139489+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_9a27763b",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-26T20:46:49.160538+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_28fc2da0",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T20:46:49.171133+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_28fc2da0",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T20:46:49.171951+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_28fc2da0",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:46:49.181057+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_5621bce3",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-26T20:46:49.197278+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_9bf340f0",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:46:49.210513+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_5e2fc11e",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:46:49.222880+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_fcaf80ec",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T20:51:54.951269+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fcaf80ec",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T20:51:54.952721+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fcaf80ec",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T20:51:54.961962+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fcaf80ec",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:51:54.968234+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fcaf80ec",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:51:54.977836+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fcaf80ec",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:51:54.984312+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fc0239ed",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T20:51:54.999827+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_17eb52d3",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T20:51:55.000742+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_f775b309",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-26T20:51:55.015326+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_f775b309",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T20:51:55.016609+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_715f0f25",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-26T20:51:55.032007+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_17596283",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T20:51:55.041479+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_17596283",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T20:51:55.042609+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_17596283",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:51:55.052309+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_e633a05c",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-26T20:51:55.070175+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_f17c8ce7",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:51:55.082481+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_6fdb57ac",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:51:55.094478+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_6b14c616",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T20:55:09.606790+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_6b14c616",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T20:55:09.607976+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_6b14c616",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T20:55:09.615767+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_6b14c616",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:55:09.626610+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_6b14c616",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:55:09.635187+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_6b14c616",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:55:09.643339+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_6a4a2286",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T20:55:09.662016+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_394b2a5f",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T20:55:09.662974+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_44311984",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-26T20:55:09.680334+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_44311984",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T20:55:09.681435+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_21f5e4da",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-26T20:55:09.697556+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_65bad5fb",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T20:55:09.708257+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_65bad5fb",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T20:55:09.710416+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_65bad5fb",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:55:09.717398+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_23f349a1",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-26T20:55:09.733823+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_82c4d78c",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:55:09.745709+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_812a54d5",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T20:55:09.755235+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_c89cfc97",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T21:03:02.793014+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c89cfc97",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T21:03:02.794646+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c89cfc97",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T21:03:02.813532+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c89cfc97",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:03:02.825482+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c89cfc97",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:03:02.833849+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c89cfc97",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:03:02.843114+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_662f2bad",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T21:03:02.863756+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_0f245511",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T21:03:02.864901+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_635edb7e",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-26T21:03:02.883694+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_635edb7e",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T21:03:02.884765+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_3b9be276",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-26T21:03:02.902448+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a273f771",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T21:03:02.915442+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a273f771",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T21:03:02.916671+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a273f771",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:03:02.925392+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_0335fd6b",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-26T21:03:02.945168+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_15ca8021",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:03:02.957093+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_98e04ebb",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:03:02.967962+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "proj_fd0efdb1",
+    "event_type": "planning_time",
+    "value": 0.002,
+    "timestamp": "2026-09-26T21:03:09.116859+00:00",
+    "run_id": "live-proj_fd0efdb1"
+  },
+  {
+    "project_id": "proj_fd0efdb1",
+    "event_type": "implementation_time",
+    "value": 0.0,
+    "timestamp": "2026-09-26T21:03:09.161617+00:00",
+    "run_id": "live-proj_fd0efdb1"
+  },
+  {
+    "project_id": "proj_fd0efdb1",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:03:09.462554+00:00",
+    "run_id": "live-proj_fd0efdb1"
+  },
+  {
+    "project_id": "proj_fd0efdb1",
+    "event_type": "testing_time",
+    "value": 1.437,
+    "timestamp": "2026-09-26T21:03:10.611759+00:00",
+    "run_id": "live-proj_fd0efdb1"
+  },
+  {
+    "project_id": "proj_fd0efdb1",
+    "event_type": "test_passed",
+    "value": 17.0,
+    "timestamp": "2026-09-26T21:03:10.618252+00:00",
+    "run_id": "live-proj_fd0efdb1"
+  },
+  {
+    "project_id": "proj_fd0efdb1",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T21:03:10.627457+00:00",
+    "run_id": "live-proj_fd0efdb1"
+  },
+  {
+    "project_id": "proj_fd0efdb1",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:03:10.652060+00:00",
+    "run_id": "live-proj_fd0efdb1"
+  },
+  {
+    "project_id": "proj_fd0efdb1",
+    "event_type": "debugging_time",
+    "value": 1.225,
+    "timestamp": "2026-09-26T21:03:11.888075+00:00",
+    "run_id": "live-proj_fd0efdb1"
+  },
+  {
+    "project_id": "proj_fd0efdb1",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:03:11.895918+00:00",
+    "run_id": "live-proj_fd0efdb1"
+  },
+  {
+    "project_id": "proj_fd0efdb1",
+    "event_type": "debugging_time",
+    "value": 0.0,
+    "timestamp": "2026-09-26T21:03:11.909516+00:00",
+    "run_id": "live-proj_fd0efdb1"
+  },
+  {
+    "project_id": "proj_fd0efdb1",
+    "event_type": "testing_time",
+    "value": 1.177,
+    "timestamp": "2026-09-26T21:03:13.099984+00:00",
+    "run_id": "live-proj_fd0efdb1"
+  },
+  {
+    "project_id": "proj_fd0efdb1",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T21:03:13.108576+00:00",
+    "run_id": "live-proj_fd0efdb1"
+  },
+  {
+    "project_id": "proj_fd0efdb1",
+    "event_type": "test_failed",
+    "value": 0.0,
+    "timestamp": "2026-09-26T21:03:13.121387+00:00",
+    "run_id": "live-proj_fd0efdb1"
+  },
+  {
+    "project_id": "test_bf59d756",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T21:14:53.769262+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_bf59d756",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T21:14:53.777135+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_bf59d756",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T21:14:53.789260+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_bf59d756",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:14:53.797580+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_bf59d756",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:14:53.808771+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_bf59d756",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:14:53.817432+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_2b77482b",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T21:14:53.833943+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_18613053",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T21:14:53.835057+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a7acb0fa",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-26T21:14:53.856236+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a7acb0fa",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T21:14:53.857702+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_075f340f",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-26T21:14:53.876130+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_f6f2a96e",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T21:14:53.887685+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_f6f2a96e",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T21:14:53.888978+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_f6f2a96e",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:14:53.898059+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_4d50a474",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-26T21:14:53.919225+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_4f17df31",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:14:53.930810+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_aa2c813a",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:14:53.941880+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_5720f3cb",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T21:20:17.850633+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_5720f3cb",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T21:20:17.853058+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_5720f3cb",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T21:20:17.862560+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_5720f3cb",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:20:17.872922+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_5720f3cb",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:20:17.884735+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_5720f3cb",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:20:17.895098+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_97180953",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T21:20:17.917111+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_e4f878b2",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T21:20:17.918352+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_99bc8fa2",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-26T21:20:17.932890+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_99bc8fa2",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T21:20:17.934264+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_bc2f146a",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-26T21:20:17.955610+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_df878baa",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T21:20:17.967217+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_df878baa",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T21:20:17.968722+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_df878baa",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:20:17.978122+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_70f05f6c",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-26T21:20:17.995108+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_e07864d2",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:20:18.006581+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_84eb9ac1",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:20:18.018333+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_cc826e3d",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T21:25:35.753551+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_cc826e3d",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T21:25:35.756209+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_cc826e3d",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T21:25:35.765111+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_cc826e3d",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:25:35.775108+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_cc826e3d",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:25:35.784928+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_cc826e3d",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:25:35.792920+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_ca11fcfd",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T21:25:35.812640+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_ec2839f7",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T21:25:35.814326+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_abdd44b1",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-26T21:25:35.832946+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_abdd44b1",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T21:25:35.834465+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c6fd74eb",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-26T21:25:35.854161+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_d00b3474",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T21:25:35.866252+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_d00b3474",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T21:25:35.868088+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_d00b3474",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:25:35.877077+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_4f592a36",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-26T21:25:35.895795+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7909efa4",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:25:35.910121+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_4c222f93",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:25:35.920354+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_50bd2f95",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T21:32:18.785546+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_50bd2f95",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T21:32:18.787768+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_50bd2f95",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T21:32:18.797421+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_50bd2f95",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:32:18.809071+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_50bd2f95",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:32:18.818451+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_50bd2f95",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:32:18.829602+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_64ac4e60",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T21:32:18.849884+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_90e8c339",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T21:32:18.852033+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_b87356b1",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-26T21:32:18.874722+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_b87356b1",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T21:32:18.876160+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_2170e262",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-26T21:32:18.894292+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_f47d84d0",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T21:32:18.907992+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_f47d84d0",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T21:32:18.910103+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_f47d84d0",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:32:18.920538+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_6aedefdd",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-26T21:32:18.954064+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_949a2cf0",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:32:18.966124+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_ddd9ea79",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T21:32:18.977384+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_fdc3e2e6",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T22:54:23.801760+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fdc3e2e6",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T22:54:23.814955+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fdc3e2e6",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T22:54:23.827583+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fdc3e2e6",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T22:54:23.837112+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fdc3e2e6",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T22:54:23.850130+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fdc3e2e6",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T22:54:23.859596+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_5d557065",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T22:54:23.884973+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_e343a675",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T22:54:23.887232+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fba8c0b3",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-26T22:54:23.909849+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fba8c0b3",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T22:54:23.911917+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7ea785a7",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-26T22:54:23.932512+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_b97ea4e5",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T22:54:23.948104+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_b97ea4e5",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T22:54:23.950282+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_b97ea4e5",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T22:54:23.961542+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_03ad2452",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-26T22:54:23.991490+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_2832c552",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T22:54:24.007460+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_fcca16d3",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T22:54:24.021021+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_580d7ce4",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T23:07:28.515863+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_580d7ce4",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T23:07:28.520422+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_580d7ce4",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T23:07:28.534250+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_580d7ce4",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T23:07:28.546579+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_580d7ce4",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T23:07:28.557656+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_580d7ce4",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T23:07:28.573153+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7375172c",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T23:07:28.601116+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_ba223402",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T23:07:28.603436+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_752ee7d6",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-26T23:07:28.633923+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_752ee7d6",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T23:07:28.636067+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_021346ee",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-26T23:07:28.663421+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_d5ce1ace",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T23:07:28.680097+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_d5ce1ace",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T23:07:28.687801+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_d5ce1ace",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T23:07:28.702786+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_86887128",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-26T23:07:28.731237+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_fbbe90bb",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T23:07:28.750631+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_e7beac54",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T23:07:28.765649+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_7cc8bdd6",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-26T23:17:24.813641+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7cc8bdd6",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-26T23:17:24.817437+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7cc8bdd6",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-26T23:17:24.832038+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7cc8bdd6",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T23:17:24.844471+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7cc8bdd6",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T23:17:24.856913+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7cc8bdd6",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-26T23:17:24.867175+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a93cb3a7",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-26T23:17:24.938892+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_1fe96af5",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-26T23:17:24.941056+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_2322a216",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-26T23:17:24.966957+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_2322a216",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T23:17:24.970044+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_feb156c6",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-26T23:17:24.995675+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c37be27b",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-26T23:17:25.014209+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c37be27b",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-26T23:17:25.016663+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c37be27b",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-26T23:17:25.033965+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_a52f9f4a",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-26T23:17:25.058539+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_25ae4f0a",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T23:17:25.102226+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_7458dc68",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-26T23:17:25.119022+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_e2fd13f1",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-27T00:42:41.595552+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_e2fd13f1",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-27T00:42:41.601048+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_e2fd13f1",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-27T00:42:41.616288+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_e2fd13f1",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:42:41.630695+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_e2fd13f1",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:42:41.644035+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_e2fd13f1",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:42:41.659149+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_86aaf755",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-27T00:42:41.689121+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_665ba1d3",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-27T00:42:41.692475+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_cc7ffb63",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-27T00:42:41.722851+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_cc7ffb63",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-27T00:42:41.727652+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_826d8f72",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-27T00:42:41.755641+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_248d537d",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-27T00:42:41.775100+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_248d537d",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-27T00:42:41.778576+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_248d537d",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:42:41.793749+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_8cad0ca9",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-27T00:42:41.822058+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_9e368a9f",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:42:41.843617+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_8d4d08ea",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:42:41.862225+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_5e4d0eb7",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-27T00:46:50.678814+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_5e4d0eb7",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-27T00:46:50.730357+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_5e4d0eb7",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-27T00:46:50.744813+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_5e4d0eb7",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:46:50.764464+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_5e4d0eb7",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:46:50.779839+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_5e4d0eb7",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:46:50.796472+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7faeef7c",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-27T00:46:50.828247+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_87cab661",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-27T00:46:50.831912+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_b42d412e",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-27T00:46:50.864183+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_b42d412e",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-27T00:46:50.876126+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_71834301",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-27T00:46:50.907721+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_4e4c912c",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-27T00:46:50.932134+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_4e4c912c",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-27T00:46:50.936258+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_4e4c912c",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:46:50.954627+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_e28a964a",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-27T00:46:50.983552+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_aff0f134",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:46:51.007036+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_6203e909",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:46:51.075779+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_c1856bc3",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-27T00:49:05.741559+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c1856bc3",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-27T00:49:05.745244+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c1856bc3",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-27T00:49:05.762501+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c1856bc3",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:49:05.778350+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c1856bc3",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:49:05.793379+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c1856bc3",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:49:05.848904+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_01412742",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-27T00:49:05.890623+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_647718fa",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-27T00:49:05.897469+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_af787cd1",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-27T00:49:05.934488+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_af787cd1",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-27T00:49:05.939411+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_15aa96ca",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-27T00:49:05.970418+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_dff23c08",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-27T00:49:05.989475+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_dff23c08",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-27T00:49:05.993918+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_dff23c08",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:49:06.008356+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_2ab612f6",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-27T00:49:06.040234+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_23fde301",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:49:06.063317+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_70aa8f1f",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T00:49:06.080281+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_109772a7",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-27T01:29:53.047558+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_109772a7",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-27T01:29:53.050664+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_109772a7",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-27T01:29:53.060688+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_109772a7",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T01:29:53.072790+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_109772a7",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T01:29:53.084986+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_109772a7",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-27T01:29:53.097081+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_f6430866",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-27T01:29:53.124122+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_19d88b64",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-27T01:29:53.126249+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_9f09419e",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-27T01:29:53.150357+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_9f09419e",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-27T01:29:53.153072+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_6fec7b8e",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-27T01:29:53.175352+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_ff1bab9f",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-27T01:29:53.189697+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_ff1bab9f",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-27T01:29:53.192866+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_ff1bab9f",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-27T01:29:53.202922+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c0c2d21a",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-27T01:29:53.225930+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_1bc78d60",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T01:29:53.243511+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_c2c2b8d7",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T01:29:53.256894+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_7cb2ec32",
+    "event_type": "planning_time",
+    "value": 12.5,
+    "timestamp": "2026-09-27T01:38:02.876661+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7cb2ec32",
+    "event_type": "test_passed",
+    "value": 20.0,
+    "timestamp": "2026-09-27T01:38:02.879306+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7cb2ec32",
+    "event_type": "test_failed",
+    "value": 3.0,
+    "timestamp": "2026-09-27T01:38:02.889469+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7cb2ec32",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T01:38:02.901743+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7cb2ec32",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T01:38:02.912728+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_7cb2ec32",
+    "event_type": "human_intervention",
+    "value": 1.0,
+    "timestamp": "2026-09-27T01:38:02.926992+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_454c3827",
+    "event_type": "test_passed",
+    "value": 5.0,
+    "timestamp": "2026-09-27T01:38:02.948715+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_c12e28d5",
+    "event_type": "test_passed",
+    "value": 999.0,
+    "timestamp": "2026-09-27T01:38:02.951239+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_4fe6817e",
+    "event_type": "retry",
+    "value": 3.0,
+    "timestamp": "2026-09-27T01:38:02.973790+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_4fe6817e",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-27T01:38:02.976102+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_6f488a01",
+    "event_type": "planning_time",
+    "value": 60.0,
+    "timestamp": "2026-09-27T01:38:02.994336+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_4bb997c3",
+    "event_type": "test_passed",
+    "value": 10.0,
+    "timestamp": "2026-09-27T01:38:03.009212+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_4bb997c3",
+    "event_type": "test_failed",
+    "value": 2.0,
+    "timestamp": "2026-09-27T01:38:03.012202+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_4bb997c3",
+    "event_type": "security_finding",
+    "value": 1.0,
+    "timestamp": "2026-09-27T01:38:03.024880+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_3fd40b0b",
+    "event_type": "planning_time",
+    "value": 0.003,
+    "timestamp": "2026-09-27T01:38:03.048857+00:00",
+    "run_id": null
+  },
+  {
+    "project_id": "test_3e812683",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T01:38:03.064425+00:00",
+    "run_id": "run-abc"
+  },
+  {
+    "project_id": "test_25b11e10",
+    "event_type": "retry",
+    "value": 1.0,
+    "timestamp": "2026-09-27T01:38:03.079082+00:00",
+    "run_id": "run-abc"
+  }
+]

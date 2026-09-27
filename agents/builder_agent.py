@@ -1,1 +1,1 @@
-﻿# Builder Agent — code generation (Ali)
+# Builder Agent — placeholder (the demo uses orchestrator/stubs/builder_stub.py)

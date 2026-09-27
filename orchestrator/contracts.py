@@ -153,7 +153,7 @@ class TestResultData(BaseModel):
     """Placed inside AgentResult.data by the Tester Agent.
 
     'status' mirrors the gate decision: PASS only when passed == total.
-    Matches the shape documented in docs/tasks/manar.md.
+    Matches the shape documented in docs/agent_contracts.md.
     """
     __test__ = False  # prevent pytest from collecting this as a test class
     total: int = Field(ge=0)

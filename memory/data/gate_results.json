@@ -1,0 +1,74 @@
+[
+  {
+    "gate": "tests",
+    "project_id": "proj-devforge-001",
+    "milestone_id": "m1",
+    "verdict": "PASS",
+    "reason": "All 42 unit tests passed with 94% coverage.",
+    "retry_number": 0,
+    "timestamp": "2026-09-26T18:31:53.962040Z"
+  },
+  {
+    "gate": "security",
+    "project_id": "proj-devforge-001",
+    "milestone_id": null,
+    "verdict": "BLOCKED",
+    "reason": "CVE-2024-1234 detected in dependency; patch required before release.",
+    "retry_number": 1,
+    "timestamp": "2026-09-26T18:31:53.962697Z"
+  },
+  {
+    "gate": "plan",
+    "project_id": "proj_fd0efdb1",
+    "milestone_id": null,
+    "verdict": "PASS",
+    "reason": "6 user stories, 3 ADR(s)",
+    "retry_number": 0,
+    "timestamp": "2026-09-26T21:03:09.118100+00:00"
+  },
+  {
+    "gate": "tests",
+    "project_id": "proj_fd0efdb1",
+    "milestone_id": "ms_001",
+    "verdict": "FAIL",
+    "reason": "17/20 passed. Failures: test_delete_task_not_owner, test_delete_task_other_user, test_delete_task_unauthorized_owner",
+    "retry_number": 0,
+    "timestamp": "2026-09-26T21:03:10.637120+00:00"
+  },
+  {
+    "gate": "security",
+    "project_id": "proj_fd0efdb1",
+    "milestone_id": "ms_001",
+    "verdict": "BLOCKED",
+    "reason": "1 blocking finding(s): HIGH broken_access_control at backend/demo_bug.py:36",
+    "retry_number": 0,
+    "timestamp": "2026-09-26T21:03:10.637357+00:00"
+  },
+  {
+    "gate": "tests",
+    "project_id": "proj_fd0efdb1",
+    "milestone_id": "ms_001",
+    "verdict": "PASS",
+    "reason": "20/20 tests passed, coverage 0%",
+    "retry_number": 1,
+    "timestamp": "2026-09-26T21:03:13.131842+00:00"
+  },
+  {
+    "gate": "security",
+    "project_id": "proj_fd0efdb1",
+    "milestone_id": "ms_001",
+    "verdict": "PASS",
+    "reason": "No critical/high findings. medium=0 low=0",
+    "retry_number": 1,
+    "timestamp": "2026-09-26T21:03:13.132228+00:00"
+  },
+  {
+    "gate": "release",
+    "project_id": "proj_fd0efdb1",
+    "milestone_id": null,
+    "verdict": "PASS",
+    "reason": "Human approved release",
+    "retry_number": 0,
+    "timestamp": "2026-09-26T21:03:13.151579+00:00"
+  }
+]

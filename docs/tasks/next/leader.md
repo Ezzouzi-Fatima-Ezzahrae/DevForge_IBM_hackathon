@@ -9,6 +9,6 @@ Architecture, contracts, orchestrator (gates, retries, parallel checks), approva
 2. **Set the cut-off time** and announce it. If the page is not merged by then, the demo is the terminal version.
 3. **Backup video:** `python scripts/demo.py --auto-approve --no-memory` (and the dashboard if it works).
 4. **Update slides and STATUS** to what was merged (slide 5 real vs stub, slide 7 numbers from Safa's runs).
-5. **Clean-up:** remove the old placeholders (Next.js files, docker-compose, old routers).
+5. ~~Clean-up of the old placeholders~~ Done.
 6. **Fresh-clone test** on the final `main` (`docs/SUBMISSION_CHECKLIST.md`), then Bob evidence check for the whole team.
 7. **Two timed rehearsals** with `docs/DEMO_PLAN.md`; then freeze and submit (verify the required format and deadline).
