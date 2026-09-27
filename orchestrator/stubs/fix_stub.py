@@ -1,6 +1,6 @@
 """
 orchestrator/stubs/fix_stub.py
-Stub for the Fix step (Builder applying a security patch — Haytam + Ali).
+Stub for the Fix step (security patch — Haytam's fix agent replaces it).
 Always returns success. After this, security_stub's second call returns PASS.
 Replace with real fix logic when Haytam wires the patch loop.
 """

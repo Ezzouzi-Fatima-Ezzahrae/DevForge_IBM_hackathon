@@ -1,6 +1,6 @@
 """
 orchestrator/stubs/builder_stub.py
-Stub for the Builder Agent (Ali's agent).
+Stub for the Builder Agent (no real builder in the MVP).
 Returns a fixed list of generated files for Milestone 1.
 Replace with: from agents.builder_agent import BuilderAgent; register_agent("build", BuilderAgent())
 """
@@ -13,7 +13,7 @@ from orchestrator.contracts import AgentResult, AgentStatus, ProjectContext
 
 
 class BuilderStub(BaseAgent):
-    """Owner: Ali — replace with agents/builder_agent.py when ready."""
+    """Owner: Leader — replace with agents/builder_agent.py when ready."""
 
     def run(self, context: ProjectContext) -> AgentResult:
         start = time.time()

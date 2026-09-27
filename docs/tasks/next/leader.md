@@ -1,32 +1,14 @@
 # Leader: next tasks
 
-**Branch:** `leader/orchestrator`. **Folders:** `orchestrator/`, `docs/`, `config/`.
-
 ## Done
-Architecture, contracts, orchestrator, tests, README, Bob evidence, status and next-task files.
+Architecture, contracts, orchestrator (gates, retries, parallel checks), approval broker, gate tests (also fixed: 0 tests never passes), memory wiring, offline demo (`scripts/demo.py`), README with diagram, slides (`DevForge_Slides.pptx`), review of the backend (three fixes and API flow tests), fresh-clone test (128 tests, demo twice, API to RELEASED), status update.
 
-## Tasks (in order)
+## To do, in order
 
-1. **Review and merge**, in this order: Manar's PR (real testing and debug), Safa's fixes (`safae/memory`), then Haytam's and Ali's when they arrive. After each merge run `python -m pytest -q` on `main`.
-2. **Restore the demo file before every run.** `backend/demo_bug.py` is patched by the debug agent. In demo mode `run_pipeline` should call `tests/restore_demo_bug.py` at the start, so a run is repeatable. Never commit the fixed file (check `git status`).
-3. **Register Fati's PlanAgent** (after her update) as the `plan` stage.
-4. **Fallback flags** in `config/orchestrator_config.json` (`"agents": {"plan": "real|stub", ...}`); in `agents_base.py` load real agents in try/except and fall back to the stub.
-5. **Approval through the API:** make the approval function injectable in `run_pipeline` (with a timeout) for Ali's `POST /projects/{id}/approve`. Keep the CLI.
-6. ~~Log the `auto` flag~~ **Done** (`HUMAN_APPROVAL` events have `auto`).
-7. ~~Wire memory~~ **Done** (`orchestrator/recorder.py`: live metrics, decisions and gate results; see `orchestrator/README.md`).
-8. **Real tests:** `tests/test_gates.py` is a placeholder; add a test for each gate and for `FAILED` after the retry limits.
-9. **Demo script:** `scripts/demo.py`, offline stub demo under 2 minutes.
-10. **Diagram** of the architecture and the state machine in `docs/`.
-11. **Hour-24 sync:** each person demos, note the top 3 bugs, assign them. **Feature freeze at hour 40**, then rehearsals only.
-
-## Done when
-A fresh clone of `main` runs the full demo (real agents where ready, stubs elsewhere), the dashboard shows it live, and approval works from the dashboard.
-
-## Also yours (nobody else owns these)
-
-12. **Root `requirements.txt`** (pydantic, pytest, fastapi, uvicorn, httpx) and a short "how to run everything" section in `README.md`.
-13. **Slides and script:** fill in `docs/DEMO_PLAN.md`, build the slides (problem, solution, architecture diagram, live demo, impact, how Bob was used), and ask each speaker for their 30-second text.
-14. **Backup video** of a full successful run, recorded before the freeze.
-15. **Stability:** 5 full runs in a row (restore `demo_bug.py` between runs) without a failure.
-16. **Bob evidence check:** every member's `bob_sessions/*.md` is filled and readable.
-17. **Fresh-clone test and submission:** follow `docs/SUBMISSION_CHECKLIST.md` on a clean clone of `main` and verify the format and deadline in the hackathon guide.
+1. **Review and merge** each PR as it arrives: Haytam (fix agent and secret rule together), Fati (dashboard), Safa (insights), Manar. After each merge run `python -m pytest -q` on `main`, then register Haytam's fix agent in `agents_base.py` (`fix` stage, with a stub fallback).
+2. **Set the cut-off time** and announce it. If the page is not merged by then, the demo is the terminal version.
+3. **Backup video:** `python scripts/demo.py --auto-approve --no-memory` (and the dashboard if it works).
+4. **Update slides and STATUS** to what was merged (slide 5 real vs stub, slide 7 numbers from Safa's runs).
+5. **Clean-up:** remove the old placeholders (Next.js files, docker-compose, old routers).
+6. **Fresh-clone test** on the final `main` (`docs/SUBMISSION_CHECKLIST.md`), then Bob evidence check for the whole team.
+7. **Two timed rehearsals** with `docs/DEMO_PLAN.md`; then freeze and submit (verify the required format and deadline).

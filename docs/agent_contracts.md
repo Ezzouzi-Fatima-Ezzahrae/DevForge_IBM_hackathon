@@ -146,7 +146,7 @@ Allowed event types: `planning_time` | `implementation_time` | `testing_time` | 
 
 ---
 
-### Ali — Backend and Dashboard
+### Backend and dashboard (Manar, Fati, Safa)
 
 **Reading AgentResult** from `GET /agents/results?project_id=`:
 

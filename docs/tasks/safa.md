@@ -75,7 +75,7 @@ Every agent returns:
 |---|---|
 | **Fati** | Research and architecture decisions must be stored via `memory_agent.store()` — coordinate the Decision schema before hour 4 |
 | **Leader** | Orchestrator will call `memory_agent.store()` after each gate result; confirm the event types |
-| **Ali** | `GET /decisions` and a future `GET /metrics` endpoint must match your data shapes |
+| **Manar and Fati** | The insights endpoints (`docs/API.md`) and the Insights section must match your data shapes |
 
 ---
 
@@ -92,7 +92,7 @@ Use **Bob Agent mode** to design and build the memory and metrics module.
 - [ ] `memory_agent.store(decision)` saves a decision and `memory_agent.query(project_id)` retrieves it.
 - [ ] `metrics.record_event(...)` records an event and `metrics.get_summary(...)` returns correct counts.
 - [ ] Both functions are testable via a short Python script (no API needed at this stage).
-- [ ] Bonus: exposed via `GET /decisions?project_id=` in Ali's backend.
+- [ ] Bonus: exposed via `GET /projects/{id}/decisions` (see `docs/API.md`).
 - [ ] Both Bob session screenshots saved in `bob_sessions/`.
 
 ---
