@@ -27,4 +27,4 @@ The real test suite then reported:
 
 ## Bob screenshot
 
-![Bob — Debug Agent task](./manar_task02_debug_agent.png)
+![Bob — Debug Agent task](devforge_task14_manar_debug_agent.png)

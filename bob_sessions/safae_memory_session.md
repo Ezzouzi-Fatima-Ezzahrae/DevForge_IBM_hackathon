@@ -68,7 +68,7 @@ File tree first, then each file in full.
 - **Result:** all 4 files created and working — 5/5 tasks completed. `memory/data/decisions.json`, `metrics.json` and `.gitkeep` generated on first run.
 - **Bob features used:** Agent mode, multi-file creation, task list.
 
-![Bob session: memory_agent.py and metrics.py build](safae_task01_memory.png)
+![Bob session: memory_agent.py and metrics.py build](devforge_task15_safa_decision_memory.png)
 
 ## Session 2: Metrics module walkthrough (function by function)
 
@@ -76,8 +76,8 @@ File tree first, then each file in full.
 - **Result:** Bob read `memory/metrics.py` and `memory/schemas.py` and produced a full breakdown — module-level setup (`_METRICS_FILE`, `_lock`, `_SUMMARY_KEY_MAP`, the `assert` guarding `EVENT_TYPES` against drift), then each function's behaviour and a data-flow diagram (`record_event → metrics.json → get_summary → get_impact_summary → Caller/Demo`).
 - **Bob features used:** Agent mode, "Explain" on a file, follow-up question, auto-generated diagram.
 
-![Bob session: metrics.py function-by-function breakdown](safae_task02_metrics.png)
-![Bob session: get_impact_summary explained with data-flow diagram](safae_task02_metrics_impact.png)
+![Bob session: metrics.py function-by-function breakdown](devforge_task16_safa_metrics.png)
+![Bob session: get_impact_summary explained with data-flow diagram](devforge_task17_safa_impact_summary.png)
 
 ## Session 3: Fix a type-checking bug in memory_agent.py
 
@@ -85,7 +85,7 @@ File tree first, then each file in full.
 - **Result:** Bob read the surrounding code, explained the mismatch, and changed the annotation to `gate: str | None = None`, matching the runtime behaviour already handled by the existing `if gate:` check. No other file touched.
 - **Bob features used:** Agent mode, "Fix any issues" quick action, diff view.
 
-![Bob session: fixing the gate parameter type](safae_task03_typefix.png)
+![Bob session: fixing the gate parameter type](devforge_task18_safa_type_fix.png)
 
 ## Session 4: pyrightconfig.json — resolve the pydantic import and relax strictness
 
@@ -93,7 +93,7 @@ File tree first, then each file in full.
 - **Result:** `pyrightconfig.json` created, then updated; both the pydantic import warning and the generic-type errors cleared without touching any `.py` file.
 - **Bob features used:** Agent mode, follow-up prompt within the same session, diff view.
 
-![Bob session: pyrightconfig.json fix](safae_task04_pyrightconfig.png)
+![Bob session: pyrightconfig.json fix](devforge_task19_safa_editor_config.png)
 
 ## Lessons
 
@@ -244,6 +244,6 @@ This Session 6 records only Tasks 7 and 8. Tasks 5 and 6 remain dependent on the
 
 ### Screenshots
 
-![IBM Bob — Task 7: analysis phase, all four APIs confirmed working, module docblocks identified as the missing piece](safae_task07_bob_review.png)
+![IBM Bob — Task 7: analysis phase, all four APIs confirmed working, module docblocks identified as the missing piece](devforge_task20_safa_bob_code_review.png)
 
-![IBM Bob — Task 8: context injection analysis, 5-decision cap and 5 new tests planned, all tasks completed 19/19](safae_task08_context_injection.png)
+![IBM Bob — Task 8: context injection analysis, 5-decision cap and 5 new tests planned, all tasks completed 19/19](devforge_task21_safa_context_injection.png)

@@ -29,4 +29,4 @@ After the Debug Agent applies the ownership fix, the same suite reaches:
 
 ## Bob screenshot
 
-![Bob — Testing Agent task](./manar_task01_testing_agent.png)
+![Bob — Testing Agent task](devforge_task13_manar_testing_agent.png)

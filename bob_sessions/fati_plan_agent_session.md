@@ -1,4 +1,4 @@
-# Bob session: Fati � Plan Agent (Plan mode)
+# Bob session: Fati: Plan Agent (Plan mode)
 
 ## Demo idea
 
@@ -33,12 +33,12 @@ Bob generated:
 
 ## User stories
 
-1. REQ-001 � User registration and login
-2. REQ-002 � Create a task
-3. REQ-003 � View tasks
-4. REQ-004 � Update a task
-5. REQ-005 � Delete a task
-6. REQ-006 � Share a task with another user
+1. REQ-001 - User registration and login
+2. REQ-002 - Create a task
+3. REQ-003 - View tasks
+4. REQ-004 - Update a task
+5. REQ-005 - Delete a task
+6. REQ-006 - Share a task with another user
 
 Each user story contains acceptance criteria.
 
@@ -100,8 +100,8 @@ The Bob Plan session produced a valid Plan Agent plan satisfying the required Pl
 
 ## Screenshots
 
-- fati_task1.png — Project structure and Plan Agent context.
-- fati_task2.png — Plan generation in Bob Plan mode.
-- fati_task3.png — Review and validation of the generated plan.
-- fati_task4.png — Plan Agent integration with the project context and contracts.
-- fati_task5.png — Plan Agent testing and validation.
+- devforge_task08_fati_plan_gate_check.png: Bob checks the generated plan against the plan gate (6 user stories, acceptance criteria, 3 ADRs).
+- devforge_task09_fati_plan_generation.png: the plan generated in Bob Plan mode (requirements with acceptance criteria).
+- devforge_task10_fati_plan_review.png: review of the generated plan (requirements and the gate table).
+- devforge_task11_fati_plan_agent_integration.png: the plan agent aligned with the project contracts (`AgentResult`).
+- devforge_task12_fati_plan_agent_testing.png: decisions DEC-001 to DEC-003 in the memory format and the plan agent test run.
