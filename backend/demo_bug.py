@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 
 from fastapi import APIRouter, HTTPException
-API_SECRET_KEY = "hardcoded-demo-secret"
+import os
+API_SECRET_KEY = os.environ.get("API_SECRET_KEY")
 router = APIRouter(prefix="/tasks", tags=["demo-tasks"])
 
 
@@ -43,7 +44,9 @@ def delete_task(task_id: int):
 
     current_user = get_current_user()
 
-    # BUG: no ownership check — any user can delete any task
+    if task.owner_id != current_user.id:
+        raise HTTPException(status_code=403, detail="Not authorized")
+
     del tasks[tasks.index(task)]
 
     return {"deleted": task.id, "by_user": current_user.id}

@@ -62,6 +62,10 @@ A small task-management API (`backend/demo_bug.py`) contains a planted access-co
 4. Tests and security run again on the patched code: both gates pass.
 5. A human approves the release and the project is `RELEASED`.
 
+## After release: a real deliverable
+
+Once a human approves and the project reaches `RELEASED`, the dashboard shows a **Download your project** button (`GET /projects/{id}/download`). It streams a zip containing the patched source file plus an auto-generated `README.md` summarizing every agent's findings, what was fixed, and how to run it -- so approving a run hands back something usable, not just a log.
+
 ## What is real and what is simulated
 
 | Part | Status |
@@ -71,7 +75,8 @@ A small task-management API (`backend/demo_bug.py`) contains a planted access-co
 | Debugger agent (patches the real file and reruns the tests) | real |
 | Security agent (static analysis of the real file) | real |
 | Plan agent | replays a saved IBM Bob Plan session (no live AI call, so the demo works offline) |
-| Build agent, Fix agent | stubs (the demo bug is fixed by the Debugger) |
+| Fix agent (`orchestrator/adapters/fix_adapter.py`) | real: patches the exact finding Security reports (hardcoded secret -> env var, missing ownership check -> 403) and reruns tests + security |
+| Build agent | stub (not yet a real code generator) |
 | Memory and metrics | real: decisions and measured timings, retries and test counts are recorded from each run |
 
 ## Run it
@@ -97,15 +102,15 @@ Useful switches:
 
 Each run writes `logs/orchestrator.jsonl` (events) and `data/project_state.json` (current state).
 
+> **Note:** run the dashboard server *without* `--reload` (`uvicorn backend.main:app --port 8000`) while a pipeline is in flight. `--reload`'s file watcher restarts the whole process -- and kills any background pipeline thread, including one waiting on human approval -- the instant any file in the project changes. Fine for editing code between runs, not safe while a run is live.
+
 ## Documentation
 
 - Design: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 - Data contracts shared by all agents: [`docs/agent_contracts.md`](docs/agent_contracts.md)
 - Orchestrator internals and how to plug in an agent: [`orchestrator/README.md`](orchestrator/README.md)
 - Dashboard API: [`docs/API.md`](docs/API.md)
-- Demo script and timing: [`docs/DEMO_PLAN.md`](docs/DEMO_PLAN.md)
 - Measured impact: [`docs/IMPACT.md`](docs/IMPACT.md)
-- Submission text and checklist: [`docs/SUBMISSION_TEXT.md`](docs/SUBMISSION_TEXT.md), [`docs/SUBMISSION_CHECKLIST.md`](docs/SUBMISSION_CHECKLIST.md)
 
 ## Repository layout
 
@@ -146,7 +151,7 @@ DevForge/
 ├── fixtures/plan_output.json    the saved plan
 ├── config/                      gate thresholds and retry limits
 ├── tests/                       automated tests, the demo-bug restore script, fixtures
-├── docs/                        ARCHITECTURE, API, agent_contracts, STATUS, DEMO_PLAN, SUBMISSION_CHECKLIST, tasks/
+├── docs/                        ARCHITECTURE, API, agent_contracts, IMPACT
 └── bob_sessions/                evidence of how IBM Bob was used
 ```
 
