@@ -1,54 +1,49 @@
-# Project status vs the plan
+# Project status
 
-Updated 26 Sep 2026, evening. "Verified" means the code was read and its tests were run. "Not seen" means nothing is on `main` yet.
+Updated 27 Sep 2026, about 02:00. Everything marked "verified" was checked on a **fresh clone of `main`**: clean install from `requirements.txt`, `python -m pytest -q` (128 passed), `scripts/demo.py` twice in a row (RELEASED, 17/20 to 20/20, identical both times), the CLI, the stub fallback, and the API driven with curl from create to RELEASED.
 
-## Summary table
+## Summary
 
 | Area | Owner | Status | Notes |
 |---|---|---|---|
 | Architecture, contracts | Leader | Done, verified | `docs/ARCHITECTURE.md`, `docs/agent_contracts.md`, `orchestrator/contracts.py` |
-| Orchestrator (state machine, gates, runner, approval, logging, CLI) | Leader | Done, verified | 65 tests pass on the merged code; full demo run works |
-| Memory and metrics wiring (live recording) | Leader | Done, verified | `orchestrator/recorder.py`; 80 tests pass |
-| Orchestrator to backend, approval from the dashboard, fallback flags | Leader | **To do** | Needs Ali's endpoints |
-| `tests/test_gates.py`, demo script, diagram | Leader | **To do** | `tests/test_gates.py` is still a placeholder |
-| Plan agent | Fati | Merged and **connected** (registered as the `plan` stage) | Replays the saved Bob plan for any idea; reports real timing. Fallback: `DEVFORGE_PLAN_AGENT_MODE=stub` |
-| Testing agent, Debug agent | Manar | Real, on her branch, verified by reading | Run real pytest; the debug agent really patches the file |
-| Memory and metrics | Safa | First version merged; fixes on her branch | The fix "filter by project" is not in the merged code yet |
-| Security agent, gate | Haytam | Real, verified, **connected by the Leader** (PR pending) | Detects the real ownership bug; adapter in `orchestrator/adapters/security_adapter.py`. His edits to `orchestrator/`, memory schemas and docs were not taken. |
-| Fix agent (security) | Haytam | **To do** | The orchestrator uses the stub; Haytam must write `security/fix_agent.py` (removes the hard-coded secret) |
-| Backend API | Ali | **Not seen** | `backend/*` are placeholders (only `demo_bug.py`, from Manar) |
-| Dashboard | Ali | **Not seen** | `frontend/*` are placeholders |
-| Bob evidence | Everyone | Partly done | Done: Leader, Safa, Fati, Manar, Haytam (add screenshots). Empty: Ali |
-| Demo plan, submission checklist | Leader | Written | `docs/DEMO_PLAN.md`, `docs/SUBMISSION_CHECKLIST.md` |
+| Orchestrator (state machine, gates, runner, logging, CLI) | Leader | Done, verified | Parallel tests and security, retries, FAILED escalation |
+| Approval broker (approve or reject from the API) | Leader | Done, verified | `orchestrator/approval_broker.py`; timeout counts as a rejection |
+| Gate tests | Leader | Done | `tests/test_gates.py` (also fixed: 0 tests no longer passes the tests gate) |
+| Offline terminal demo | Leader | Done, verified | `python scripts/demo.py` |
+| README with diagram, slides | Leader | Done | `README.md`, `DevForge_Slides.pptx` |
+| Memory and metrics wiring | Leader | Done, verified | `orchestrator/recorder.py` |
+| Plan agent | Fati | Done, connected | Replays a saved Bob Plan session (no live AI call). Fallback: `DEVFORGE_PLAN_AGENT_MODE=stub` |
+| Testing agent, Debug agent | Manar | Done, connected, verified | Real pytest; the debug agent really patches the file |
+| Backend API | Manar | Done, verified | `POST /projects`, `/start`, `GET /status`, `POST /approve`, `/reset`. Runs the real pipeline to RELEASED |
+| Security agent, gate | Haytam | Done, connected | Finds the ownership bug (HIGH, CWE-639) and the hard-coded secret (LOW) |
+| Fix agent | Haytam | **Open** | Still a stub. The security gate passes only because the Debugger already fixed the ownership bug |
+| Memory and metrics | Safa | Merged | Insights endpoints, Impact wording and `docs/IMPACT.md` still open |
+| Dashboard page | Fati | **Open** | Backend serves `frontend/static/` but it does not exist yet: `/` returns 404. Terminal demo is the fallback |
+| Insights endpoints and screen | Safa | **Open** | `docs/API.md` |
+| Bob evidence | Everyone | Files present for all members | Check each file has the task, the Bob features used and readable screenshots |
+| Demo rehearsals, backup video | Everyone | **Open** | `docs/DEMO_PLAN.md` |
 
-## Problems found in the review
+## What is real and what is simulated
 
-0. **Haytam's branch rewrote shared files** (orchestrator, memory schemas, contracts doc). Only his `security/` work was integrated; the rest was left out to avoid breaking the working orchestrator.
+Real: orchestrator, gates, retries, parallel checks, approval, testing agent, debug agent, security agent, backend API, memory and metrics.
+Simulated: plan agent (replays a saved Bob plan), build agent and fix agent (stubs).
 
-1. **Running the pipeline changes a tracked file.** The debug agent patches `backend/demo_bug.py` for real. After a run, the repo shows that file as modified (bug fixed). Restore it with `python tests/restore_demo_bug.py` before every demo run and never commit the fixed version.
-2. **The demo has two agents fixing the same bug.** The debug agent already adds the ownership check, so a real security agent scanning afterward finds nothing to block. Decision: plant a **second, different vulnerability** in `backend/demo_bug.py` for the security agent (a hard-coded secret, CWE-798). See `haytam.md` and `manar.md`.
-3. ~~The plan agent is not connected.~~ Fixed: `PlanAgent` is a class, registered as the `plan` stage, and its decisions carry the running project's id. Note: it replays one saved plan (task management SaaS) for any idea.
-4. ~~Duplicate fixture locations.~~ Fixed.
-5. ~~`DATA_SOURCES.md` is empty.~~ Fixed (3 sources).
-6. **Some of Manar's 20 tests are duplicates** (two of the three failing tests both delete task 1). It works, but judges may notice.
-7. **Safa's `log_ingest.py` in the merged code still uses the first event's project and all events.** Her fix commit exists on her branch.
-8. ~~Nothing calls memory or metrics from the orchestrator yet.~~ Fixed: live recording added.
-9. **Running `pytest` used to patch `backend/demo_bug.py`** (a pipeline test ran the real debug agent). Fixed: `tests/conftest.py` restores the file.
+## Known limits
+
+1. **One project at a time in the API.** The state file holds a single project; creating a second one while the first is running hides the first. Fine for the demo.
+2. **Running the pipeline by hand patches `backend/demo_bug.py`.** `scripts/demo.py` and the API restore the bug automatically. After a manual `python -m orchestrator.run`, run `python tests/restore_demo_bug.py`. Never commit the fixed version.
+3. **Security fix is a stub.** Do not say the fix agent fixed anything in the presentation. The Debugger fixed the access-control bug; the scanner then finds nothing to block.
+4. **The hard-coded secret is rated LOW** by the scanner, so it is reported but does not block the gate.
+5. **Some of Manar's tests overlap** (three tests around the same delete case). It works.
 
 ## Decisions taken
 
 - State and memory are stored in files (`data/project_state.json`, `memory/data/*.json`), not PostgreSQL.
+- The dashboard is plain HTML served by FastAPI, not Next.js.
 - Real agents are registered with a fallback to the stub.
-- The demo app is `backend/demo_bug.py`: bug 1 = missing ownership check (found by tests, fixed by the debug agent); bug 2 = hard-coded secret (found and fixed by the security agent).
+- The demo app is `backend/demo_bug.py`: bug 1 = missing ownership check (found by tests and by the scanner, fixed by the Debugger); bug 2 = hard-coded secret (reported as LOW).
 
-## Timeline (from `docs/ARCHITECTURE.md`)
+## Next
 
-| Hours | Focus |
-|---|---|
-| 16-24 | First integration: orchestrator, backend and dashboard run one full pipeline |
-| 24 | Mandatory 30-minute sync |
-| 24-40 | Stabilize, real agents, polish, Bob evidence |
-| 40 | **Feature freeze** |
-| 40-48 | Demo rehearsal only |
-
-Each person's next tasks: `docs/tasks/next/<name>.md`. Schedule, demo roles and pieces that were unowned: `docs/tasks/next/README.md`. Demo script: `docs/DEMO_PLAN.md`. Final checks: `docs/SUBMISSION_CHECKLIST.md`.
+Round-2 tasks per person: `docs/tasks/next/<name>.md` and `docs/tasks/dashboard_split.md`. Demo script: `docs/DEMO_PLAN.md`. Final checks: `docs/SUBMISSION_CHECKLIST.md`.
