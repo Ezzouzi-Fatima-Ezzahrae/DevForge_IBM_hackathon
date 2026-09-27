@@ -7,6 +7,11 @@
 - **Task:** Implement Security Agent for DevForge pipeline
 
 ---
+<img width="351" height="427" alt="image" src="https://github.com/user-attachments/assets/f3556f7f-3a2f-46f9-ba5f-893d26b94cba" />
+<img width="347" height="462" alt="image" src="https://github.com/user-attachments/assets/05d2e67b-a74f-4ae0-b4aa-b97cb5c9f205" />
+<img width="362" height="452" alt="image" src="https://github.com/user-attachments/assets/0e147802-1370-4522-adf0-5743aa7f5da3" />
+<img width="370" height="435" alt="image" src="https://github.com/user-attachments/assets/d6b2fcb7-e146-452e-b4ab-e1375319ec5d" />
+
 
 ## Prompt sent to Bob
 
