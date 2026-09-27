@@ -7,11 +7,24 @@
 - **Task:** Implement Security Agent for DevForge pipeline
 
 ---
-<img width="351" height="427" alt="image" src="https://github.com/user-attachments/assets/f3556f7f-3a2f-46f9-ba5f-893d26b94cba" />
-<img width="347" height="462" alt="image" src="https://github.com/user-attachments/assets/05d2e67b-a74f-4ae0-b4aa-b97cb5c9f205" />
-<img width="362" height="452" alt="image" src="https://github.com/user-attachments/assets/0e147802-1370-4522-adf0-5743aa7f5da3" />
-<img width="370" height="435" alt="image" src="https://github.com/user-attachments/assets/d6b2fcb7-e146-452e-b4ab-e1375319ec5d" />
 
+## Implementation evidence
+
+### 1. Planned security-agent changes
+
+<img width="351" height="427" alt="Planned security-agent changes" src="https://github.com/user-attachments/assets/f3556f7f-3a2f-46f9-ba5f-893d26b94cba" />
+
+### 2. Repository and branch verification
+
+<img width="347" height="462" alt="Repository and branch verification" src="https://github.com/user-attachments/assets/05d2e67b-a74f-4ae0-b4aa-b97cb5c9f205" />
+
+### 3. Security implementation tasks
+
+<img width="362" height="452" alt="Security implementation tasks" src="https://github.com/user-attachments/assets/0e147802-1370-4522-adf0-5743aa7f5da3" />
+
+### 4. Review feedback and next steps
+
+<img width="370" height="435" alt="Review feedback and next steps" src="https://github.com/user-attachments/assets/d6b2fcb7-e146-452e-b4ab-e1375319ec5d" />
 
 ## Prompt sent to Bob
 
@@ -58,7 +71,7 @@ Please structure this as a SecurityFinding and determine the Security Gate verdi
       "line": 54,
       "cwe": "CWE-639",
       "status": "OPEN",
-      "evidence": "   52 | @router.delete('/{task_id}')\n   53 | async def delete_task(task_id: int, db: Session = Depends(get_db)):\n   54 |     task = _TASKS.get(task_id)\n   55 |     if not task:\n   56 |         raise HTTPException(status_code=404)",
+      "evidence": "   52 | @router.delete('/{task_id}')\n   53 | async def delete_task(task_id: int, db: Session = Depends(get_db)):\n   54 |     task = _TASKS.get(task_id)\n   55 |     if not tas[...]",
       "recommendation": "Fetch the resource first. Compare resource.owner_id with current_user.id. Raise HTTPException(status_code=403) if they differ."
     }
   ]
@@ -69,7 +82,7 @@ Please structure this as a SecurityFinding and determine the Security Gate verdi
 
 ## Decision note
 
-**Bob decided:** The DELETE endpoint is missing an ownership check. Any authenticated user can delete any task by knowing its ID (Insecure Direct Object Reference, CWE-639). Severity = HIGH because the impact is data loss and authorization bypass. Security Gate = BLOCKED.
+**Bob decided:** The DELETE endpoint is missing an ownership check. Any authenticated user can delete any task by knowing its ID (Insecure Direct Object Reference, CWE-639). Severity = HIGH becaus[...]
 
 **Fix required:** Add `current_user: User = Depends(get_current_user)` parameter and check `task.owner_id != current_user.id → 403`.
 
