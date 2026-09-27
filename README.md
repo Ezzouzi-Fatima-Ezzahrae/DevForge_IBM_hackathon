@@ -110,9 +110,7 @@ Each run writes `logs/orchestrator.jsonl` (events) and `data/project_state.json`
 - Data contracts shared by all agents: [`docs/agent_contracts.md`](docs/agent_contracts.md)
 - Orchestrator internals and how to plug in an agent: [`orchestrator/README.md`](orchestrator/README.md)
 - Dashboard API: [`docs/API.md`](docs/API.md)
-- Demo script and timing: [`docs/DEMO_PLAN.md`](docs/DEMO_PLAN.md)
 - Measured impact: [`docs/IMPACT.md`](docs/IMPACT.md)
-- Submission text and checklist: [`docs/SUBMISSION_TEXT.md`](docs/SUBMISSION_TEXT.md), [`docs/SUBMISSION_CHECKLIST.md`](docs/SUBMISSION_CHECKLIST.md)
 
 ## Repository layout
 
@@ -153,7 +151,7 @@ DevForge/
 ├── fixtures/plan_output.json    the saved plan
 ├── config/                      gate thresholds and retry limits
 ├── tests/                       automated tests, the demo-bug restore script, fixtures
-├── docs/                        ARCHITECTURE, API, agent_contracts, STATUS, DEMO_PLAN, SUBMISSION_CHECKLIST, tasks/
+├── docs/                        ARCHITECTURE, API, agent_contracts, IMPACT
 └── bob_sessions/                evidence of how IBM Bob was used
 ```
 

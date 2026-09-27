@@ -29,3 +29,11 @@ data/project_state.json
 .pytest_cache/
 
 .pytest_tmp/
+
+# Internal planning docs (kept locally, not published)
+docs/DEMO_PLAN.md
+docs/STATUS.md
+docs/SUBMISSION_CHECKLIST.md
+docs/SUBMISSION_TEXT.md
+docs/VIDEO_SCRIPT.md
+docs/tasks/
