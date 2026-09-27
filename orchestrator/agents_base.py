@@ -62,7 +62,10 @@ def _real_or_stub(env_var: str, real_factory, stub_factory) -> BaseAgent:
         return stub_factory()
     try:
         return real_factory()
-    except Exception:  # noqa: BLE001 - fall back to the stub
+    except Exception as exc:  # noqa: BLE001 - fall back to the stub
+        import traceback
+        print(f"[DevForge] {env_var}: real agent failed to load ({type(exc).__name__}: {exc}); falling back to stub.", flush=True)
+        traceback.print_exc()
         return stub_factory()
 
 
@@ -75,7 +78,8 @@ def _bootstrap_agents() -> None:
     test             agents.testing_agent (Manar)             DEVFORGE_TEST_AGENT_MODE=stub
     debug            agents.debug_agent (Manar)               DEVFORGE_DEBUG_AGENT_MODE=stub
     security         orchestrator.adapters.security_adapter   DEVFORGE_SECURITY_AGENT_MODE=stub
-    build, fix       stubs only for now
+    fix              orchestrator.adapters.fix_adapter         DEVFORGE_FIX_AGENT_MODE=stub
+    build            stub only for now
     """
     from orchestrator.stubs.builder_stub import BuilderStub
     from orchestrator.stubs.debug_stub import DebugStub
@@ -104,12 +108,17 @@ def _bootstrap_agents() -> None:
 
         return SecurityAdapter()
 
+    def real_fix():
+        from orchestrator.adapters.fix_adapter import FixAdapter
+
+        return FixAdapter()
+
     register_agent("plan", _real_or_stub("DEVFORGE_PLAN_AGENT_MODE", real_plan, PlanStub))
     register_agent("build", BuilderStub())
     register_agent("test", _real_or_stub("DEVFORGE_TEST_AGENT_MODE", real_test, TesterStub))
     register_agent("debug", _real_or_stub("DEVFORGE_DEBUG_AGENT_MODE", real_debug, DebugStub))
     register_agent("security", _real_or_stub("DEVFORGE_SECURITY_AGENT_MODE", real_security, SecurityStub))
-    register_agent("fix", FixStub())
+    register_agent("fix", _real_or_stub("DEVFORGE_FIX_AGENT_MODE", real_fix, FixStub))
 
 
 # Kept for older code that imported the previous name.

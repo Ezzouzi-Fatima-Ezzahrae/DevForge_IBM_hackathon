@@ -262,6 +262,7 @@ def run_pipeline(
         while True:
             test_result, sec_result = _parallel_test_and_security(context, milestone.id, recorder)
             context.last_test_result = test_result.model_dump()
+            context.last_security_result = sec_result.model_dump()
             test_gate  = evaluate_test_gate(test_result, context, milestone.id)
             sec_gate   = evaluate_security_gate(sec_result, context, milestone.id)
             logger.gate(project_id, "tests", test_gate.verdict.value, test_gate.reason, test_retry)
