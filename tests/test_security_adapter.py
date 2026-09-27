@@ -39,11 +39,18 @@ def test_buggy_demo_file_is_blocked_with_a_high_finding(tmp_path):
 
 
 def test_fixed_demo_file_passes(tmp_path):
+    # Fix BOTH planted bugs:
+    # 1. Ownership check missing in delete_task
+    # 2. Hard-coded API_SECRET_KEY (detected as HIGH by the secret checker)
     fixed = BUGGY.read_text(encoding="utf-8").replace(
         "    # BUG: no ownership check — any user can delete any task\n",
         "    if task.owner_id != current_user.id:\n        raise HTTPException(status_code=403, detail='Not authorized')\n",
+    ).replace(
+        'API_SECRET_KEY = "hardcoded-demo-secret"',
+        'API_SECRET_KEY = os.environ.get("API_SECRET_KEY")',
     )
     assert "owner_id != current_user.id" in fixed
+    assert '"hardcoded-demo-secret"' not in fixed
     adapter, target = _adapter_for(tmp_path, fixed)
     try:
         result = adapter.run(_context())

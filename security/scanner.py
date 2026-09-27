@@ -22,6 +22,13 @@ Bandit severity mapping:
     MEDIUM → "MEDIUM"
     LOW    → "LOW"
 
+3. Custom Hardcoded Secret Checker — upgrades Bandit's LOW to HIGH for
+   assignments whose name matches SECRET / KEY / PASSWORD / TOKEN patterns:
+   - Bandit B105/B106/B107 only fires as LOW on generic string assignments.
+   - Our checker adds a HIGH-severity finding with CWE-798 whenever a
+     module-level or class-level assignment has a name that looks like a
+     credential and a non-empty string literal value.
+
 Design rules:
     - Never return PASS when the scanner itself failed — raise ScannerError.
     - Never invent findings. Every finding must be traceable to scanner output or
@@ -300,6 +307,131 @@ def _bandit_recommendation(test_id: str) -> Optional[str]:
 
 
 # ---------------------------------------------------------------------------
+# Custom hardcoded secret checker
+# ---------------------------------------------------------------------------
+
+# Variable names that indicate a hardcoded credential
+_SECRET_NAME_RE = re.compile(
+    r'(SECRET|KEY|PASSWORD|TOKEN|PASSWD|PWD|CREDENTIAL|AUTH)',
+    re.IGNORECASE,
+)
+
+
+def run_hardcoded_secret_checker(
+    path: str,
+    workspace_root: Optional[str] = None,
+) -> List[SecurityFinding]:
+    """
+    AST-based checker that finds module-level or class-level assignments of the
+    form::
+
+        API_SECRET_KEY = "some-literal-value"
+
+    where the variable name matches a credential-indicator pattern
+    (SECRET, KEY, PASSWORD, TOKEN, …).
+
+    Bandit's B105 fires as LOW for such patterns; this checker promotes them to
+    HIGH (CWE-798: Use of Hard-coded Credentials) so the security gate blocks.
+
+    Args:
+        path:           Directory or file to scan.
+        workspace_root: Optional root for path traversal protection.
+
+    Returns:
+        List of SecurityFinding instances, one per hardcoded-secret assignment.
+    """
+    resolved = _validate_scan_path(path, workspace_root)
+    findings: List[SecurityFinding] = []
+
+    files_to_check: List[Path] = (
+        [resolved] if resolved.is_file()
+        else list(resolved.rglob("*.py"))
+    )
+
+    for filepath in files_to_check:
+        try:
+            source = filepath.read_text(encoding="utf-8", errors="replace")
+            tree = ast.parse(source, filename=str(filepath))
+        except SyntaxError:
+            logger.warning("Hardcoded-secret checker: could not parse %s — skipping", filepath)
+            continue
+
+        source_lines = source.splitlines()
+        new_findings = _check_hardcoded_secrets_in_tree(tree, source_lines, filepath)
+        findings.extend(new_findings)
+
+    logger.info(
+        "Hardcoded-secret checker finished | path=%s findings=%d",
+        resolved,
+        len(findings),
+    )
+    return findings
+
+
+def _check_hardcoded_secrets_in_tree(
+    tree: ast.AST,
+    source_lines: List[str],
+    filepath: Path,
+) -> List[SecurityFinding]:
+    """Walk the AST and return one HIGH finding per hardcoded-credential assignment."""
+    findings: List[SecurityFinding] = []
+
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Assign):
+            continue
+
+        # The value must be a non-empty string literal
+        if not isinstance(node.value, ast.Constant):
+            continue
+        if not isinstance(node.value.value, str) or not node.value.value.strip():
+            continue
+
+        # At least one target must be a Name whose id matches the secret pattern
+        for target in node.targets:
+            if not isinstance(target, ast.Name):
+                continue
+            if not _SECRET_NAME_RE.search(target.id):
+                continue
+
+            var_name = target.id
+            line_no = node.lineno
+
+            try:
+                display_path = str(filepath.resolve().relative_to(Path.cwd()))
+            except ValueError:
+                display_path = str(filepath)
+            display_path = display_path.replace("\\", "/")
+
+            finding_id = f"SEC-{str(uuid.uuid4())[:8].upper()}"
+            findings.append(
+                SecurityFinding(
+                    id=finding_id,
+                    severity="HIGH",
+                    category="hardcoded_secret",
+                    description=(
+                        f"Hard-coded credential assigned to '{var_name}'. "
+                        f"Storing secrets as string literals exposes them in "
+                        f"source control and process memory."
+                    ),
+                    file=display_path,
+                    line=line_no,
+                    cwe="CWE-798",
+                    status="OPEN",
+                    evidence=_get_evidence_snippet(source_lines, line_no),
+                    recommendation=(
+                        f"Replace the literal value with "
+                        f"os.environ.get(\"{var_name}\"). "
+                        f"Never commit credentials to source control."
+                    ),
+                )
+            )
+            # One finding per assignment node is enough
+            break
+
+    return findings
+
+
+# ---------------------------------------------------------------------------
 # Custom authorization checker
 # ---------------------------------------------------------------------------
 
@@ -531,15 +663,20 @@ def scan(
     workspace_root: Optional[str] = None,
     use_bandit: bool = True,
     use_auth_checker: bool = True,
+    use_secret_checker: bool = True,
 ) -> List[SecurityFinding]:
     """
     Run all enabled scanners against ``path`` and return a merged finding list.
 
     Args:
-        path:             Path to scan (file or directory).
-        workspace_root:   Optional root for path traversal protection.
-        use_bandit:       Whether to run Bandit SAST.
-        use_auth_checker: Whether to run the custom authorization checker.
+        path:               Path to scan (file or directory).
+        workspace_root:     Optional root for path traversal protection.
+        use_bandit:         Whether to run Bandit SAST.
+        use_auth_checker:   Whether to run the custom authorization checker.
+        use_secret_checker: Whether to run the hardcoded-secret checker.
+                            When True (default) the checker promotes hardcoded
+                            credential assignments to HIGH severity so the gate
+                            blocks even when Bandit only reports them as LOW.
 
     Returns:
         Deduplicated list of SecurityFinding instances.
@@ -562,11 +699,16 @@ def scan(
         auth_findings = run_authorization_checker(path, workspace_root)
         all_findings.extend(auth_findings)
 
+    if use_secret_checker:
+        secret_findings = run_hardcoded_secret_checker(path, workspace_root)
+        all_findings.extend(secret_findings)
+
     logger.info(
-        "Combined scan finished | path=%s total=%d bandit=%s auth_checker=%s",
+        "Combined scan finished | path=%s total=%d bandit=%s auth_checker=%s secret_checker=%s",
         path,
         len(all_findings),
         use_bandit,
         use_auth_checker,
+        use_secret_checker,
     )
     return all_findings
