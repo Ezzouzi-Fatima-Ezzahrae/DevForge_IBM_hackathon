@@ -29,29 +29,11 @@
 ## Prompt sent to Bob
 
 ```
-You are a Senior Application Security Engineer working on the DevForge project.
-
-Your task: implement the security analysis pipeline for Milestone 1.
-
-Context:
-- The Builder has generated backend/routers/tasks.py for the Task CRUD API
-- You must scan this file for security vulnerabilities
-- The critical path is: DELETE /tasks/{id} — does it verify task ownership?
-
-Scanner output (Bandit):
-(no HIGH findings from Bandit on this specific file — this is a business-logic issue)
-
-Authorization check:
-Running custom AST-based authorization checker on backend/routers/tasks.py...
-
-Finding detected:
-  Function: delete_task
-  Decorator: @router.delete("/{task_id}")
-  Route has path parameter (task_id) → resource-scoped operation
-  Body: task = db.query(Task).filter(Task.id == task_id).first()
-  No ownership check found (no .owner_id, no current_user comparison, no 403)
-
-Please structure this as a SecurityFinding and determine the Security Gate verdict.
+your scanner really detects our planted bug in backend/demo_bug.py, nice work. I'm integrating your security/ folder myself in a new PR (I added a small adapter so it fits our contracts), so please don't merge your PR and don't push more changes to the orchestrator, memory or docs files. Next for you, in security/ only:
+1) Add a fix agent (security/fix_agent.py) that removes a hard-coded secret and returns the result.
+2) Make the scanner rate a hard-coded secret (names like SECRET, KEY, PASSWORD, TOKEN) as HIGH. Bandit only says LOW, so the gate ignores it. Manar is planting API_SECRET_KEY = "hardcoded-demo-secret" in backend/demo_bug.py.
+3) Add tests for the scanner and the agent (tests/test_security_agent.py).
+Details in docs/tasks/next/haytam.md after I update it. Important for your next PR: the scanner rates the hard-coded secret in backend/demo_bug.py (line 4, used on line 38) as LOW, so the gate ignores it. Your HIGH rule for secrets and your real fix agent must arrive in the SAME PR. If the HIGH rule comes alone, the pipeline blocks, the stub fix does nothing, and the run ends in FAILED. Please first run: git checkout haytam/security, git branch backup-haytam, git fetch origin, git reset --hard origin/main, git push --force-with-lease origin haytam/security. Then, only inside security/ and tests/test_security_agent.py: 1) the HIGH rule for hard-coded secrets, 2) security/fix_agent.py that replaces the value with os.environ.get("API_SECRET_KEY"), 3) tests. Details in docs/tasks/next/haytam.md. Tell me when you start, and message me if you're blocked.
 ```
 
 ---
