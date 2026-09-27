@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevForge — Pipeline Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <main class="container">
+
+        <header class="header">
+            <div>
+                <h1>DevForge Pipeline</h1>
+                <p id="project-info">No project started</p>
+            </div>
+
+            <div class="header-actions">
+                <button id="start-btn" class="btn btn-primary">Start</button>
+                <button id="reset-btn" class="btn btn-secondary">Reset</button>
+                <a href="/insights.html" class="btn btn-link">Insights</a>
+            </div>
+        </header>
+
+        <!-- Human attention banner -->
+        <section id="attention-banner" class="attention-banner hidden">
+            <strong>⚠ Needs human attention</strong>
+            <span id="attention-message">
+                The pipeline failed and requires human intervention.
+            </span>
+        </section>
+
+        <!-- Global status -->
+        <section class="status-card">
+            <div>
+                <span class="label">Pipeline status</span>
+                <strong id="pipeline-status">IDLE</strong>
+            </div>
+
+            <div>
+                <span class="label">Project ID</span>
+                <strong id="project-id">—</strong>
+            </div>
+
+            <div>
+                <span class="label">Running</span>
+                <strong id="running-status">No</strong>
+            </div>
+        </section>
+
+        <!-- Approval panel -->
+        <section id="approval-panel" class="approval-panel hidden">
+            <div class="section-header">
+                <div>
+                    <h2>Human Approval Required</h2>
+                    <p id="approval-gate"></p>
+                </div>
+            </div>
+
+            <div id="gate-results" class="gate-results"></div>
+
+            <div class="approval-actions">
+                <button id="approve-btn" class="btn btn-approve">
+                    Approve
+                </button>
+
+                <button id="changes-btn" class="btn btn-reject">
+                    Request changes
+                </button>
+            </div>
+        </section>
+
+        <!-- Pipeline stages -->
+        <section class="pipeline-section">
+            <div class="section-header">
+                <div>
+                    <h2>Pipeline stages</h2>
+                    <p>Live execution status</p>
+                </div>
+            </div>
+
+            <div id="stages-container" class="stages-grid">
+                <p class="empty-state">Start a project to see the pipeline.</p>
+            </div>
+        </section>
+
+        <!-- Events -->
+        <section class="events-section">
+            <div class="section-header">
+                <div>
+                    <h2>Live events</h2>
+                    <p>Latest pipeline activity</p>
+                </div>
+            </div>
+
+            <div id="events-container" class="events-list">
+                <p class="empty-state">No events yet.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="/pipeline.js"></script>
+</body>
+</html>
